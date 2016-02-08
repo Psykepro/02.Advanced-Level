@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Webinar registration</title>
+    <link type="text/css" rel="stylesheet" href="style/webinar.css">
+</head>
+<body>
+    <header>
+        <h3>Регистрация за уебинар</h3>
+    </header>
+    <form>
+        <div class="line">
+            <label for="names">Име и Фамилия:<span class="red">*</span></label>
+            <input type="text" id="names" />
+        </div>
+        <div class="line">
+            <label for="address">Адрес:</label>
+            <input type="text" id="address" />
+        </div>
+        <div class="line">
+            <label for="city">Населено място:</label>
+            <input type="text" id="city" />
+        </div>
+        <div class="line">
+            <label for="post-code">Пощенски код:</label>
+            <input type="number" id="post-code" />
+        </div>
+        <div class="line">
+            <label for="email">Email:<span class="red">*</span></label>
+            <input type="email" id="email" />
+        </div>
+        <div class="line">
+            <label for="phone">Телефон:<span class="red">*</span></label>
+            <input type="number" id="phone" />
+        </div>
+        <div class="line">
+            <label for="date">Дата на семинара:<span class="red">*</span></label>
+            <input type="" id="date" placeholder="mm/dd/yyyy"/>
+        </div>
+        <div class="line">
+            <input type="checkbox" id="invoice" onchange="showInvoiceInformation()">
+            <label for="invoice"> Желая фактура</label>
+        </div>
+        <div class="line">
+            <input class="buttons" type="button" value="Регистрирай се">
+            <input class="buttons" type="button" value="Изчисти">
+        </div>
+    </form>
+    <script src="script/webinar.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+header{
+    width: 20%;
+    position: relative;
+    left: 40%;
+}
+div.line{
+    width: 20%;
+    display: block;
+    position: relative;
+    left: 40%;
+}
+
+input.buttons{
+    display: inline-block;
+    width: auto;
+}
+
+div span{
+    color: red;
+}
+
+div input{
+    display: block;
+}
+
+#invoice{
+    display: inline-block;
+}

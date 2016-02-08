@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email only field</title>
+    <style>
+        #output{
+            display: block;
+            border: 1px solid gainsboro;
+            height: 20px;
+            width: 165px;
+        }
+        #input{
+            height: 20px;
+            width: 165px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <input type="text" id="input" width="60px">
+        <div id="output"></div>
+        <input type="button" value="Validate" onclick="validateTheEmail()">
+    </div>
+    <script src="script/email-only-field.js"></script>
+</body>
+</html>
