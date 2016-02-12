@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quadratic Equation</title>
+</head>
+<body>
+    <script>
+        var a = prompt("a = ","");
+        var b = prompt("b = ","");
+        var c = prompt("c = ","");
+
+        var rootPart = Math.sqrt(b * b - 4 * a * c);
+        var dividerPart = 2 * a;
+
+        var root1 =  ((-b) - rootPart) / dividerPart;
+        var root2 =  ((-b) + rootPart) / dividerPart;
+
+        if(!isNaN(root1) && !isNaN(root2)){
+            if(root1 === root2){
+                document.writeln("X = " + root1);
+            }else{
+                document.writeln("X1 = " + root1);
+                document.writeln("X2 = " + root2);
+            }
+        }
+        else{
+            document.writeln("No real roots");
+        }
+    </script>
+</body>
+</html>

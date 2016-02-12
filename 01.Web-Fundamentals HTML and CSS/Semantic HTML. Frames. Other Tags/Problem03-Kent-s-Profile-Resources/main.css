@@ -1,0 +1,71 @@
+div, section, figure, h1, h4, main {
+    margin:0;
+    padding: 0;
+}
+
+
+main {
+    width: 950px;
+    height: 400px;
+    background: #FF94DB;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 5px;
+    color: black;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+figure {
+    width: 150px;
+}
+
+meter {
+    width:150px;
+}
+
+#uploadaudio {
+    display: inline-block;
+    vertical-align: top;
+    width:250px;
+    height: 250px;
+}
+
+#profilepic {
+    display: inline-block;
+    vertical-align: top;
+    width:200px;
+    height: 250px;
+}
+
+#blackbox {
+    width:250px;
+    height: 100px;
+    background: black;
+}
+
+embed {
+    margin-top: 35px;
+}
+
+audio {
+    width:250px;
+}
+
+#uploadvideo {
+    display: inline-block;
+    
+    width:410px;
+    height: 255px;
+}
+
+figcaption {
+    font-family:serif;
+}
+
+video {
+    height: 235px;
+}

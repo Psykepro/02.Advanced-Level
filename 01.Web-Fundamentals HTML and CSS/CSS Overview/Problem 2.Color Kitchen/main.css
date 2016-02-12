@@ -1,0 +1,155 @@
+body{
+    display: inline-block;
+    background-image: url(colorful_dots_on_black.jpg);
+}
+
+
+
+nav{
+
+    display: inline-block;
+    width: 230px;
+    height: auto;
+    background-color: white;
+    border: 1px solid white;
+    border-color: white;
+    border-radius: 10px;
+}
+
+aside 
+{
+    display: inline-block;
+    width:  200px;
+    position: relative;
+    top: 85px;
+}
+
+aside nav header{
+    display: block;
+    position: absolute;
+    padding-left: 15px;
+    padding-top: 10px;
+    font-size: 25px;
+    width: 200px;
+    text-decoration: underline;
+}
+
+aside ul {
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 200px;
+    padding-top: 20px;
+}
+    aside ul li{
+    font-size: 18px;
+    margin: 10px;
+}
+
+article{
+    display: block;
+    width: 1070px;
+    height: 0 auto;
+    border: 1px solid white;
+    background: white;
+    color: black;
+    border-radius: 15px;
+    float: right;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+section{
+  display: inline-block;
+    float: right;
+    position: relative;
+    top: -150px;
+}
+header{
+    display: block;
+    
+    
+}
+
+body > header {
+    background: linear-gradient(to right, #ff0300 33.33%, #007b08 33.34%, #007b08 66.67%, #1500fc 66.68%);
+    color: #ffff40;
+    line-height: 1.5em;
+    font-size: 3.5em;
+    text-align: center;
+    font-weight: bold;
+    margin-top: -8px;
+}
+
+div::first-letter{
+    font-weight: bold;
+    font-size: 300%;
+}
+
+div::first-line{
+        font-style: italic;
+}
+
+#webColors{
+    display: block;
+    color: white;
+    border: 1px solid red;
+    border-radius: 5px;
+    background-color: red;
+    padding: 10px;
+    font-size: 20px;
+    font-family: "Verdana", serif; 
+}
+
+#webSafeColors{
+    display: block;
+    color: black;
+    border: 1px solid orange;
+    border-radius: 5px;
+    background-color: orange;
+    padding: 10px;
+    font-size: 20px;
+    font-family: "Verdana", serif; 
+}
+
+#RGB{
+    display: block;
+    color: black;
+    border: 1px solid yellow;
+    border-radius: 5px;
+    background-color: yellow;
+    padding: 10px;
+    font-size: 20px;
+    font-family: "Verdana", serif; 
+}
+
+#RGBA{
+    display: block;
+    color: white;
+    border: 1px solid green;
+    border-radius: 5px;
+    background-color: green;
+    padding: 10px;
+    font-size: 20px;
+    font-family: "Verdana", serif; 
+}
+
+#\#HSLHSV{
+    display: block;
+    color: white;
+    border: 1px solid blue;
+    border-radius: 5px;
+    background-color: blue;
+    padding: 10px;
+    font-size: 20px;
+    font-family: "Verdana", serif; 
+}
+
+#lorem{
+    display: block;
+    color: white;
+    border: 1px solid purple;
+    border-radius: 5px;
+    background-color: purple;
+    padding: 10px;
+    font-size: 20px;
+    font-family: "Verdana", serif; 
+}

@@ -1,0 +1,16 @@
+body{
+    background-color: #00FFFF;
+}
+.italic{
+    font-style: italic;
+}
+.left-margin{
+    margin-left: 25px;
+}
+img{
+    border: 1px solid black;
+}
+.info{
+    list-style-type: none;
+    padding: 0px;
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Lifetime Supply Calculator</title>
+</head>
+<body>
+    <script>
+        var currentAge = prompt('', '');
+        var maxAge = prompt('', '');
+        var favouriteFoodName = prompt('', '');
+        var favouriteFoodPerDay = prompt('', '');
+
+        document.writeln(lifetimeSupplyCalc(currentAge, maxAge, favouriteFoodPerDay) + 'kg of ' + favouriteFoodName + ' would be enough until I am ' + maxAge + ' years old.');
+
+        function lifetimeSupplyCalc(currentAge, maxAge, favouriteFoodPerDay){
+            var enoughFoodForLifetime = ((maxAge - currentAge) * favouriteFoodPerDay) * 365;
+            return enoughFoodForLifetime;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Simple Form</title>
+        <link rel="stylesheet" href="simple-form.css">
+        <script type="text/javascript" src="simple-form.js"></script>
+    </head>
+    <body>
+        <h2>Enter the system</h2>
+        <p>It is necesary to login in Your account in order to sign in for a course.</p>
+        
+        <form action="#" method="POST" class="register">
+            <h3>ARE YOU NEW? <span>REGISTER</span></h3>
+            <input type="text" name="username"
+                               required="required" placeholder="User name"
+                               pattern="[a-zA-Z0-9]{4,12}"
+                               title="Only letters and digits length min 4 max 12 symbols!">
+            <input type="text" name="email"
+                               required="required" placeholder="Email"
+                               pattern="([a-zA-Z\d]+)([@]{1})([a-z\d]+)([.]{1})([a-z]+)([.]{0,1})([a-z]*)"
+                               title="Please follow the form: example@email.com or example@email.co.uk!">
+            <input type="password" name="password" id="password"
+                               required="required" placeholder="Password"
+                               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                               title="At least 1 uppercase and 1 digit min length - 6 symbols!">
+            <input type="password" name="confirm-password" id="confirm-password"
+                               required="required" placeholder="Confirm Password"
+                               onkeyup="checkPass(); return false;">
+            <button>Register</button>
+        </form>
+        
+        <form action="#" method="POST" class="login">
+            <h3>ALREADY A STUDENT? LOGIN</h3>
+            <input type="text" name="username" placeholder="Username" />
+            <input type="password" name="password" placeholder="Password" />
+            <div class="remember">
+                <input type="checkbox" name="remember" id="remember"/>
+                <label for="remember">Remember me?</label>
+            </div>
+            <button>Login</button>
+            <a href="">Forgot Password</a>
+        </form>
+    </body>
+</html>
+
+
+
+

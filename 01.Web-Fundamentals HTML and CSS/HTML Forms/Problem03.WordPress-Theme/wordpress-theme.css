@@ -1,0 +1,26 @@
+body {
+    font-size: 14px;
+    font-family: 'Tahoma', sans-serif;
+}
+
+.upload {
+    margin: 20px 0;
+}
+
+label {
+    float: left;
+    margin: 3px 8px 0 0;
+}
+
+input[name="search"] {
+    float: left;
+    margin: 3px 5px 0 0;
+}
+
+button {
+    background: url(wp-icon.jpg) no-repeat;
+    width: 25px;
+    height: 25px;
+    border: 0 none;
+    float: left;
+}

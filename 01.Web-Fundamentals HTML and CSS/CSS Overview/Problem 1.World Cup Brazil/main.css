@@ -1,0 +1,169 @@
+body{
+    background-color: forestgreen;
+    font-family: Tahoma, sans-serif;
+}
+
+#container{
+    width: 900px;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table{
+    border-radius: 25px;
+}
+
+tr:nth-child(2n + 1){
+    background-color: white;
+}
+
+tr:nth-child(2n) {
+    background-color: #c8c8c8;
+}
+
+th{
+    font-weight: bold;
+    color: black;
+    height: 40px;
+    background-color: #f8c711;
+    
+}
+
+td{
+    width: 200px;
+    height: 50px;
+    font-size: 12px;
+}
+
+select{
+    height: 25px;
+    width: 35px;
+}
+
+.left-side{
+    float: right;
+    padding-right: 5px;
+}
+
+
+.left-text{
+    text-align: right;
+    padding-right: 10px; 
+}
+
+.right-text{
+    text-align: left;
+    padding-left: 5px;
+}
+
+.button{
+    width: 60px;
+    height: 50px;
+    text-align: center;
+}
+
+select:disabled{
+  color: red;  
+}
+
+select:enabled{
+  color: green;  
+}
+
+button{
+    border: 1px solid white;
+    border-radius: 100%;
+}
+
+button:enabled {
+    width: 35px;
+    height: 35px;
+    border-redius: 35px;
+    background-color: green;
+    color: white;
+    font-size: 8px;
+}
+
+button:disabled {
+    width: 35px;
+    height: 35px;
+    border-redius: 35px;
+    background-color: red;
+    color: white;
+    font-size: 8px;
+}
+
+.score-select{
+    text-align: center;
+    vertical-align: middle;
+    width: 160px;
+}
+
+.group{
+    text-align: center;
+    width: 80px;
+}
+
+.result{
+    text-align: center;
+    width: 80px;
+    padding: 0 5px 0 5px;
+}
+
+#brazil::after{
+    content: url(img/brasil.png);
+    padding-left: 5px;
+}
+
+#mexico::before{
+    content: url(img/mexico.png);
+    padding-left: 5px;
+}
+
+#spain::after{
+    content: url(img/spain.png);
+    padding-left: 5px;
+}
+
+#netherlands::before{
+    content: url(img/netherlands.png);
+    padding-left: 5px;
+}
+
+#italy::after{
+    content: url(img/italy.png);
+    padding-left: 5px;
+}
+
+#england::before{
+    content: url(img/england.png);
+    padding-left: 5px;
+}
+
+#argentina::after{
+    content: url(img/argentina.png);
+    padding-left: 5px;
+}
+
+#bosnia::before{
+    content: url(img/bosna.png);
+    padding-left: 5px;
+}
+
+#germany::after{
+    content: url(img/germany.png);
+    padding-left: 5px;
+}
+
+#portugal::before{
+    content: url(img/portugal.png);
+    padding-left: 5px;
+}
+

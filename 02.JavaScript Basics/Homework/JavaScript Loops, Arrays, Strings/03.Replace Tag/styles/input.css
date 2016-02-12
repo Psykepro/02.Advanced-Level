@@ -1,0 +1,19 @@
+div {
+    display: block;
+}
+
+div textarea#input{
+    display: inline-block;
+    position: relative;
+    width: 20%;
+    left: 35%;
+    top: 5%;
+}
+
+div label#label-for-input{
+    display: block;
+    position: relative;
+    width: 20%;
+    left: 35%;
+    top: 5%;
+}

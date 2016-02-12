@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Fakebook Register Form</title>
+        <link rel="stylesheet" href="fakebook.css">
+    </head>
+    <body>
+        <div class="wrapper">
+
+            <a href=""><span>fakebook</span>&reg;</a>
+            <h2>Registration</h2>
+            <h3>It is safe and it will always be!</h3>
+
+            <form action="registration.php" method="POST">
+
+                <fieldset class="non-imp-info">
+                    <legend>None-Important Information</legend>
+                    <div class="non-imp-info form-group">
+                        <input type="text" name="first_name" placeholder="First Name"/>
+                        <input type="text" name="last_name" placeholder="Last Name" class="in"/>
+                        <input type="email" name="email" placeholder="Your Email"/>
+                        <input type="tel" name="phone" placeholder="Phone Number" class="in"/>
+                        <input type="password" name="password" placeholder="Your Password"/>
+                        <input type="url" name="website" placeholder="Website" class="in"/>
+
+                        <p>Birthday</p>
+                        <input type="date" name="birthday" />
+
+                        <div class="gender">
+                            <input type="radio" name="gender" value="female" id="female" />
+                            <label for="female">Female</label>
+
+                            <input type="radio" name="gender" value="male" id="male" />
+                            <label for="male">Male</label>
+
+                            <input type="radio" name="gender" value="other" id="other" />
+                            <label for="other">Other</label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="imp-info form-group">
+                    <legend>Important Information *required</legend>
+
+                    <select name="country">
+                        <option>Bulgaria</option>
+                        <option>United States</option>
+                        <option>Russia</option>
+                    </select>
+                    <input type="text" name="village" placeholder="Village" required class="in"/>
+                    <input type="text" name="district" placeholder="District" required class="in"/>
+                    <input type="text" name="street" placeholder="Street" required />
+                    <input type="text" name="nr" placeholder="Nr" required class="small in"/>
+                    <input type="text" name="floor" placeholder="Floor" required class="small in"/>
+                    <input type="text" name="ap_nr" placeholder="Ap Nr" required class="small in"/>
+                    <p>Door Color</p>
+                    <input type="color" name="door_color" />
+                    <input type="text" name="water_meter_nr" placeholder="Water Meter Nr" required class="in"/>
+                    <select name="aunt_pant_size" class="in">
+                        <option>Aunt Panties' Size</option>
+                        <option>Medium</option>
+                        <option>Big</option>
+                        <option>XL</option>
+                        <option>XXL</option>
+                        <option>XXXL</option>
+                    </select>
+
+                    <p>More Personal Information</p>
+                    <textarea name="more_info" placeholder="Give Us More Personal Information!!!" required></textarea>
+                </fieldset>
+
+                <div style="float: left;">
+                    <input type="reset" value="Clear Form" class="clear button" />
+                    <button class="register button">Register</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

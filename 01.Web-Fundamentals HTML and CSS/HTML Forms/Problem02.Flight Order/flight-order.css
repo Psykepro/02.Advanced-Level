@@ -1,0 +1,45 @@
+body 
+{
+    background-color: #ffc0cb;
+}
+
+label 
+{
+    font-style: italic;
+    display: inline-block;
+    font-size: 13px;
+}
+
+input, select 
+{
+    border: 1px solid #d2cbcc;
+    height: 18px;
+    float: left;
+}
+select 
+{
+    height: 23px;
+}
+
+button 
+{
+    border: 1px solid #cac9ca; 
+    background-color: #ececec; 
+    height: 25px;
+}
+
+.large 
+{
+    width: 138px;
+}
+
+.medium 
+{
+    width: 68px;
+}
+
+.small 
+{
+    width: 44px;
+}
+

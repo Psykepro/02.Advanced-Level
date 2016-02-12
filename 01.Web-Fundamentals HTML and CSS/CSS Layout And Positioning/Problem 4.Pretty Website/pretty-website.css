@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    background-color: #101415;
+    font-family: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+    font-size: 14px;
+}
+
+div#wrapper {
+    margin: auto 225px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+#wrapper > header {
+    background-image: url(source/headerBackground.jpg);
+    background-repeat: no-repeat;
+    height: 270px;
+}
+
+#wrapper header h1 {
+    color: #FFFFFF;
+    float: right;
+    margin-top: 200px;
+    margin-right: 40px;
+    font-size: 2.15em;
+}
+
+#wrapper nav {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: 23px;
+}
+
+    #wrapper nav ul {
+        background-color: #DEDEDE;
+        border-bottom: 1px solid white;
+        box-shadow: 0 3px #DEDEDE;
+    }
+
+        #wrapper nav ul li {
+            list-style: none;
+            display: inline-block;
+            padding: 10px 30px;
+            margin-right: -4px;
+            border-right: 1px solid white;
+        }
+
+            #wrapper nav ul li:hover {
+                background-color: #BEBEBE;
+            }
+
+                #wrapper nav ul li:hover a {
+                    color: #fff;
+                }
+
+            #wrapper nav ul li a {
+                display: block;
+                height: 100%;
+                text-decoration: none;
+                color: #626161;
+                font-size: 1.3em;
+            }
+
+#wrapper section {
+    float: left;
+    width: 65%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 4%;
+    border: 1px solid #DBDBDB;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 15px 20px;
+    font-size: 0.9em;
+}
+
+    #wrapper section header {
+        margin-bottom: 15px;
+    }
+
+        #wrapper section header h2 {
+            color: #84BE19;
+            font-size: 1.9em;
+        }
+
+    #wrapper section div p {
+        font-weight: bold;
+        display: inline;
+    }
+
+    #wrapper section:last-of-type div.product {
+        height: 140px;
+    }
+
+        #wrapper section:last-of-type div.product img {
+            float: left;
+            margin-right: 2%;
+        }
+
+        #wrapper section:last-of-type div.product div.contend {
+            display: inline-block;
+            width: 68%;
+            float: right;
+        }
+
+            #wrapper section:last-of-type div.product div.contend h3 {
+                font-size: 1em;
+                margin-bottom: 15px;
+            }
+
+#wrapper aside {
+    float: right;
+    width: 23%;
+    margin-right: 4%;
+    margin-bottom: 15px;
+    border: 1px solid #DBDBDB;
+    position: relative;
+    top: -220px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding: 15px 30px 10px 20px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+    #wrapper aside header {
+        margin-bottom: 15px;
+    }
+
+        #wrapper aside header h2 {
+            font-size: 1.8em;
+            color: #84BE19;
+        }
+
+    #wrapper aside > div:not(:last-of-type) {
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+
+    #wrapper aside div div {
+        font-size: 0.9em;
+        font-weight: bold;
+    }
+
+    #wrapper aside div p {
+        font-size: 0.9em;
+    }
+
+    #wrapper aside div a {
+        font-size: 0.9em;
+        color: #84BE19;
+    }
+
+    #wrapper aside#news {
+        background-color: #EEEEEE;
+    }
+
+    #wrapper aside#msg div p {
+        margin-bottom: 15px;
+    }
+
+#wrapper footer {
+    clear: both;
+    height: 80px;
+    background-color: #9BD238;
+    padding-top: 2px;
+}
+
+    #wrapper footer p {
+        height: 100%;
+        border-top: 1px solid white;
+        padding-left: 20%;
+        padding-top: 30px;
+    }

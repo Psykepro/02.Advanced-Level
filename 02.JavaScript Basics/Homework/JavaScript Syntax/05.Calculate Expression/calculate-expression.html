@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Calculate Expression</title>
+    <script src="calculate-expression.js"></script>
+    <style>
+        #expression, #result {
+            background-color: #234465;
+            color: #E29C05;
+            border: none;
+            width:250px;
+            padding: 10px;
+            height:30px;
+            font-weight:bold;
+            font-size:18px;
+        }
+        div {
+            margin: 0 auto;
+            width:300px;
+        }
+        #button {
+            width: 100px;
+            padding:10px;
+            font-weight:bold;
+            background-color: #fff;
+            border: 1px solid black;
+            margin-left:85px;
+            margin-top:15px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="text" id="expression" name="name" autofocus />
+    <input type="button" id="button" value="Eval result" onclick="calc(document.getElementById('expression').value)" />
+    <p id="result"></p>
+</div>
+</body>
+</html>

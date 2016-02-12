@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+    font-size: 14px;
+}
+
+footer {
+    width: 100%;
+    background-color: #234465;
+    height: 285px;
+    padding-left: 120px;
+    padding-top: 55px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+    footer section {
+        display: inline-block;
+        float: left;
+        margin-right: 30px;
+    }
+
+        footer section:first-of-type {
+            margin-right: 30px;
+        }
+
+            footer section:first-of-type ul li {
+                border: 2px solid #FF9C00;
+                margin-bottom: 10px;
+                width: 160px;
+                height: 45px;
+                text-align: center;
+                padding-top: 12px;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+                footer section:first-of-type ul li:hover {
+                    background-color: #FF9C00;
+                }
+
+    footer ul li a {
+        display: block;
+        height: 100%;
+    }
+
+    footer section:not(:first-of-type) ul li a:hover {
+        color: #FF9C00;
+    }
+
+    footer section:first-of-type ul li a {
+        font-size: 1.1em;
+    }
+
+    footer section ul li {
+        list-style: none;
+        padding-bottom: 8px;
+    }
+
+        footer section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+    footer section h2 {
+        font-size: 1em;
+        color: #FF9C00;
+        padding-bottom: 15px;
+    }
+
+    footer section:last-of-type ul li:last-of-type a {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border: 1px solid #AFBFCA;
+        background-color: #AFBFCA;
+        margin-right: 5px;
+    }
+
+    footer section:last-of-type {
+        width: 260px;
+        margin-left: 30px;
+    }
+
+        footer section:last-of-type ul li {
+            color: white;
+        }
+
+            footer section:last-of-type ul li:last-of-type {
+                margin-top: 15px;
+            }
+
+                footer section:last-of-type ul li:last-of-type a:hover {
+                    background-color: #ffd800;
+                    border: 1px solid #ffd800;
+                }
+
+a#twitter {
+    background-image: url(source/twitter.png);
+    background-repeat: no-repeat;
+    background-position: -3px -2px;
+}
+
+a#fb {
+    background-image: url(source/fb.png);
+    background-repeat: no-repeat;
+}
+
+a#google {
+    background-image: url(source/google.png);
+    background-repeat: no-repeat;
+}
+
+div.fb-page {
+    float: left;
+    background: #E9ECEF;
+    position: relative;
+    top: -20px;
+    height: 220px;
+}
