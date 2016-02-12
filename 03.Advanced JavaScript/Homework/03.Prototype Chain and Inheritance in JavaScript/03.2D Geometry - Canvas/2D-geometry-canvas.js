@@ -1,3 +1,7 @@
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+
+
 if(!Object.create){
     Object.create = function (proto){
         function F(){};
