@@ -8,6 +8,18 @@ if(!Object.create){
 }
 // Some browsers don't have method Object.create this is how we fix it //
 
+// Use this for extending if u need to extend methods \\
+Object.prototype.extend = function (properties) {
+    function F() { };
+    F.prototype = Object.create(this);
+    for (var property in properties) {
+        F.prototype[property] = properties[property];
+    }
+    F.prototype._super = this;
+    return new F();
+};
+// Use this for extending if u need to extend methods //
+
 // Create base class Animal \\
 // Pascal case means -> class !
 var Animal = {
@@ -68,14 +80,5 @@ crusher.produceSound();
 crusher.jump();
 crusher.sleep();
 
-// Use this for extending if u need to extend methods \\
-Object.prototype.extend = function (properties) {
-    function f() { };
-    f.prototype = Object.create(this);
-    for (var prop in properties) {
-        f.prototype[prop] = properties[prop];
-    }
-    f.prototype._super = this;
-    return new f();
-};
+
 
