@@ -12,9 +12,9 @@ function Person(name){
 
     // Cache this - save the context of the object in variable \\
     var self = this;
-    self._name = name;
+    self._title = name;
     self.getName = function getPersonName() {
-        return self._name;
+        return self._title;
     };
     // Cache this - save the context of the object in variable //
     return this;

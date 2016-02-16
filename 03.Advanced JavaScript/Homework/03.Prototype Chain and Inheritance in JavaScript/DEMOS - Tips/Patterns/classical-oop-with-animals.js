@@ -18,7 +18,7 @@ Object.prototype.extends = function(parent){
 // Create base class Animal with IIFE \\
 var Animal = (function (){
     function Animal(name, species){
-        this._name = name;
+        this._title = name;
         this._species = species;
     }
     // Adding methods to the class Animal with attaching them to the prototype \\
@@ -26,7 +26,7 @@ var Animal = (function (){
         throw new Error('Cannot call abstract method Animal.produceSound()')
     };
     Animal.prototype.walk = function(){
-        return this._name + ' is walking...';
+        return this._title + ' is walking...';
     };
     // Adding methods to the class Animal with attaching them to the prototype //
 
@@ -72,7 +72,7 @@ console.log(shredder.walk());
 
 // ADD METHOD TO VARIABLE THE "shredder" \\
 shredder.jump = function() {
-    console.log(this._name + ' is jumping!');
+    console.log(this._title + ' is jumping!');
 };
 shredder.jump();
 // ADD METHOD TO VARIABLE THE "shredder" //

@@ -17,7 +17,7 @@ Object.prototype.extend = function (properties) {
 };
 
 var shapesModule = (function (){
-    var shape = {
+    var Shape = {
         init: function init(color) {
             this._color = color;
         },
@@ -27,7 +27,7 @@ var shapesModule = (function (){
         }
     };
 
-    var circle = shape.extend({
+    var Circle = Shape.extend({
         init: function init(color, centerX, centerY, r){
             this._super.init(color);
             this._centerX = centerX;
@@ -43,7 +43,7 @@ var shapesModule = (function (){
         }
     });
 
-    var rectangle = shape.extend({
+    var Rectangle = Shape.extend({
         init: function init(color, topLeftX, topLeftY, width, height) {
             this._super.init(color);
             this._topLeftX = topLeftX;
@@ -61,7 +61,7 @@ var shapesModule = (function (){
         }
     });
 
-    var triangle = shape.extend({
+    var Triangle = Shape.extend({
         init: function init(color, aX, aY, bX, bY, cX, cY) {
             this._super.init(color);
             this._aX = aX;
@@ -80,7 +80,7 @@ var shapesModule = (function (){
         }
     });
 
-    var line = shape.extend({
+    var Line = Shape.extend({
         init: function (color, aX, aY, bX, bY) {
             this._super.init(color);
             this._aX = aX;
@@ -96,7 +96,7 @@ var shapesModule = (function (){
         }
     });
 
-    var segment = shape.extend({
+    var Segment = Shape.extend({
         init: function (color, aX, aY, bX, bY) {
             this._super.init(color);
             this._aX = aX;
@@ -113,32 +113,32 @@ var shapesModule = (function (){
     });
 
     return {
-        circle: circle,
-        rectangle: rectangle,
-        triangle: triangle,
-        line: line,
-        segment: segment
+        Circle: Circle,
+        Rectangle: Rectangle,
+        Triangle: Triangle,
+        Line: Line,
+        Segment: Segment
     }
 
 })();
 
 // __proto__ of all is Object!! \\
-var circle = Object.create(shapesModule.circle);
+var circle = Object.create(shapesModule.Circle);
 circle.init("AAA",0, 0, 15);
 console.log(circle.toString());
 
-var rect = Object.create(shapesModule.rectangle);
+var rect = Object.create(shapesModule.Rectangle);
 rect.init("BBB", 0, 0, 15, 10);
 console.log(rect.toString());
 
-var triangle = Object.create(shapesModule.triangle);
+var triangle = Object.create(shapesModule.Triangle);
 triangle.init("CCC", 0, 0, 1, 1, 5, 10);
 console.log(triangle.toString());
 
-var line = Object.create(shapesModule.line);
+var line = Object.create(shapesModule.Line);
 line.init("DDD", 1, 2, 3, 5);
 console.log(line.toString());
 
-var segment = Object.create(shapesModule.segment);
+var segment = Object.create(shapesModule.Segment);
 segment.init("EEE", 1, 1, 10, 20);
 console.log(segment.toString());

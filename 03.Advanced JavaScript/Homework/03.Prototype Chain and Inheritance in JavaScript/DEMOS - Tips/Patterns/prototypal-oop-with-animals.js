@@ -24,12 +24,12 @@ Object.prototype.extend = function (properties) {
 // Pascal case means -> class !
 var Animal = {
     init: function(name, species){
-        this._name = name;
+        this._title = name;
         this._species = species;
         return this;
     },
     walk: function(){
-        console.log(this._name + ' is walking...');
+        console.log(this._title + ' is walking...');
     },
     produceSound: function(){
         throw new Error('Cannot call abstract method Animal.produceSound()')
@@ -64,13 +64,13 @@ crusher.produceSound =  function(){
 
 // ADD METHOD TO VARIABLE THE "Crusher" \\
 crusher.jump = function() {
-    console.log(crusher._name + ' is jumping!');
+    console.log(crusher._title + ' is jumping!');
 };
 // ADD METHOD TO VARIABLE THE "Crusher" //
 
 // ADD METHOD TO THE CLASS "Tiger" \\
 Tiger.sleep = function(){
-    console.log(this._name + ' is sleeping zZzZz...');
+    console.log(this._title + ' is sleeping zZzZz...');
 };
 // ADD METHOD TO THE CLASS "Tiger" //
 

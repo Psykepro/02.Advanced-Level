@@ -21,7 +21,7 @@ var Vegetable = (function (){
             throw new Error("You can't instantiate abstract class.")
         }
         // Check if someone try to instantiate the abstract class Vegetable //
-        this._name = name;
+        this._title = name;
         // Simulating default value \\
         this._growthRate = growthRate || DEFAULT_GROWTH_RATE;
         // Simulating default value //
@@ -29,7 +29,7 @@ var Vegetable = (function (){
     }
 
     Vegetable.prototype.getName = function (){
-        return this._name;
+        return this._title;
     };
 
     Vegetable.prototype.grow = function (){

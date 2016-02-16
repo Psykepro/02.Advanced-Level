@@ -12,13 +12,13 @@ var Vegetable = {
     init: function (name, growthRate) {
         const DEFAULT_GROWTH_RATE = 1;
         const DEFAULT_SIZE = 1;
-        this._name = name;
+        this._title = name;
         this._growthRate = growthRate || DEFAULT_GROWTH_RATE;
         this._size = DEFAULT_SIZE;
         return this;
     },
     getName: function () {
-        return this._name;
+        return this._title;
     },
     grow: function () {
         this._size += this._size * this._growthRate;
