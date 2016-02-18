@@ -1,4 +1,5 @@
 var Person = (function(){
+    'use strict';
     function Person(firstName, lastName) {
         this._firstName = firstName;
         this._lastName = lastName;
