@@ -7,7 +7,7 @@ Person.prototype.setName = function(name){
     return this;
 };
 
-Person.prototype.setAge = function(age){
+Person.prototype.setDuration = function(age){
     this.age = age;
     return this;
 };
@@ -18,7 +18,7 @@ Person.prototype.toString = function(){
 
 
 var person = new Person().setName('Kolio')
-                         .setAge(20)
+                         .setDuration(20)
                          .toString();
 console.log(person);
 

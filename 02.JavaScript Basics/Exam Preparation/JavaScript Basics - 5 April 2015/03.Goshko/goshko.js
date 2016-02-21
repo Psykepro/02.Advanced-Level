@@ -114,7 +114,7 @@ function solve(input){
 //solve(['right, up, up, down',
 //    'asdf, as{#}aj{g}dasd, kjldk{}fdffd, jdflk{#}jdfj',
 //    'tr{X}yrty, zxx{*}zxc, mncvnvcn, popipoip',
-//    'poiopipo, nmf{X}d{X}ei, mzoijwq, omcxzne']);
+//    'poiopipo, nmf{X}02.JavaScript OOP Sample Exam 2{X}ei, mzoijwq, omcxzne']);
 //
 //solve(['up, right, left, down', 'as{!}xnk']);
 
