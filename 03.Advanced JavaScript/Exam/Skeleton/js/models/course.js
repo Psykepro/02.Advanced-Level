@@ -25,8 +25,8 @@ var app = app || {};
     };
 
     Course.prototype.setNumberOfLectures = function(numberOfLectures) {
-        if (!numberOfLectures.toString().match(digitPattern) || isNaN(numberOfLectures)) {
-            throw new Error("Number of lectures must be a number.");
+        if (!numberOfLectures.toString().match(digitPattern) || isNaN(numberOfLectures) || numberOfLectures < 0) {
+            throw new Error("Number of lectures must be non-negative number.");
         }
 
         this._numberOfLectures = numberOfLectures;

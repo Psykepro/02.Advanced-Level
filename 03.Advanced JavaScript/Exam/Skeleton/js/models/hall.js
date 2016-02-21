@@ -27,8 +27,8 @@ var app = app || {};
     };
 
     Hall.prototype.setCapacity = function(capacity) {
-        if (!capacity.toString().match(digitPattern) || isNaN(capacity)) {
-            throw new Error("Capacity must be a number.");
+        if (!capacity.toString().match(digitPattern) || isNaN(capacity)|| capacity < 0) {
+            throw new Error("Capacity must be non-negative number.");
         }
 
         this._capacity = capacity;
