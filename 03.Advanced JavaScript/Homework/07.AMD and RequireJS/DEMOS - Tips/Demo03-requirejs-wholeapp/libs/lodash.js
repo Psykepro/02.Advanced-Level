@@ -10386,7 +10386,7 @@
       });
 
       // Provide the compiled function's source by its `toString` method or
-      // the `source` property as a convenience for inlining compiled templates.
+      // the `source` property as a convenience for inlining compiled template.
       result.source = source;
       if (isError(result)) {
         throw result;
