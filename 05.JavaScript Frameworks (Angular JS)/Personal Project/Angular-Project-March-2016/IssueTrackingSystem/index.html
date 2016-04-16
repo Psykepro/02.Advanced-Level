@@ -24,11 +24,10 @@
                     </button>
                 </div>
                 <div class="navbar-collapse collapse" id="navbar-main">
-                    <ul ng-if="isAuthenticated()" class="nav navbar-nav">
-                        <li>
-                            <a href="#/">Home</a>
-                        </li>
-                    </ul>
+                    <div ng-if="isAuthenticated()" class="nav navbar-nav">
+                        <a href="#/" class="btn btn-success nav-buttons" role="button">Dashboard</a>
+                        <a href="#/projects" class="btn btn-success nav-buttons" role="button">Projects</a>
+                    </div>
 
                 </div>
             </div>

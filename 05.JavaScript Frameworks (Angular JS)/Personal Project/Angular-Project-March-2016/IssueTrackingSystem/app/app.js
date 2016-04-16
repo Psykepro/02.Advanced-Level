@@ -9,8 +9,20 @@ angular.module('issueTrackingSystem', [
   'issueTrackingSystem.users.userService'
 ])
     .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/'});
-}])
+      $routeProvider
+          .otherwise({redirectTo: '/'})
+          .when('/', {
+            templateUrl: 'app/home/home.html',
+            controller: 'HomeController'
+          })
+          .when('/user', {
+            templateUrl: 'app/user/user.html',
+            controller: 'UserController'
+          })
+          .when('/projects', {
+            templateUrl: 'app/projects/projects.html'
+          });
+    }])
 
     .constant('BASE_URL','http://softuni-issue-tracker.azurewebsites.net/')
 
