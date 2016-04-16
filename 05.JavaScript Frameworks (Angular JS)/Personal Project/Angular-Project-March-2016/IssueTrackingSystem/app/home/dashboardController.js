@@ -10,5 +10,6 @@ angular.module('issueTrackingSystem.dashboard',[
                 $scope.myIssues = success;
             }, function (error) {
                 console.log(error);
-            })
+            });
+
 }]);
