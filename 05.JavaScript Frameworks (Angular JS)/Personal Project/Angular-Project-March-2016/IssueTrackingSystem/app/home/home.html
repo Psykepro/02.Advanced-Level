@@ -1,4 +1,4 @@
-<div ng-if="!isAuthenticated()" id="login-reg-home">
+<div ng-if="!isAuthenticated()" id="login-reg-home" ng-controller="HomeCtrl">
     <div class="row">
         <div class="col-md-4 col-md-offset-1">
             <form name="loginUserForm">
@@ -37,12 +37,11 @@
                     Passwords don't match
                 </div>
                 <br>
-                <button class="btn btn-primary" >Register</button>
+                <button class="btn btn-primary" ng-disabled="registerUserForm.$invalid || registerUser.password != registerUser.confirmPassword" ng-click="register(registerUser)">Register</button>
             </form>
         </div>
     </div>
 </div>
-<!--ng-disabled="registerUserForm.$invalid || registerUser.password != registerUser.confirmPassword" ng-click="register(registerUser)"-->
 
 <div ng-if="isAuthenticated()" id="dashboard-home" ng-controller="DashboardCtrl">
     <div class="row">

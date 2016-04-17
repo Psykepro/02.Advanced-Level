@@ -1,0 +1,8 @@
+<div ng-repeat="user in users">
+    <div class="user-info">
+        <h4 class="user">{{user.Username}}</h4>
+        <button ng-if="currentUser.isAdmin && !user.isAdmin"
+                ng-click="promoteToAdmin(user.Id)"
+                class="btn btn-success">Make Admin</button>
+    </div>
+</div>

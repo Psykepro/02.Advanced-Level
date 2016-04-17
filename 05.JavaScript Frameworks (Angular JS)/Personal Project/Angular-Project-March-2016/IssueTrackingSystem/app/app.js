@@ -5,7 +5,9 @@ angular
         'ngRoute',
         'issueTrackingSystem.home',
         'issueTrackingSystem.dashboard',
+        'issueTrackingSystem.users',
         'issueTrackingSystem.users.userService',
+        'issueTrackingSystem.users.adminService',
         'issueTrackingSystem.components.identityService',
         'issueTrackingSystem.components.authenticationService'
     ])
@@ -13,12 +15,11 @@ angular
         $routeProvider
             .otherwise({redirectTo: '/'})
             .when('/', {
-                templateUrl: 'app/home/home.html',
-                controller: 'HomeCtrl'
+                templateUrl: 'app/home/home.html'
             })
-            .when('/user', {
-                templateUrl: 'app/user/user.html',
-                controller: 'UserCtrl'
+            .when('/users', {
+                templateUrl: 'app/user/users.html',
+                controller: 'UsersCtrl'
             })
             .when('/projects', {
                 templateUrl: 'app/projects/projects.html'
