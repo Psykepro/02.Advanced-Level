@@ -1,9 +1,11 @@
+'use strict';
+
 angular.module('issueTrackingSystem.users.userService',[])
     .factory('userService',['$q', '$http', 'BASE_URL',
         function($q, $http, BASE_URL){
             return {
                 getCurrentUser: function getCurrentUser(){
-                    var accessToken = localStorage["userAuth"],
+                    var accessToken = localStorage['userAuth'],
                         deferred = $q.defer();
                     $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
                     $http.get(BASE_URL + 'users/me')

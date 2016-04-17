@@ -1,11 +1,17 @@
 'use strict';
 
-angular.module('issueTrackingSystem.users.authentication', [])
+angular.module('issueTrackingSystem.components.authenticationService', [])
     .factory('authenticationService',[
         '$http',
         '$q',
         'BASE_URL',
         function($http, $q, BASE_URL){
+
+            var authenticationService = {
+                registerUser:registerUser,
+                loginUser:loginUser,
+                logoutUser:logoutUser
+            };
 
             function registerUser(user){
                 var deferred = $q.defer();
@@ -31,7 +37,7 @@ angular.module('issueTrackingSystem.users.authentication', [])
                 $http(request)
                     .then(function(success){
                         localStorage['userAuth'] = success.data.access_token;
-                        deferred.resolve(success.data);
+                        deferred.resolve(success);
                     }, function (error) {
                         deferred.reject(error);
                     });
@@ -43,11 +49,7 @@ angular.module('issueTrackingSystem.users.authentication', [])
 
             }
 
-            return{
-                registerUser:registerUser,
-                loginUser:loginUser,
-                logoutUser:logoutUser
-            }
+            return authenticationService;
     }]);
 
 

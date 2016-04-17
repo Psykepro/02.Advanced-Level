@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('issueTrackingSystem.dashboard.issues',[])
     .factory('issues',[
         '$http',

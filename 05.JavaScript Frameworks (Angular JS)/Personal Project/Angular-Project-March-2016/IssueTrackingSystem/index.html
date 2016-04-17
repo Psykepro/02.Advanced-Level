@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="app/app.css">
     <script src="app/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-    <body ng-controller="MainCtrl" cz-shortcut-listen="true">
+    <body ng-controller="MainCtrl" cz-shortcut-listen="true" >
         <div class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -23,7 +23,7 @@
                     </button>
                 </div>
                 <div class="navbar-collapse collapse" id="navbar-main">
-                    <div ng-if="isAuthenticated()" class="nav navbar-nav">
+                    <div ng-if="isAuthenticated()" set-user class="nav navbar-nav">
                         <a href="#/" class="btn btn-success nav-buttons" role="button">Dashboard</a>
                         <a href="#/projects" class="btn btn-success nav-buttons" role="button">Projects</a>
                     </div>
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="container">
+        <div id="view-container">
             <div ng-view />
         </div>
 
@@ -39,12 +39,14 @@
         <script src="app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="app/bower_components/angular/angular.js"></script>
         <script src="app/bower_components/angular-route/angular-route.js"></script>
-        <script src="app/user/identityService.js"></script>
+        <script src="app/components/identity-service.js"></script>
         <script src="app/app.js"></script>
-        <script src="app/user/userService.js"></script>
-        <script src="app/user/authenticationService.js"></script>
-        <script src="app/home/homeController.js"></script>
-        <script src="app/home/dashboardController.js"></script>
-        <script src="app/home/myIssuesService.js"></script>
+        <script src="app/main/main-controller.js"></script>
+        <script src="app/main/set-user-directive.js"></script>
+        <script src="app/user/user-service.js"></script>
+        <script src="app/components/authentication-service.js"></script>
+        <script src="app/home/home-controller.js"></script>
+        <script src="app/home/dashboard-controller.js"></script>
+        <script src="app/home/myIssues-service.js"></script>
      </body>
 </html>

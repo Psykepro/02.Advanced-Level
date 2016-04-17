@@ -1,18 +1,16 @@
 'use strict';
 
-angular.module('issueTrackingSystem.home', [
-    'issueTrackingSystem.users.authentication'
-])
-    .controller('HomeController', [
+angular.module('issueTrackingSystem.home', [])
+    .controller('HomeCtrl', [
         '$scope',
+        '$rootScope',
         'authenticationService',
-        function HomeController($scope, authenticationService) {
+        function HomeController($scope, $rootScope, authenticationService) {
 
             $scope.login = function(user){
                 authenticationService.loginUser(user)
                     .then(function (success) {
                         console.log(success);
-
                     },function(error){
                         console.log(error);
                     });
