@@ -15,19 +15,34 @@
         <div class="col-md-4 col-md-offset-2">
             <form name="registerUserForm">
                 <label for="reg-email">Email</label>
-                <input type="email" required="required" class="form-control" id="reg-email" ng-model="registerUser.email">
+                <input type="email" required="required" class="form-control" id="reg-email" ng-model="registerUser.email" ng-model-options="{ updateOn: 'blur' }">
                 <br>
                 <label for="reg-password">Password</label>
-                <input type="password" required="required" min-length="6" max-length="100" class="form-control" id="reg-password" ng-model="registerUser.password">
+                <input type="password" required="required"
+                       pattern=".{6,100}" class="form-control"
+                       id="reg-password" ng-model="registerUser.password"
+                       ng-model-options="{ updateOn: 'blur' }">
+                <div class="error-message"
+                     ng-show="registerUser.password.$invalid && !registerUser.password.$pristine">
+                    Password length must be between 6 and 100 characters
+                </div>
                 <br>
                 <label for="reg-confirmPassword">Confirm Password</label>
-                <input type="password" required="required" class="form-control" id="reg-confirmPassword" ng-model="registerUser.confirmPassword">
+                <input type="password" required="required"
+                       class="form-control" id="reg-confirmPassword"
+                       ng-model="registerUser.confirmPassword"
+                       >
+                <div class="error-message"
+                     ng-show="registerUser.password !== registerUser.confirmPassword">
+                    Passwords don't match
+                </div>
                 <br>
-                <button class="btn btn-primary" ng-disabled="registerUserForm.$invalid || registerUser.password != registerUser.confirmPassword" ng-click="register(registerUser)">Register</button>
+                <button class="btn btn-primary" >Register</button>
             </form>
         </div>
     </div>
 </div>
+<!--ng-disabled="registerUserForm.$invalid || registerUser.password != registerUser.confirmPassword" ng-click="register(registerUser)"-->
 
 <div ng-if="isAuthenticated()" id="dashboard-home" ng-controller="DashboardCtrl">
     <div class="row">
@@ -38,7 +53,9 @@
         <div class="col-md-4">
             <h2>My Issues</h2>
             <ul id="issues">
-                <li ng-repeat="issue in myIssues">{{issue.Title}} -- {{issue.Project.Name}} -- {{issue.DueDate}}</li>
+                <li ng-repeat="issue in myIssues">
+                    <div>{{issue.Title}} -- {{issue.Project.Name}} -- {{issue.DueDate}}</div>
+                </li>
             </ul>
         </div>
     </div>

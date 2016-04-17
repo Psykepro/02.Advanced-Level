@@ -5,6 +5,14 @@ body{
 #view-container{
   margin: 60px 0 0 0;
 }
+form input.ng-invalid:not(.ng-pristine) {
+  box-shadow: 0 0 13px rgba(255, 133, 0, 0.9);
+}
+.error-message {
+  padding: 12px;
+  background-color: rgba(255, 133, 0, 0.1);
+  font-weight: bold;
+}
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
