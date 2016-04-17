@@ -5,7 +5,7 @@ angular.module('issueTrackingSystem.home', [])
         '$scope',
         '$rootScope',
         'authenticationService',
-        function HomeController($scope, $rootScope, authenticationService) {
+        function HomeCtrl($scope, $rootScope, authenticationService) {
 
             $scope.login = function(user){
                 authenticationService.loginUser(user)

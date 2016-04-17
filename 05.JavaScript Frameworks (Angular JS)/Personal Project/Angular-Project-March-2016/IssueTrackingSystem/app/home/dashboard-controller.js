@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('issueTrackingSystem.dashboard',[
-    'issueTrackingSystem.dashboard.issues'
+    'issueTrackingSystem.dashboard.issuesService'
 ]).controller('DashboardCtrl',[
     '$scope',
-    'issues',
-    function DashboardController($scope, issues){
-        issues.getIssues()
+    'issuesService',
+    function DashboardCtrl($scope, issuesService){
+        issuesService.getMyIssues()
             .then(function(success){
                 console.log(success);
                 $scope.myIssues = success;

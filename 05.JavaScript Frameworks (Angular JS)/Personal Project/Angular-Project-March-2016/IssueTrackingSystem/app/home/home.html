@@ -14,26 +14,14 @@
 
         <div class="col-md-4 col-md-offset-2">
             <form name="registerUserForm">
-                <label for="reg-username">Username</label>
-                <input type="text" required="required" class="form-control" id="reg-username" ng-model="registerUser.username">
+                <label for="reg-email">Email</label>
+                <input type="email" required="required" class="form-control" id="reg-email" ng-model="registerUser.email">
                 <br>
                 <label for="reg-password">Password</label>
                 <input type="password" required="required" min-length="6" max-length="100" class="form-control" id="reg-password" ng-model="registerUser.password">
                 <br>
-                <label for="reg-confirmPassword">Password</label>
+                <label for="reg-confirmPassword">Confirm Password</label>
                 <input type="password" required="required" class="form-control" id="reg-confirmPassword" ng-model="registerUser.confirmPassword">
-                <br>
-                <label for="reg-name">Name</label>
-                <input type="text" required="required" class="form-control" id="reg-name" ng-model="registerUser.name">
-                <br>
-                <label for="reg-email">Email</label>
-                <input type="email" required="required" class="form-control" id="reg-email" ng-model="registerUser.email">
-                <br>
-                <label>Gender</label>
-                <input type="radio" name="reg-gender" ng-model="registerUser.gender" checked="checked" name="reg-gender" value="1" />Male
-                <input type="radio" name="reg-gender" ng-model="registerUser.gender" name="reg-gender" value="2" />Female
-                <input type="radio" name="reg-gender" ng-model="registerUser.gender" value="0" />Other
-
                 <br>
                 <button class="btn btn-primary" ng-disabled="registerUserForm.$invalid || registerUser.password != registerUser.confirmPassword" ng-click="register(registerUser)">Register</button>
             </form>
@@ -46,12 +34,12 @@
         <div class="col-md-4">
             <h1>Dashboard</h1>
             <h1>Affiliated Projects</h1>
-            <ul id="projects">
-                <li></li>
-            </ul>
         </div>
         <div class="col-md-4">
-
+            <h2>My Issues</h2>
+            <ul id="issues">
+                <li ng-repeat="issue in myIssues">{{issue.Title}} -- {{issue.Project.Name}} -- {{issue.DueDate}}</li>
+            </ul>
         </div>
     </div>
 </div>

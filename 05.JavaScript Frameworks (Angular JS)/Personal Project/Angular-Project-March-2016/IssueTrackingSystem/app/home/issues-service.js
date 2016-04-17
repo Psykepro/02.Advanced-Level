@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('issueTrackingSystem.dashboard.issues',[])
-    .factory('issues',[
+angular.module('issueTrackingSystem.dashboard.issuesService',[])
+    .factory('issuesService',[
         '$http',
         '$q',
         'BASE_URL',
         function($http, $q, BASE_URL){
-            function getIssues(pageSize, pageNumber, orderBy){
+            function getMyIssues(pageSize, pageNumber, orderBy){
                 pageSize = pageSize || 10;
                 pageNumber = pageNumber || 1;
                 orderBy = orderBy || 'DueDate';
@@ -26,6 +26,6 @@ angular.module('issueTrackingSystem.dashboard.issues',[])
             }
 
             return {
-                getIssues: getIssues
+                getMyIssues: getMyIssues
             }
     }]);
