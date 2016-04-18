@@ -16,11 +16,33 @@ div.navbar-fixed-top{
   color: #ffffff;
   position: relative;
   text-align: center;
+}
+#login-header{
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  background-color: #5cb85c;
   font-family: Audimat;
+  border-radius: 3px;
+  border: 1px solid #459745;
+  line-height: 40px;
+
+}
+#register-header{
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  background-color: #5cb85c;
+  font-family: Audimat;
+  border-radius: 3px;
+  border: 1px solid #459745;
+  line-height: 40px;
 }
 #project-form{
-  display: block;
-  position: relative;
+display: block;
+position: relative;
   width:25%;
   left: 37%;
   text-align: center;
