@@ -22,10 +22,11 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div>
-                <div class="navbar-collapse collapse" id="navbar-main">
-                    <div ng-cloak ng-if="isAuthenticated()" set-user class="nav navbar-nav">
+                <div ng-if="isAuthenticated()" set-user class="ng-cloak navbar-collapse collapse" id="navbar-main">
+                    <div class="ng-cloak nav navbar-nav">
                         <a href="#/" class="btn btn-success nav-buttons" role="button">Dashboard</a>
                         <a href="#/projects" class="btn btn-success nav-buttons" role="button">Projects</a>
+                        <a href="#/logout" class="btn btn-success nav-buttons" role="button" ng-click="logout()">Logout</a>
                     </div>
                     <div class="ng-cloak nav navbar-nav" id="admin-panel" ng-if="isAuthenticated() && currentUser.isAdmin === true">
                         <h4 id="admin-header">Admin options:</h4>
@@ -43,6 +44,7 @@
         <script src="app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="app/bower_components/angular/angular.js"></script>
         <script src="app/bower_components/angular-route/angular-route.js"></script>
+        <script src="app/bower_components/notify/notify.js"></script>
         <script src="app/app.js"></script>
         <script src="app/main/main-controller.js"></script>
         <script src="app/components/identity-service.js"></script>
@@ -51,7 +53,7 @@
         <script src="app/user/user-controller.js"></script>
         <script src="app/user/admin-service.js"></script>
         <script src="app/components/authentication-service.js"></script>
-        <script src="app/home/unregisteredHome/home-controller.js"></script>
+        <script src="app/home/home-controller.js"></script>
         <script src="app/home/dashboard-controller.js"></script>
         <script src="app/home/issues-service.js"></script>
      </body>

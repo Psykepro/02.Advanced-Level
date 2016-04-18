@@ -5,19 +5,19 @@ angular.module('issueTrackingSystem.components.authenticationService', [])
         '$http',
         '$q',
         'BASE_URL',
-        function($http, $q, BASE_URL){
+        function($http, $q, BASE_URL) {
 
             var authenticationService = {
-                registerUser:registerUser,
-                loginUser:loginUser,
-                logoutUser:logoutUser
+                registerUser: registerUser,
+                loginUser: loginUser,
+                logoutUser: logoutUser
             };
 
-            function registerUser(user){
+            function registerUser(user) {
                 var deferred = $q.defer();
 
-                $http.post(BASE_URL + 'api/Account/Register',user)
-                    .then(function(success){
+                $http.post(BASE_URL + 'api/Account/Register', user)
+                    .then(function (success) {
                         deferred.resolve(success.data);
                     }, function (error) {
                         deferred.reject(error);
@@ -26,7 +26,7 @@ angular.module('issueTrackingSystem.components.authenticationService', [])
                 return deferred.promise;
             }
 
-            function loginUser(user){
+            function loginUser(user) {
                 var deferred = $q.defer();
                 var request = {
                     method: 'POST',
@@ -35,8 +35,7 @@ angular.module('issueTrackingSystem.components.authenticationService', [])
                     data: "grant_type=password&username=" + user.email + "&password=" + user.password
                 };
                 $http(request)
-                    .then(function(success){
-                        localStorage['userAuth'] = success.data.access_token;
+                    .then(function (success) {
                         deferred.resolve(success);
                     }, function (error) {
                         deferred.reject(error);
@@ -45,11 +44,19 @@ angular.module('issueTrackingSystem.components.authenticationService', [])
                 return deferred.promise;
             }
 
-            function logoutUser(){
+            function logoutUser() {
+                var deferred = $q.defer();
+                $http.post(BASE_URL + 'api/Account/Logout')
+                    .then(function (success) {
+                        deferred.resolve(success);
+                    }, function (error) {
+                        deferred.reject(error);
+                    });
 
-            }
+                return deferred.promise;
+            };
 
             return authenticationService;
-    }]);
+        }]);
 
 
