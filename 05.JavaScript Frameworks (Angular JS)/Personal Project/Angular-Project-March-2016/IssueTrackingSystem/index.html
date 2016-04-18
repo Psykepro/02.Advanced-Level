@@ -28,9 +28,10 @@
                         <a href="#/projects" class="btn btn-success nav-buttons" role="button">Projects</a>
                         <a href="#/logout" class="btn btn-success nav-buttons" role="button" ng-click="logout()">Logout</a>
                     </div>
-                    <div class="ng-cloak nav navbar-nav" id="admin-panel" ng-if="isAuthenticated() && currentUser.isAdmin === true">
+                    <div class="ng-cloak nav navbar-nav" id="admin-panel" ng-if="currentUser.isAdmin === true">
                         <h4 id="admin-header">Admin options:</h4>
                         <a href="#/users" class="btn btn-success nav-buttons" role="button">Users</a>
+                        <a href="#/projects/add" class="btn btn-success nav-buttons" role="button">Add Project</a>
                     </div>
                 </div>
             </div>
