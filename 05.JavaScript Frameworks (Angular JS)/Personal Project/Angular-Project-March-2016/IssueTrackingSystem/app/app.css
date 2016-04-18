@@ -10,9 +10,38 @@ div.navbar-fixed-top{
   font-family: Audimat;
   margin: 0;
 }
-.project-header{
+.clean-header-green{
   border-bottom: 0;
+  font-family: Audimat;
   background-color: #5cb85c;
+  color: #ffffff;
+  position: relative;
+  text-align: center;
+}
+.clean-header-dark-green{
+border-bottom: 0;
+font-family: Audimat;
+background-color: #006600;
+color: #ffffff;
+position: relative;
+text-align: center;
+}
+.col-md-offset-1{
+  margin-left: 5%;
+}
+#affiliated-projects{
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+#my-issues{
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+#dashboard-header{
+border-bottom: 0;
+background-color: #5cb85c;
   color: #ffffff;
   position: relative;
   text-align: center;
@@ -25,6 +54,8 @@ div.navbar-fixed-top{
   background-color: #5cb85c;
   font-family: Audimat;
   border-radius: 3px;
+  -webkit-border-radius: 3px;;
+  -moz-border-radius: 3px;;
   border: 1px solid #459745;
   line-height: 40px;
 

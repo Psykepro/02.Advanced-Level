@@ -46,14 +46,13 @@
 </div>
 
 <div ng-if="isAuthenticated()" id="dashboard-home" ng-controller="DashboardCtrl">
+    <h3 class="clean-header-green">Dashboard</h3>
     <div class="row">
-        <div class="col-md-4">
-            <h1>Dashboard</h1>
-            <h1>Affiliated Projects</h1>
-
+        <div class="col-md-5 col-md-offset-1">
+            <h3 class="clean-header-green" id="affiliated-projects">Affiliated Projects</h3>
         </div>
-        <div class="col-md-4 col-md-offset-1">
-            <h2>My Issues</h2>
+        <div class="col-md-5 col-md-offset-1">
+            <h3 class="clean-header-green" id="my-issues">My Issues</h3>
             <ul id="issues">
                 <li ng-repeat="issue in myIssues">
                     <div>{{issue.Title}} -- {{issue.Project.Name}} -- {{issue.DueDate}}</div>
