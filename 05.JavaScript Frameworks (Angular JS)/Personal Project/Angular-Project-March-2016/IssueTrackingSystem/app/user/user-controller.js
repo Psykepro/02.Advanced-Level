@@ -13,6 +13,9 @@ angular
                 .then(function (success) {
                     console.log(success);
                     $scope.users = success;
+                    (function(){
+                        console.log($scope.users[0]);
+                    }());
                 }, function (error) {
                     console.log(error);
                 });

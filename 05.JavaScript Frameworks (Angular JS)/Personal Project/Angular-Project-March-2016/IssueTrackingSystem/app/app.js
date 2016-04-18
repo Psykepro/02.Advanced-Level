@@ -6,10 +6,12 @@ angular
         'issueTrackingSystem.home',
         'issueTrackingSystem.dashboard',
         'issueTrackingSystem.users',
-        'issueTrackingSystem.users.userService',
         'issueTrackingSystem.users.adminService',
+        'issueTrackingSystem.components.userService',
         'issueTrackingSystem.components.identityService',
-        'issueTrackingSystem.components.authenticationService'
+        'issueTrackingSystem.components.authenticationService',
+        'issueTrackingSystem.projects',
+        'issueTrackingSystem.projects.projectService'
     ])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider
@@ -21,8 +23,9 @@ angular
                 templateUrl: 'app/user/users.html',
                 controller: 'UsersCtrl'
             })
-            .when('/projects', {
-                templateUrl: 'app/projects/projects.html'
+            .when('/projects/add', {
+                templateUrl: 'app/projects/project-add.html',
+                controller: 'ProjectCtrl'
             });
     }])
     .constant('BASE_URL','http://softuni-issue-tracker.azurewebsites.net/');
