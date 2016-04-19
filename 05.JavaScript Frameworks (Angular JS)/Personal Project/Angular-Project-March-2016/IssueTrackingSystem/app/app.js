@@ -24,7 +24,7 @@ angular
                 controller: 'UsersCtrl'
             })
             .when('/profile/password', {
-                templateUrl: 'app/user/profile/change-password.html',
+                templateUrl: 'app/user/user-change-password.html',
                 controller: 'UsersCtrl'
             })
             .when('/projects/add', {

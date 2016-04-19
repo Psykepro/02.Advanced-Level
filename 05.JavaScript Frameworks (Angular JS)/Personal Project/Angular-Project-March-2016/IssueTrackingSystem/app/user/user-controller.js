@@ -4,9 +4,11 @@ angular
     .module('issueTrackingSystem.users', ['ngRoute'])
     .controller('UsersCtrl', [
         '$scope',
+        '$rootScope',
+        '$location',
         'userService',
         'adminService',
-        function UsersCtrl($scope, userService, adminService) {
+        function UsersCtrl($scope, $rootScope, $location, userService, adminService) {
 
             userService.getAllUsers()
                 .then(function (success) {
@@ -28,11 +30,12 @@ angular
             $scope.changePassword = function(account){
                 userService.changePassword(account)
                     .then(function(success){
-                        console.log(success);
                         sessionStorage['currentPassword'] = account.NewPassword;
+                        $rootScope.$broadcast('changePassword', account.NewPassword);
+                        $location.path('#/');
+                        $location.replace();
                         $.notify('You successfully changed the password!', 'success');
                     }, function(error){
-                        console.log(error);
                         $.notify("Password wasn't changed!", 'error');
                     })
             }
