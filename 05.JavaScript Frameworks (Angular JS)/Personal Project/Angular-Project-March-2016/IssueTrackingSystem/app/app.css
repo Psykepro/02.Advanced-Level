@@ -19,59 +19,35 @@ div.navbar-fixed-top{
   text-align: center;
 }
 .clean-header-dark-green{
-border-bottom: 0;
-font-family: Audimat;
-background-color: #006600;
-color: #ffffff;
-position: relative;
-text-align: center;
-}
-.col-md-offset-1{
-  margin-left: 5%;
-}
-#affiliated-projects{
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-}
-#my-issues{
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-}
-#dashboard-header{
-border-bottom: 0;
-background-color: #5cb85c;
+  border-bottom: 0;
+  font-family: Audimat;
+  background-color: #006600;
   color: #ffffff;
   position: relative;
   text-align: center;
 }
-#login-header{
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-  color: #ffffff;
-  background-color: #5cb85c;
-  font-family: Audimat;
+.col-md-offset-1{
+  margin-left: 5.6%;
+}
+.inner-header{
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
   border-radius: 3px;
-  -webkit-border-radius: 3px;;
-  -moz-border-radius: 3px;;
-  border: 1px solid #459745;
+}
+#login-header{
   line-height: 40px;
-
 }
 #register-header{
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-  color: #ffffff;
-  background-color: #5cb85c;
-  font-family: Audimat;
-  border-radius: 3px;
-  border: 1px solid #459745;
   line-height: 40px;
 }
 #project-form{
+display: block;
+position: relative;
+  width:25%;
+  left: 37%;
+  text-align: center;
+}
+#change-password-form{
 display: block;
 position: relative;
   width:25%;

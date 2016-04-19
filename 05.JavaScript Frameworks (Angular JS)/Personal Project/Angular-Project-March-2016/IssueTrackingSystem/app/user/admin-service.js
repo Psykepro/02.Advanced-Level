@@ -12,14 +12,12 @@ angular
             };
 
             function makeAdmin(userId){
-                var deferred = $q.defer();
-                var request = {
-                    method: 'PUT',
-                    url: BASE_URL + 'users/makeadmin',
-                    headers: {'Content-Type': 'application/json'},
-                    data: {'UserId':userId}
-                };
-                $http(request)
+                var deferred = $q.defer(),
+                    accessToken = sessionStorage['userAuth'];
+
+                $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
+                $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
+                $http.put(BASE_URL + 'users/makeadmin', {UserId: userId})
                     .then(function(success){
                         deferred.resolve(success.data);
                     }, function (error) {

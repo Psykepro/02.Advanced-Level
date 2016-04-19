@@ -11,6 +11,7 @@ angular
                 link: function () {
                     userService.getCurrentUser().then(function (success) {
                         $rootScope.currentUser = success.data;
+                        $rootScope.currentUser.password = sessionStorage['currentPassword'];
                         $rootScope.$broadcast('userAuthenticated', $rootScope.currentUser);
                     });
                 }

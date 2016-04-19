@@ -18,7 +18,7 @@ angular
                 authenticationService
                     .logoutUser()
                     .then(function(success){
-                        localStorage.removeItem("userAuth");
+                        sessionStorage.removeItem("userAuth");
                         sessionStorage.removeItem("isAdmin");
                         $.notify("You logged out successfully!", "success");
                     }, function(error){

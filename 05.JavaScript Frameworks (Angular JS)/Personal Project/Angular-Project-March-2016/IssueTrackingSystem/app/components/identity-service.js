@@ -5,7 +5,7 @@ angular.module('issueTrackingSystem.components.identityService',[])
         function identity(){
             return {
                 isAuthenticated: function isAuthenticated(){
-                    var accessToken = localStorage["userAuth"];
+                    var accessToken = sessionStorage["userAuth"];
                     return accessToken;
                 }
         };

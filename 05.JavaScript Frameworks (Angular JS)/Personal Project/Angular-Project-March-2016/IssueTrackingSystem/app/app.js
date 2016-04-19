@@ -23,8 +23,16 @@ angular
                 templateUrl: 'app/user/users.html',
                 controller: 'UsersCtrl'
             })
+            .when('/profile/password', {
+                templateUrl: 'app/user/profile/change-password.html',
+                controller: 'UsersCtrl'
+            })
             .when('/projects/add', {
                 templateUrl: 'app/projects/project-add.html',
+                controller: 'ProjectCtrl'
+            })
+            .when('/projects', {
+                templateUrl: 'app/projects/projects.html',
                 controller: 'ProjectCtrl'
             });
     }])

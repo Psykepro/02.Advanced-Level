@@ -11,7 +11,8 @@ angular.module('issueTrackingSystem.home', [])
                 authenticationService
                     .loginUser(user)
                     .then(function (success) {
-                        localStorage['userAuth'] = success.data.access_token;
+                        sessionStorage['userAuth'] = success.data.access_token;
+                        sessionStorage['currentPassword'] = user.password;
                         $.notify("You successfully logged in!", "success");
                     },function(error){
                         $.notify("You didn't logged in!", "error");

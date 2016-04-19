@@ -6,13 +6,15 @@ angular.module('issueTrackingSystem.components.userService',[])
 
             var userService = {
                 getCurrentUser: getCurrentUser,
-                getAllUsers: getAllUsers
+                getAllUsers: getAllUsers,
+                changePassword: changePassword
             };
 
             function getCurrentUser(){
-                var accessToken = localStorage['userAuth'],
+                var accessToken = sessionStorage['userAuth'],
                     deferred = $q.defer();
                 $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
+
                 $http.get(BASE_URL + 'users/me')
                     .then(function(success){
                         deferred.resolve(success);
@@ -29,6 +31,22 @@ angular.module('issueTrackingSystem.components.userService',[])
                     .then(function(success){
                         deferred.resolve(success.data);
                     },function(error){
+                        deferred.reject(error);
+                    });
+
+                return deferred.promise;
+            }
+
+            function changePassword(account){
+                var accessToken = sessionStorage['userAuth'],
+                    deferred = $q.defer();
+                $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
+                $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
+
+                $http.post(BASE_URL + 'api/Account/ChangePassword', account)
+                    .then(function(success){
+                        deferred.resolve(success);
+                    }, function(error){
                         deferred.reject(error);
                     });
 

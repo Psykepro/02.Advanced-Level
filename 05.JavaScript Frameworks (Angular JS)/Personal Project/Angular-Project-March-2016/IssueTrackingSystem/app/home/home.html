@@ -1,7 +1,7 @@
 <div ng-if="!isAuthenticated()" id="login-reg-home" ng-controller="HomeCtrl">
     <div class="row">
         <div class="col-md-4 col-md-offset-1">
-            <h3 id="login-header">Login</h3>
+            <h3 id="login-header" class="clean-header-green inner-header">Login</h3>
             <form name="loginUserForm">
                 <label for="email">Email</label>
                 <input type="email" required="required" class="form-control" id="email" ng-model="loginUser.email">
@@ -14,7 +14,7 @@
         </div>
 
         <div class="col-md-4 col-md-offset-2">
-            <h3 id="register-header">Register</h3>
+            <h3 id="register-header" class="clean-header-green inner-header">Register</h3>
             <form name="registerUserForm">
                 <label for="reg-email">Email</label>
                 <input type="email" required="required" class="form-control" id="reg-email" ng-model="registerUser.email" ng-model-options="{ updateOn: 'blur' }">
@@ -32,8 +32,7 @@
                 <label for="reg-confirmPassword">Confirm Password</label>
                 <input type="password" required="required"
                        class="form-control" id="reg-confirmPassword"
-                       ng-model="registerUser.confirmPassword"
-                       >
+                       ng-model="registerUser.confirmPassword">
                 <div class="error-message"
                      ng-show="registerUser.password !== registerUser.confirmPassword">
                     Passwords don't match
@@ -49,10 +48,10 @@
     <h3 class="clean-header-green">Dashboard</h3>
     <div class="row">
         <div class="col-md-5 col-md-offset-1">
-            <h3 class="clean-header-green" id="affiliated-projects">Affiliated Projects</h3>
+            <h3 class="clean-header-green inner-header">Affiliated Projects</h3>
         </div>
         <div class="col-md-5 col-md-offset-1">
-            <h3 class="clean-header-green" id="my-issues">My Issues</h3>
+            <h3 class="clean-header-green inner-header">My Issues</h3>
             <ul id="issues">
                 <li ng-repeat="issue in myIssues">
                     <div>{{issue.Title}} -- {{issue.Project.Name}} -- {{issue.DueDate}}</div>

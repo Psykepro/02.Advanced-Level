@@ -13,7 +13,7 @@ angular.module('issueTrackingSystem.dashboard.issuesService',[])
 
                 var deferred = $q.defer();
 
-                var accessToken = localStorage["userAuth"];
+                var accessToken = sessionStorage["userAuth"];
                 $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
                 $http.get(BASE_URL + 'issues/me?pageSize=' + pageSize + '&pageNumber=' + pageNumber+'&orderBy=' + orderBy)
                     .then(function (success) {
