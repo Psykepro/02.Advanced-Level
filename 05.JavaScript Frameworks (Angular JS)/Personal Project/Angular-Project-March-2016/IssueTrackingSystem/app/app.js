@@ -8,10 +8,11 @@ angular
         'issueTrackingSystem.home.dashboardController',
         'issueTrackingSystem.users.usersController',
         'issueTrackingSystem.users.adminService',
-        'issueTrackingSystem.components.userService',
-        'issueTrackingSystem.components.issuesService',
-        'issueTrackingSystem.components.identityService',
-        'issueTrackingSystem.components.authenticationService',
+        'issueTrackingSystem.components.services.userService',
+        'issueTrackingSystem.components.services.issuesService',
+        'issueTrackingSystem.components.services.identityService',
+        'issueTrackingSystem.components.services.authenticationService',
+        'issueTrackingSystem.components.filters.join',
         'issueTrackingSystem.projects.projectsController',
         'issueTrackingSystem.projects.singleProjectController',
         'issueTrackingSystem.projects.projectService'
@@ -40,6 +41,10 @@ angular
             })
             .when('/projects/:id', {
                 templateUrl: 'app/projects/project-page.html',
+                controller: 'SingleProjectCtrl'
+            })
+            .when('/projects/:id/edit', {
+                templateUrl: 'app/projects/project-edit.html',
                 controller: 'SingleProjectCtrl'
             });
     }])

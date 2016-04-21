@@ -15,17 +15,21 @@ angular
                 });
 
             $scope.addProject = function (project) {
-                project.Priorities = project.Priorities.split(', ').map(function (element) {
+                project.Priorities = project.Priorities.split(', ').map(function (priority) {
                     return {
-                        Name: element
+                        Name: priority
+                    }
+                });
+
+                project.Labels = project.Labels.split(', ').map(function (label) {
+                    return {
+                        Name: label
                     }
                 });
 
                 projectService.addProject(project).then(function (success) {
-                    console.log(success);
                     $.notify('You successfully created new project!', 'success');
                 }, function (error) {
-                    console.log(error);
                     $.notify("Project creation wasn't successful!", 'error');
                 })
             };

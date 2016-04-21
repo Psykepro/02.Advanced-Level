@@ -40,16 +40,16 @@ div.navbar-fixed-top{
 #register-header{
   line-height: 40px;
 }
-#project-form{
-display: block;
-position: relative;
+.project-form{
+  display: block;
+  position: relative;
   width:25%;
   left: 37%;
   text-align: center;
 }
 #change-password-form{
-display: block;
-position: relative;
+  display: block;
+  position: relative;
   width:25%;
   left: 37%;
   text-align: center;
