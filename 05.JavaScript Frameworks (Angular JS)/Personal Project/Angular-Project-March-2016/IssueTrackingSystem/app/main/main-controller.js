@@ -26,12 +26,10 @@ angular
                     .then(function(success){
                         sessionStorage.removeItem("userAuth");
                         sessionStorage.removeItem("userId");
+                        $scope.currentUser = undefined;
                         $.notify("You logged out successfully!", "success");
                     }, function(error){
                         $.notify("You don't logged out successfully!", "error");
                     });
             };
-
-
-
         }]);

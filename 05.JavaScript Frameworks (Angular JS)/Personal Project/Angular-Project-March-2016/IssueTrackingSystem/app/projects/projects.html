@@ -1,1 +1,17 @@
-<h3 class="clean-header-green">Projects</h3>
+<h3 class="clean-header-green">All Projects</h3>
+<div class="row">
+    <div class="col-md-6" id="all-projects-container" >
+        <a class="custom-buttons btn btn-success nav-buttons"
+           role="button" ng-bind="project.Name"
+           ng-repeat="project in allProjects
+               | startFrom: projectsPagination.page * projectsPagination.perPage
+               | limitTo: projectsPagination.perPage" href="#/projects/{{project.Id}}"></a>
+        <ul ng-if="projectsPagination.numPages > 1" class="pagination">
+            <li><a href="" ng-click="projectsPagination.prevPage()">&laquo;</a></li>
+            <li ng-repeat="n in [] | range: projectsPagination.numPages" ng-class="{active: n == projectsPagination.page}">
+                <a href="" ng-click="projectsPagination.toPageId(n)">{{n + 1}}</a>
+            </li>
+            <li><a href="" ng-click="projectsPagination.nextPage()">&raquo;</a></li>
+        </ul>
+    </div>
+</div>

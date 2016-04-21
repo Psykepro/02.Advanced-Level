@@ -69,6 +69,9 @@ position: relative;
 #affiliated-projects-container {
   text-align: center;
 }
+#all-projects-container{
+  margin-left: 25%;
+}
 #admin-panel{
   position: absolute;
   right: 0;
@@ -85,7 +88,7 @@ form input.ng-invalid:not(.ng-pristine) {
 .container{
   margin-left: 0;
 }
-.affiliated-projects{
+.custom-buttons{
   display: block;
   text-align: center;
   background-color: #ffffff;
