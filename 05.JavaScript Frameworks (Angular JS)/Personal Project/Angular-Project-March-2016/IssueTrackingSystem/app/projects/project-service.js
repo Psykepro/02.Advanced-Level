@@ -4,7 +4,10 @@ angular
     .module('issueTrackingSystem.projects.projectService', [])
     .factory('projectService', ['$http', '$q', 'BASE_URL', function ProjectService($http, $q, BASE_URL){
         var projectService = {
-            addProject: addProject
+            addProject: addProject,
+            getAllProjects: getAllProjects,
+            getIssuesByProjectId: getIssuesByProjectId,
+            getProjectById: getProjectById
         };
 
         function addProject(project){
@@ -19,6 +22,44 @@ angular
 
             return deferred.promise;
         }
+        function getAllProjects(){
+            var deferred = $q.defer();
+
+            $http.get(BASE_URL + 'projects/')
+                .then(function (success) {
+                    console.log(success.data);
+                    deferred.resolve(success.data);
+                },function (error) {
+                    deferred.reject(error);
+                });
+
+            return deferred.promise;
+        }
+        function getIssuesByProjectId(id){
+            var deferred = $q.defer();
+
+            $http.get(BASE_URL + 'projects/' + id + '/issues')
+                .then(function (success) {
+                    deferred.resolve(success.data);
+                },function (error) {
+                    deferred.reject(error);
+                });
+
+            return deferred.promise;
+        }
+        function getProjectById(id){
+            var deferred = $q.defer();
+
+            $http.get(BASE_URL + 'projects/' + id)
+                .then(function (success) {
+                    deferred.resolve(success.data);
+                },function (error) {
+                    deferred.reject(error);
+                });
+
+            return deferred.promise;
+        }
+
 
         return projectService;
     }]);
