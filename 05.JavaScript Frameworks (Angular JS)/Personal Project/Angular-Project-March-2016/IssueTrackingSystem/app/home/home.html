@@ -46,9 +46,20 @@
 <div ng-if="isAuthenticated()" id="dashboard-home" ng-controller="DashboardCtrl">
     <h3 class="clean-header-green">Dashboard</h3>
     <div class="row">
-        <div class="col-md-5 col-md-offset-1">
-            <h3 class="clean-header-green inner-header" id="affiliated-projects-container">Affiliated Projects</h3>
-            <a class="affiliated-projects btn btn-success nav-buttons" role="button" href="#/projects/{{project.Id}}" ng-repeat="project in myProjects" ng-bind="project.Name"></a>
+        <div class="col-md-5 col-md-offset-1" id="affiliated-projects-container">
+            <h3 class="clean-header-green inner-header">Affiliated Projects</h3>
+            <a class="affiliated-projects btn btn-success nav-buttons"
+               role="button" ng-bind="project.Name"
+               ng-repeat="project in myProjects
+               | startFrom: projectsPagination.page * projectsPagination.perPage
+               | limitTo: projectsPagination.perPage" href="#/projects/{{project.Id}}"></a>
+            <ul ng-if="projectsPagination.numPages > 1" class="pagination">
+                <li><a href="" ng-click="projectsPagination.prevPage()">&laquo;</a></li>
+                <li ng-repeat="n in [] | range: projectsPagination.numPages" ng-class="{active: n == projectsPagination.page}">
+                    <a href="" ng-click="projectsPagination.toPageId(n)">{{n + 1}}</a>
+                </li>
+                <li><a href="" ng-click="projectsPagination.nextPage()">&raquo;</a></li>
+            </ul>
         </div>
         <div class="col-md-5 col-md-offset-1" id="issues-table-container">
             <h3 class="clean-header-green inner-header">My Issues</h3>
@@ -62,7 +73,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="issue in myIssues | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage">
+                    <tr ng-repeat="issue in myIssues | startFrom: issuesPagination.page * issuesPagination.perPage | limitTo: issuesPagination.perPage">
                         <td><a href="#/issues/{{issue.Id}}" ng-bind="issue.Title"></a></td>
                         <td ng-bind="issue.Description"></td>
                         <td><a href="#/projects/{{issue.Project.Id}}" ng-bind="issue.Project.Name"></a></td>
@@ -70,12 +81,12 @@
                     </tr>
                 </tbody>
             </table>
-            <ul ng-if="pagination.numPages > 1" class="pagination">
-                <li><a href="" ng-click="pagination.prevPage()">&laquo;</a></li>
-                <li ng-repeat="n in [] | range: pagination.numPages" ng-class="{active: n == pagination.page}">
-                    <a href="" ng-click="pagination.toPageId(n)">{{n + 1}}</a>
+            <ul ng-if="issuesPagination.numPages > 1" class="pagination">
+                <li><a href="" ng-click="issuesPagination.prevPage()">&laquo;</a></li>
+                <li ng-repeat="n in [] | range: issuesPagination.numPages" ng-class="{active: n == issuesPagination.page}">
+                    <a href="" ng-click="issuesPagination.toPageId(n)">{{n + 1}}</a>
                 </li>
-                <li><a href="" ng-click="pagination.nextPage()">&raquo;</a></li>
+                <li><a href="" ng-click="issuesPagination.nextPage()">&raquo;</a></li>
             </ul>
         </div>
     </div>

@@ -11,8 +11,8 @@ angular
         issuesService.getMyIssues()
             .then(function (success) {
                 $scope.myIssues = success;
-                $scope.pagination = Pagination.getNew(5);
-                $scope.pagination.numPages = Math.ceil($scope.myIssues.length / $scope.pagination.perPage);
+                $scope.issuesPagination = Pagination.getNew(5);
+                $scope.issuesPagination.numPages = Math.ceil($scope.myIssues.length / $scope.issuesPagination.perPage);
                 console.log(success);
             }, function (error) {
                 console.log(error);
@@ -21,11 +21,12 @@ angular
         projectService.getAllProjects()
             .then(function(success){
                 var userId = sessionStorage['userId'];
-                console.log(userId);
                 var myProjects = success.filter(function(project) {
                     return project.Lead.Id === userId;
                 });
                 $scope.myProjects = myProjects;
+                $scope.projectsPagination = Pagination.getNew(5);
+                $scope.projectsPagination.numPages = Math.ceil($scope.myProjects.length / $scope.projectsPagination.perPage);
             }, function (error) {
                 console.log(error);
             });

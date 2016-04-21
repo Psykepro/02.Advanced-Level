@@ -66,6 +66,9 @@ position: relative;
 #issues-table-container{
   text-align: center;
 }
+#affiliated-projects-container {
+  text-align: center;
+}
 #admin-panel{
   position: absolute;
   right: 0;
