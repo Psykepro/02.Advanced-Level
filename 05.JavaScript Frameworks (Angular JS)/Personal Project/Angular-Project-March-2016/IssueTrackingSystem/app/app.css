@@ -81,6 +81,13 @@ form input.ng-invalid:not(.ng-pristine) {
 }
 .affiliated-projects{
   display: block;
+  text-align: center;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: Audimat;
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: bold;
 }
 .error-message {
   padding: 12px;

@@ -43,17 +43,17 @@
     </div>
 </div>
 
-<div ng-cloak ng-if="isAuthenticated()" id="dashboard-home" ng-controller="DashboardCtrl">
+<div ng-if="isAuthenticated()" id="dashboard-home" ng-controller="DashboardCtrl">
     <h3 class="clean-header-green">Dashboard</h3>
     <div class="row">
         <div class="col-md-5 col-md-offset-1">
-            <h3 class="clean-header-green inner-header">Affiliated Projects</h3>
-            <a class="affiliated-projects" href="#/projects/{{project.Id}}" ng-repeat="project in myProjects" ng-bind="project.Name"></a>
+            <h3 class="clean-header-green inner-header" id="affiliated-projects-container">Affiliated Projects</h3>
+            <a class="affiliated-projects btn btn-success nav-buttons" role="button" href="#/projects/{{project.Id}}" ng-repeat="project in myProjects" ng-bind="project.Name"></a>
         </div>
         <div class="col-md-5 col-md-offset-1">
             <h3 class="clean-header-green inner-header">My Issues</h3>
             <ul id="issues">
-                <li ng-repeat="issue in myIssues | orderBy:'-DueDate'">
+                <li ng-repeat="issue in myIssues">
                     <div>{{issue.Title}} -- {{issue.Project.Name}} -- {{issue.DueDate | date}}</div>
                 </li>
             </ul>
