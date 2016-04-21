@@ -50,12 +50,32 @@
             <h3 class="clean-header-green inner-header" id="affiliated-projects-container">Affiliated Projects</h3>
             <a class="affiliated-projects btn btn-success nav-buttons" role="button" href="#/projects/{{project.Id}}" ng-repeat="project in myProjects" ng-bind="project.Name"></a>
         </div>
-        <div class="col-md-5 col-md-offset-1">
+        <div class="col-md-5 col-md-offset-1" id="issues-table-container">
             <h3 class="clean-header-green inner-header">My Issues</h3>
-            <ul id="issues">
-                <li ng-repeat="issue in myIssues">
-                    <div>{{issue.Title}} -- {{issue.Project.Name}} -- {{issue.DueDate | date}}</div>
+            <table class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Project</th>
+                        <th>DueDate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="issue in myIssues | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage">
+                        <td><a href="#/issues/{{issue.Id}}" ng-bind="issue.Title"></a></td>
+                        <td ng-bind="issue.Description"></td>
+                        <td><a href="#/projects/{{issue.Project.Id}}" ng-bind="issue.Project.Name"></a></td>
+                        <td ng-bind="issue.DueDate | date"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul ng-if="pagination.numPages > 1" class="pagination">
+                <li><a href="" ng-click="pagination.prevPage()">&laquo;</a></li>
+                <li ng-repeat="n in [] | range: pagination.numPages" ng-class="{active: n == pagination.page}">
+                    <a href="" ng-click="pagination.toPageId(n)">{{n + 1}}</a>
                 </li>
+                <li><a href="" ng-click="pagination.nextPage()">&raquo;</a></li>
             </ul>
         </div>
     </div>

@@ -63,6 +63,9 @@ position: relative;
   position: relative;
   top: 7px;
 }
+#issues-table-container{
+  text-align: center;
+}
 #admin-panel{
   position: absolute;
   right: 0;

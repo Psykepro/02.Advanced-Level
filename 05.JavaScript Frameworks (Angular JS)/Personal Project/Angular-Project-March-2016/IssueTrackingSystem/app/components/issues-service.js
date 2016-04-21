@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('issueTrackingSystem.dashboard.issuesService',[])
+angular.module('issueTrackingSystem.components.issuesService',[])
     .factory('issuesService',[
         '$http',
         '$q',

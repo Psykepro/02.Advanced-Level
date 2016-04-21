@@ -3,11 +3,13 @@
 angular
     .module('issueTrackingSystem', [
         'ngRoute',
+        'simplePagination',
         'issueTrackingSystem.home.homeController',
         'issueTrackingSystem.home.dashboardController',
         'issueTrackingSystem.users.usersController',
         'issueTrackingSystem.users.adminService',
         'issueTrackingSystem.components.userService',
+        'issueTrackingSystem.components.issuesService',
         'issueTrackingSystem.components.identityService',
         'issueTrackingSystem.components.authenticationService',
         'issueTrackingSystem.projects.projectsController',
