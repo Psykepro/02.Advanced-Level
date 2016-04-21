@@ -7,7 +7,8 @@ angular
             addProject: addProject,
             getAllProjects: getAllProjects,
             getIssuesByProjectId: getIssuesByProjectId,
-            getProjectById: getProjectById
+            getProjectById: getProjectById,
+            getMyProjects: getMyProjects
         };
 
         function addProject(project){
@@ -27,7 +28,18 @@ angular
 
             $http.get(BASE_URL + 'projects/')
                 .then(function (success) {
-                    console.log(success.data);
+                    deferred.resolve(success.data);
+                },function (error) {
+                    deferred.reject(error);
+                });
+
+            return deferred.promise;
+        }
+        function getMyProjects(userId){
+            var deferred = $q.defer();
+
+            $http.get(BASE_URL + 'projects/?LeadId=' + userId)
+                .then(function (success) {
                     deferred.resolve(success.data);
                 },function (error) {
                     deferred.reject(error);

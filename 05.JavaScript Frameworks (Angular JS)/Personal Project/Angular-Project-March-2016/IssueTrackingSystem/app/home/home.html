@@ -7,7 +7,7 @@
                 <input type="email" required="required" class="form-control" id="email" ng-model="loginUser.email">
                 <br>
                 <label for="password">Password</label>
-                <input type="password" required="required" class="form-control" id="password" ng-model="loginUser.password">
+                <input type="password" required="required" pattern=".{6,100}" class="form-control" id="password" ng-model="loginUser.password">
                 <br>
                 <button class="btn btn-primary" ng-disabled="loginUserForm.$invalid" ng-click="login(loginUser)">Login</button>
             </form>
@@ -22,8 +22,7 @@
                 <label for="reg-password">Password</label>
                 <input type="password" required="required"
                        pattern=".{6,100}" class="form-control"
-                       id="reg-password" ng-model="registerUser.password"
-                       ng-model-options="{ updateOn: 'blur' }">
+                       id="reg-password" ng-model="registerUser.password">
                 <div class="error-message"
                      ng-show="registerUser.password.$invalid && !registerUser.password.$pristine">
                     Password length must be between 6 and 100 characters

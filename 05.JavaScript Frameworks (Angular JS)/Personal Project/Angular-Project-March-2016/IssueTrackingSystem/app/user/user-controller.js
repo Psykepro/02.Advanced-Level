@@ -30,13 +30,15 @@ angular
             $scope.changePassword = function(account){
                 userService.changePassword(account)
                     .then(function(success){
-                        sessionStorage['currentPassword'] = account.NewPassword;
-                        $rootScope.$broadcast('changePassword', account.NewPassword);
                         $location.path('#/');
                         $location.replace();
                         $.notify('You successfully changed the password!', 'success');
                     }, function(error){
-                        $.notify("Password wasn't changed!", 'error');
+                       if(error.status === 400){
+                           $scope.account = {};
+                           $scope.wrongPassword = true;
+                           $.notify('You entered wrong password!', 'error');
+                       }
                     })
             }
     }]);

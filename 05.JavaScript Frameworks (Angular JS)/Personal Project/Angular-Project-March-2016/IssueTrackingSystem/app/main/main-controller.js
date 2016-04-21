@@ -10,19 +10,13 @@ angular
         function($scope, identityService, authenticationService, userService) {
             $scope.isAuthenticated = identityService.isAuthenticated;
 
-            $scope.$on('$routeChangeStart', function(next, current) {
-                if(!$scope.currentUser){
+            $scope.$on('$routeChangeStart', function() {
+                if(!$scope.currentUser && sessionStorage['userAuth']){
                     userService.getCurrentUser().then(function (success) {
                         var currentUser = success.data;
-                        currentUser.password = sessionStorage['currentPassword'];
+                        sessionStorage['userId'] = success.data.Id;
                         $scope.currentUser = currentUser;
-                        console.log($scope.currentUser);
                     });
-                }else{
-                    if($scope.currentUser.password !== sessionStorage['currentPassword']){
-                        $scope.currentUser.password = sessionStorage['currentPassword'];
-                        console.log($scope.currentUser);
-                    }
                 }
             });
 
@@ -31,7 +25,7 @@ angular
                     .logoutUser()
                     .then(function(success){
                         sessionStorage.removeItem("userAuth");
-                        sessionStorage.removeItem("isAdmin");
+                        sessionStorage.removeItem("userId");
                         $.notify("You logged out successfully!", "success");
                     }, function(error){
                         $.notify("You don't logged out successfully!", "error");

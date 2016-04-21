@@ -36,7 +36,8 @@ angular
                 controller: 'ProjectCtrl'
             })
             .when('/projects/:id', {
-                templateUrl: 'app/projects/my'
+                templateUrl: 'app/projects/project-page.html',
+                controller: 'ProjectCtrl'
             });
     }])
     .constant('BASE_URL','http://softuni-issue-tracker.azurewebsites.net/');

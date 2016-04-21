@@ -12,7 +12,7 @@ angular.module('issueTrackingSystem.home', [])
                     .loginUser(user)
                     .then(function (success) {
                         sessionStorage['userAuth'] = success.data.access_token;
-                        sessionStorage['currentPassword'] = user.password;
+                        $rootScope.$broadcast('$routeChangeStart');
                         $.notify("You successfully logged in!", "success");
                     },function(error){
                         $.notify("You didn't logged in!", "error");
