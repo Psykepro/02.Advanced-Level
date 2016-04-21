@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-    .module('issueTrackingSystem.dashboard',['issueTrackingSystem.dashboard.issuesService'])
+    .module('issueTrackingSystem.home.dashboardController',['issueTrackingSystem.dashboard.issuesService'])
     .controller('DashboardCtrl',[
         '$scope',
         'issuesService',
@@ -10,16 +10,21 @@ angular
         issuesService.getMyIssues()
             .then(function (success) {
                 $scope.myIssues = success;
+                console.log(success);
             }, function (error) {
                 console.log(error);
             });
 
-        var userId = sessionStorage['userId'];
         projectService.getAllProjects()
             .then(function(success){
-                console.log(success);
-            }, function(error){
+                var userId = sessionStorage['userId'];
+                var myProjects = success.filter(function(project) {
+                    return project.Lead.Id === userId;
+                });
+                console.log('myProjects');
+                console.log(myProjects);
+                $scope.myProjects = myProjects;
+            }, function (error) {
                 console.log(error);
             });
-
     }]);

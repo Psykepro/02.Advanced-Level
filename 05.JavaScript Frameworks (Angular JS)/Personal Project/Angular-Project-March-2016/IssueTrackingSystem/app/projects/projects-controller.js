@@ -1,8 +1,11 @@
 'use strict';
 
 angular
-    .module('issueTrackingSystem.projects', [])
-    .controller('ProjectCtrl',['$scope', 'userService', 'projectService', function($scope, userService, projectService){
+    .module('issueTrackingSystem.projects.projectsController', [])
+    .controller('ProjectsCtrl',[
+        '$scope',
+        'userService',
+        'projectService', function($scope, userService, projectService){
         userService
             .getAllUsers()
             .then(function(success){

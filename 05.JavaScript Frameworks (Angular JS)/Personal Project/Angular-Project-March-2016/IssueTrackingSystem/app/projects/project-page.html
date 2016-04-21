@@ -1,0 +1,10 @@
+<h1>{{project.Name}}</h1>
+<h3>Description:</h3>
+<p>{{project.Description}}</p>
+
+<div class="issues">
+    <div class="issue-container" ng-repeat="issue in issues">
+        <a href="#/issues/{{issue.Id}}">{{issue.Title}}</a>
+    </div>
+</div>
+<button class="btn btn-success" ng-if="project.Lead.Id === currentUser.Id">Add Issue</button>

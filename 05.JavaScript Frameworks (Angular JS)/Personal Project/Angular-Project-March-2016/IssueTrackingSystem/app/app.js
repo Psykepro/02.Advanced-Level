@@ -3,14 +3,15 @@
 angular
     .module('issueTrackingSystem', [
         'ngRoute',
-        'issueTrackingSystem.home',
-        'issueTrackingSystem.dashboard',
-        'issueTrackingSystem.users',
+        'issueTrackingSystem.home.homeController',
+        'issueTrackingSystem.home.dashboardController',
+        'issueTrackingSystem.users.usersController',
         'issueTrackingSystem.users.adminService',
         'issueTrackingSystem.components.userService',
         'issueTrackingSystem.components.identityService',
         'issueTrackingSystem.components.authenticationService',
-        'issueTrackingSystem.projects',
+        'issueTrackingSystem.projects.projectsController',
+        'issueTrackingSystem.projects.singleProjectController',
         'issueTrackingSystem.projects.projectService'
     ])
     .config(['$routeProvider', function($routeProvider) {
@@ -29,15 +30,15 @@ angular
             })
             .when('/projects/add', {
                 templateUrl: 'app/projects/project-add.html',
-                controller: 'ProjectCtrl'
+                controller: 'ProjectsCtrl'
             })
             .when('/projects', {
                 templateUrl: 'app/projects/projects.html',
-                controller: 'ProjectCtrl'
+                controller: 'ProjectsCtrl'
             })
             .when('/projects/:id', {
                 templateUrl: 'app/projects/project-page.html',
-                controller: 'ProjectCtrl'
+                controller: 'SingleProjectCtrl'
             });
     }])
     .constant('BASE_URL','http://softuni-issue-tracker.azurewebsites.net/');

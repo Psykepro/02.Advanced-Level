@@ -79,6 +79,9 @@ form input.ng-invalid:not(.ng-pristine) {
 .container{
   margin-left: 0;
 }
+.affiliated-projects{
+  display: block;
+}
 .error-message {
   padding: 12px;
   background-color: rgba(204, 28, 18, 0.3);

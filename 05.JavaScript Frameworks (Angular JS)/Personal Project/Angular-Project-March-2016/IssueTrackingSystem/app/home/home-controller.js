@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('issueTrackingSystem.home', [])
+angular.module('issueTrackingSystem.home.homeController', [])
     .controller('HomeCtrl', [
         '$scope',
         '$rootScope',

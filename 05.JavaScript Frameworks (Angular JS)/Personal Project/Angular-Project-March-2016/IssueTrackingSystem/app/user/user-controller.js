@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-    .module('issueTrackingSystem.users', ['ngRoute'])
+    .module('issueTrackingSystem.users.usersController', ['ngRoute'])
     .controller('UsersCtrl', [
         '$scope',
         '$rootScope',
