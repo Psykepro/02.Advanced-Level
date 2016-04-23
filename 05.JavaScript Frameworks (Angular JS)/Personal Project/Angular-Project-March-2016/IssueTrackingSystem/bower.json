@@ -6,14 +6,15 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "angular": "~1.4.0",
-    "angular-route": "~1.4.0",
+    "angular": "^1.5.5",
+    "angular-route": "^1.5.5",
     "angular-loader": "~1.4.0",
     "angular-mocks": "~1.4.0",
     "html5-boilerplate": "~5.2.0",
     "bootstrap": "^3.3.6",
     "jquery": "^2.2.3",
     "notify": "^0.0.1",
-    "ng-simplePagination": "^1.0.3"
+    "ng-simplePagination": "^1.0.3",
+    "angular-modal-service": "^0.9.10"
   }
 }

@@ -5,10 +5,11 @@ angular
     .controller('SingleProjectCtrl',[
         '$scope',
         '$routeParams',
+        'ModalService',
         'identityService',
         'projectService',
         'userService',
-        function($scope, $routeParams, identityService, projectService, userService) {
+        function($scope, $routeParams, ModalService, identityService, projectService, userService) {
             var currentId = $routeParams.id;
 
             projectService.getProjectById(currentId)
@@ -35,6 +36,15 @@ angular
                 }, function (error) {
                     console.log(error);
                 });
+
+            $scope.showAddIssue = function() {
+                ModalService.showModal({
+                    templateUrl: 'app/issues/add-issue-template.html',
+                    controller: 'AddIssueCtrl'
+                }).then(function(modal) {
+                    modal.element.modal();
+                });
+            };
 
             $scope.updateProject = function updateProject(project) {
                 // Formatting the object

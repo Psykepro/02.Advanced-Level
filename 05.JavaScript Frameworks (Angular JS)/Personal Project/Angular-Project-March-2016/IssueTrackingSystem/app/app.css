@@ -49,6 +49,10 @@ body{
 #assigned-projects-container{
   text-align: center;
 }
+#container_tags {
+  display: block;
+  position:relative
+}
 .inner-header{
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -58,7 +62,11 @@ div.navbar-fixed-top{
   font-family: Audimat;
   margin: 0;
   border-bottom: 1px solid #5cb85c;
-
+}
+.modal-header {
+  font-family: Audimat;
+  color: #ffffff;
+  background-color: #5cb85c;
 }
 .clean-header-green{
   border-bottom: 0;

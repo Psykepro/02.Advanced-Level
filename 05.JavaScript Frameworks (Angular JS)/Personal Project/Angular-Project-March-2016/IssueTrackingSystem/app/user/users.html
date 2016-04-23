@@ -1,5 +1,5 @@
 <h3 class="clean-header-green">Users</h3>
-<div class="user-info" ng-repeat="user in users">
+<div class="user-info" ng-repeat="user in ::users">
     <h4 class="user">{{user.Username}}</h4>
     <button ng-if="currentUser.isAdmin && !user.isAdmin"
             ng-click="promoteToAdmin($event, user.Id)"

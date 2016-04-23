@@ -4,11 +4,11 @@ angular
     .module('issueTrackingSystem.home.dashboardController',[])
     .controller('DashboardCtrl',[
         '$scope',
-        'issuesService',
+        'issueService',
         'projectService',
         'Pagination',
-        function DashboardCtrl($scope, issuesService, projectService, Pagination) {
-            issuesService.getMyIssues(100)
+        function DashboardCtrl($scope, issueService, projectService, Pagination) {
+            issueService.getMyIssues(100)
                 .then(function (success) {
                     $scope.myIssues = success;
                     $scope.assignedProjects = projectService.extractAssignedProjectsFromIssues($scope.myIssues);

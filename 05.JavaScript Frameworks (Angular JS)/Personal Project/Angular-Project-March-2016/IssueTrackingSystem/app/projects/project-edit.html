@@ -12,7 +12,7 @@
         <br>
         <label for="LeadId">LeadId</label>
         <select ng-model="projectEdit.Lead.Id" id="LeadId" class="form-control">
-            <option ng-repeat="user in allUsers" value="{{user.Id}}" ng-bind="user.Username"></option>
+            <option ng-repeat="user in ::allUsers" value="{{::user.Id}}" ng-bind="::user.Username"></option>
         </select>
         <br>
         <label for="priorities">Priorities (separated by comma)</label>

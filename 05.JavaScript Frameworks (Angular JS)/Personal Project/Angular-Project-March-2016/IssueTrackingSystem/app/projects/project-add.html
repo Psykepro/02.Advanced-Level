@@ -11,8 +11,8 @@
         <input type="text" required="required"  placeholder="Some Project => SP" class="form-control" id="project-key" ng-model="project.ProjectKey">
         <br>
         <label for="LeadId">LeadId</label>
-        <select ng-model="project.LeadId" id="LeadId" class="form-control">
-            <option ng-repeat="user in allUsers" value="{{user.Id}}" ng-bind="user.Username"></option>
+        <select required="required" ng-model="project.LeadId" id="LeadId" class="form-control">
+            <option ng-repeat="user in ::allUsers" value="{{::user.Id}}" ng-bind="::user.Username"></option>
         </select>
         <br>
         <label for="priorities">Priorities (separated by comma)</label>
