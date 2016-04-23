@@ -9,6 +9,6 @@
 </div>
 <div ng-if="project.Lead.Id === currentUser.Id || currentUser.isAdmin === true">
     <a class="btn btn-success" ng-click="showAddIssue()" role="button">Add Issue</a>
-    <a class="btn btn-success" href="#/projects/{{project.Id}}/edit" role="button">Edit project</a>
+    <a class="btn btn-success" ng-click="showEditProject()" role="button">Edit project</a>
 </div>
 

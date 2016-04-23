@@ -46,6 +46,15 @@ angular
                 });
             };
 
+            $scope.showEditProject = function() {
+                ModalService.showModal({
+                    templateUrl: 'app/projects/project-edit.html',
+                    controller: 'SingleProjectCtrl'
+                }).then(function(modal) {
+                    modal.element.modal();
+                });
+            };
+
             $scope.updateProject = function updateProject(project) {
                 // Formatting the object
                 project.Priorities = project.Priorities
