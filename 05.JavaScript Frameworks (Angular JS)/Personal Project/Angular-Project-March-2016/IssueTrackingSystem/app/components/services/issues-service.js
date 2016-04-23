@@ -9,7 +9,7 @@ angular.module('issueTrackingSystem.components.services.issuesService',[])
             function getMyIssues(pageSize, pageNumber, orderBy){
                 pageSize = pageSize || 10;
                 pageNumber = pageNumber || 1;
-                orderBy = orderBy || 'DueDate';
+                orderBy = orderBy || 'DueDate desc';
 
                 var deferred = $q.defer();
 

@@ -8,12 +8,12 @@ angular
         'projectService',
         'Pagination',
         function DashboardCtrl($scope, issuesService, projectService, Pagination) {
-            issuesService.getMyIssues()
+            issuesService.getMyIssues(100)
                 .then(function (success) {
                     $scope.myIssues = success;
+                    $scope.assignedProjects = projectService.extractAssignedProjectsFromIssues($scope.myIssues);
                     $scope.issuesPagination = Pagination.getNew(5);
                     $scope.issuesPagination.numPages = Math.ceil($scope.myIssues.length / $scope.issuesPagination.perPage);
-                    console.log(success);
                 }, function (error) {
                     console.log(error);
                 });

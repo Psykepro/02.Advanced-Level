@@ -13,7 +13,8 @@ angular
                 getIssuesByProjectId: getIssuesByProjectId,
                 getProjectById: getProjectById,
                 getMyProjects: getMyProjects,
-                updateProject: updateProject
+                updateProject: updateProject,
+                extractAssignedProjectsFromIssues: extractAssignedProjectsFromIssues
             };
 
             function addProject(project) {
@@ -53,6 +54,12 @@ angular
                     });
 
                 return deferred.promise;
+            }
+
+            function extractAssignedProjectsFromIssues(issues){
+                return issues.map(function(issue){
+                    return issue.Project;
+                });
             }
 
             function getMyProjects(userId) {

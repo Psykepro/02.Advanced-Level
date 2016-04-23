@@ -7,7 +7,7 @@
         <a href="#/issues/{{issue.Id}}">{{issue.Title}}</a>
     </div>
 </div>
-<div ng-if="project.Lead.Id === currentUser.Id">
+<div ng-if="project.Lead.Id === currentUser.Id || currentUser.isAdmin === true">
     <a class="btn btn-success" href="#/projects/{{project.Id}}/add-issue" role="button">Add Issue</a>
     <a class="btn btn-success" href="#/projects/{{project.Id}}/edit" role="button">Edit project</a>
 </div>

@@ -6,9 +6,59 @@
 body{
   margin-top: 51px;
 }
+#issues-table{
+  margin: 0;
+}
+#login-header{
+  line-height: 40px;
+}
+#register-header{
+  line-height: 40px;
+}
+#change-password-form{
+  display: block;
+  position: relative;
+  width:25%;
+  left: 37%;
+  text-align: center;
+}
+#login-reg-home{
+  position: relative;
+  top: 10px;
+}
+#admin-header{
+  display: inline-block;
+  position: relative;
+  top: 7px;
+}
+#issues-table-container{
+  text-align: center;
+  position: relative;
+  left: 3%;
+}
+#my-projects-container {
+  text-align: center;
+}
+#all-projects-container{
+  margin-left: 25%;
+}
+#admin-panel{
+  position: absolute;
+  right: 0;
+}
+#assigned-projects-container{
+  text-align: center;
+}
+.inner-header{
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
 div.navbar-fixed-top{
   font-family: Audimat;
   margin: 0;
+  border-bottom: 1px solid #5cb85c;
+
 }
 .clean-header-green{
   border-bottom: 0;
@@ -29,52 +79,12 @@ div.navbar-fixed-top{
 .col-md-offset-1{
   margin-left: 5.6%;
 }
-.inner-header{
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-}
-#login-header{
-  line-height: 40px;
-}
-#register-header{
-  line-height: 40px;
-}
 .project-form{
   display: block;
   position: relative;
   width:25%;
   left: 37%;
   text-align: center;
-}
-#change-password-form{
-  display: block;
-  position: relative;
-  width:25%;
-  left: 37%;
-  text-align: center;
-}
-#login-reg-home{
-  position: relative;
-  top: 10px;
-}
-#admin-header{
-  display: inline-block;
-  position: relative;
-  top: 7px;
-}
-#issues-table-container{
-  text-align: center;
-}
-#affiliated-projects-container {
-  text-align: center;
-}
-#all-projects-container{
-  margin-left: 25%;
-}
-#admin-panel{
-  position: absolute;
-  right: 0;
 }
 .navbar-nav{
   height: 50px;
