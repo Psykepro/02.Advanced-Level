@@ -1,26 +1,36 @@
-<h3 class="clean-header-green">New Project</h3>
-<div>
-    <form class="project-form" name="projectForm">
-        <label for="name">Name</label>
-        <input type="text" required="required" class="form-control" id="name" ng-model="project.Name">
-        <br>
-        <label for="description">Description</label>
-        <input type="text" required="required" class="form-control" id="description" ng-model="project.Description">
-        <br>
-        <label for="project-key">ProjectKey</label>
-        <input type="text" required="required"  placeholder="Some Project => SP" class="form-control" id="project-key" ng-model="project.ProjectKey">
-        <br>
-        <label for="LeadId">LeadId</label>
-        <select required="required" ng-model="project.LeadId" id="LeadId" class="form-control">
-            <option ng-repeat="user in ::allUsers" value="{{::user.Id}}" ng-bind="::user.Username"></option>
-        </select>
-        <br>
-        <label for="priorities">Priorities (separated by comma)</label>
-        <input type="text" required="required" class="form-control" placeholder="priority1, priority2, ..." id="priorities" ng-model="project.Priorities">
-        <br>
-        <label for="labels">Labels (separated by comma)</label>
-        <input type="text" required="required" class="form-control" placeholder="label1, label2, ..." id="labels" ng-model="project.Labels">
-        <br>
-        <button class="btn btn-primary" ng-disabled="projectForm.$invalid" ng-click="addProject(project)">Add Project</button>
-    </form>
+<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Create New Project</h4>
+            </div>
+            <div class="modal-body">
+                <form name="projectForm">
+                    <label for="name">Name</label>
+                    <input type="text" required="required" class="form-control" id="name" ng-model="project.Name">
+                    <br>
+                    <label for="description">Description</label>
+                    <input type="text" required="required" class="form-control" id="description" ng-model="project.Description">
+                    <br>
+                    <label for="project-key">ProjectKey</label>
+                    <input type="text" required="required"  placeholder="Some Project => SP" class="form-control" id="project-key" ng-model="project.ProjectKey">
+                    <br>
+                    <label for="LeadId">LeadId</label>
+                    <select required="required" ng-model="project.LeadId" id="LeadId" class="form-control">
+                        <option ng-repeat="user in ::allUsers" value="{{::user.Id}}" ng-bind="::user.Username"></option>
+                    </select>
+                    <br>
+                    <label for="priorities">Priorities (separated by comma)</label>
+                    <input type="text" required="required" class="form-control" placeholder="priority1, priority2, ..." id="priorities" ng-model="project.Priorities">
+                    <br>
+                    <label for="labels">Labels (separated by comma)</label>
+                    <input type="text" required="required" class="form-control" placeholder="label1, label2, ..." id="labels" ng-model="project.Labels">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button ng-disabled="projectForm.$invalid" ng-click="addProject(project)" class="btn btn-success" data-dismiss="modal">Create Project</button>
+            </div>
+        </div>
+    </div>
 </div>

@@ -7,7 +7,8 @@ angular
         'identityService',
         'authenticationService',
         'userService',
-        function($scope, identityService, authenticationService, userService) {
+        'ModalService',
+        function($scope, identityService, authenticationService, userService, ModalService) {
             $scope.isAuthenticated = identityService.isAuthenticated;
 
             $scope.$on('$routeChangeStart', function() {
@@ -19,6 +20,15 @@ angular
                     });
                 }
             });
+
+            $scope.showCreateProject = function(){
+                ModalService.showModal({
+                    templateUrl: 'app/projects/project-add.html',
+                    controller: 'ProjectsCtrl'
+                }).then(function(modal) {
+                    modal.element.modal();
+                });
+            };
 
             $scope.logout = function logout(){
                 authenticationService

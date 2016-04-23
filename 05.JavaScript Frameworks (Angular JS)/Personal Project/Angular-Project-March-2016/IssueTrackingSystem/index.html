@@ -32,7 +32,7 @@
                     <div class="ng-cloak nav navbar-nav" id="admin-panel" ng-if="currentUser.isAdmin === true">
                         <h4 id="admin-header">Admin options:</h4>
                         <a href="#/users" class="btn btn-success nav-buttons" role="button">Users</a>
-                        <a href="#/projects/add" class="btn btn-success nav-buttons" role="button">Add Project</a>
+                        <a ng-click="showCreateProject()" class="btn btn-success nav-buttons" role="button">Create Project</a>
                     </div>
                 </div>
             </div>
