@@ -66,14 +66,14 @@
             <a class="custom-buttons btn btn-success nav-buttons"
                role="button" ng-bind="project.Name"
                ng-repeat="project in assignedProjects
-               | startFrom: projectsPagination.page * projectsPagination.perPage
-               | limitTo: projectsPagination.perPage" href="#/projects/{{project.Id}}"></a>
-            <ul ng-if="projectsPagination.numPages > 1" class="pagination">
-                <li><a href="" ng-click="projectsPagination.prevPage()">&laquo;</a></li>
-                <li ng-repeat="n in [] | range: projectsPagination.numPages" ng-class="{active: n == projectsPagination.page}">
-                    <a href="" ng-click="projectsPagination.toPageId(n)">{{n + 1}}</a>
+               | startFrom: assignedProjectsPagination.page * assignedProjectsPagination.perPage
+               | limitTo: assignedProjectsPagination.perPage" href="#/projects/{{project.Id}}"></a>
+            <ul ng-if="assignedProjectsPagination.numPages > 1" class="pagination">
+                <li><a href="" ng-click="assignedProjectsPagination.prevPage()">&laquo;</a></li>
+                <li ng-repeat="n in [] | range: assignedProjectsPagination.numPages" ng-class="{active: n == assignedProjectsPagination.page}">
+                    <a href="" ng-click="assignedProjectsPagination.toPageId(n)">{{n + 1}}</a>
                 </li>
-                <li><a href="" ng-click="projectsPagination.nextPage()">&raquo;</a></li>
+                <li><a href="" ng-click="assignedProjectsPagination.nextPage()">&raquo;</a></li>
             </ul>
         </div>
     </div>

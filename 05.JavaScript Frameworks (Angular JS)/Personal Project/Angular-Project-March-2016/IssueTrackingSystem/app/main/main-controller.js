@@ -16,6 +16,7 @@ angular
                     userService.getCurrentUser().then(function (success) {
                         var currentUser = success.data;
                         sessionStorage['userId'] = success.data.Id;
+                        sessionStorage['isAdmin'] = success.data.isAdmin;
                         $scope.currentUser = currentUser;
                     });
                 }
@@ -36,6 +37,7 @@ angular
                     .then(function(success){
                         sessionStorage.removeItem("userAuth");
                         sessionStorage.removeItem("userId");
+                        sessionStorage.removeItem("isAdmin");
                         $scope.currentUser = undefined;
                         $.notify("You logged out successfully!", "success");
                     }, function(error){

@@ -12,6 +12,8 @@ angular
                 .then(function (success) {
                     $scope.myIssues = success;
                     $scope.assignedProjects = projectService.extractAssignedProjectsFromIssues($scope.myIssues);
+                    $scope.assignedProjectsPagination = Pagination.getNew(5);
+                    $scope.assignedProjectsPagination.numPages = Math.ceil($scope.assignedProjects.length / $scope.assignedProjectsPagination.perPage);
                     $scope.issuesPagination = Pagination.getNew(5);
                     $scope.issuesPagination.numPages = Math.ceil($scope.myIssues.length / $scope.issuesPagination.perPage);
                 }, function (error) {

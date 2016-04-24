@@ -12,6 +12,7 @@ angular.module('issueTrackingSystem.home.homeController', [])
                     .loginUser(user)
                     .then(function (success) {
                         sessionStorage['userAuth'] = success.data.access_token;
+                        sessionStorage['isAdmin'] = success.data.isAdmin;
                         $rootScope.$broadcast('$routeChangeStart');
                         $.notify("You successfully logged in!", "success");
                     },function(error){

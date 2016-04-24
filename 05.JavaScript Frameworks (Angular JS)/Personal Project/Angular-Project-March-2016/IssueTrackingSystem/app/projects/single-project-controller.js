@@ -46,6 +46,8 @@ angular
                 });
             };
 
+            $scope.isAdmin = identityService.isAdmin;
+
             $scope.showEditProject = function() {
                 ModalService.showModal({
                     templateUrl: 'app/projects/project-edit.html',
