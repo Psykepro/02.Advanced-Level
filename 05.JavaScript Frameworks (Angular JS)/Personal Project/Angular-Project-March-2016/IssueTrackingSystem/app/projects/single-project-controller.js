@@ -39,7 +39,7 @@ angular
 
             $scope.showAddIssue = function() {
                 ModalService.showModal({
-                    templateUrl: 'app/issues/add-issue-template.html',
+                    templateUrl: 'app/issues/issue-add.html',
                     controller: 'AddIssueCtrl'
                 }).then(function(modal) {
                     modal.element.modal();

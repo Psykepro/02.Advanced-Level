@@ -5,10 +5,11 @@ angular
     .controller('AddIssueCtrl',[
         '$scope',
         '$routeParams',
+        '$rootScope',
         'projectService',
         'userService',
         'issueService',
-        function($scope, $routeParams, projectService, userService, issueService) {
+        function($scope, $routeParams, $rootScope, projectService, userService, issueService) {
             var projectId = $routeParams.id;
 
             userService.getAllUsers()
@@ -38,6 +39,7 @@ angular
                     .addIssue(issue)
                     .then(function(success){
                         $.notify('You successfully added new issue!','success');
+                        $rootScope.$broadcast('updateIssuesAndAssignedProjects');
                     },function(error){
                         $.notify("Issue isn't created!",'error');
                     })

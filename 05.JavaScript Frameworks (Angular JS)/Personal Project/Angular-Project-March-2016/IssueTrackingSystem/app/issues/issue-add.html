@@ -1,0 +1,45 @@
+<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Add issue</h4>
+            </div>
+            <div class="modal-body">
+                <form class="add-issue-form" name="addIssueForm">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input ng-model="issue.Title" required="required" class="form-control" id="title"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="assignee">Assignee</label>
+                        <select ng-model="issue.AssigneeId" required="required" id="assignee" class="form-control">
+                            <option ng-repeat="user in ::users" value="{{::user.Id}}" post-repeat-directive ng-bind="::user.Username"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="due-date">DueDate</label>
+                        <input type="date" required="required" ng-model="issue.DueDate" class="form-control" id="due-date" />
+                    </div>
+                    <div class="form-group">
+                        <label for="priority">Priority</label>
+                        <select required="required" ng-model="issue.PriorityId" id="priority" class="form-control">
+                            <option ng-repeat="priority in ::priorities" value="{{::priority.Id}}" ng-bind="::priority.Name"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="labels">Labels</label>
+                        <input ng-model="issue.Labels" required="required" class="form-control" placeholder="label1, label2, ..." id="labels"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input ng-model="issue.Description" required="required" class="form-control" id="description"/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" ng-disabled="addIssueForm.$invalid" ng-click="addIssue(issue)" class="btn btn-success" data-dismiss="modal">Add issue</button>
+            </div>
+        </div>
+    </div>
+</div>

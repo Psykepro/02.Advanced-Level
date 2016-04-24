@@ -21,7 +21,6 @@ angular
                     });
                 }
             });
-
             $scope.showCreateProject = function(){
                 ModalService.showModal({
                     templateUrl: 'app/projects/project-add.html',
