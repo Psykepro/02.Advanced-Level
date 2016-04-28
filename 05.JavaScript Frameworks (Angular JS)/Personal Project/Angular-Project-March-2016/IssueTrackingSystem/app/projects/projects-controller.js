@@ -9,12 +9,6 @@ angular
         'projectService',
         'Pagination',
         function($scope, $rootScope, userService, projectService, Pagination) {
-            userService
-                .getAllUsers()
-                .then(function (success) {
-                    $scope.allUsers = success;
-                });
-
             $scope.addProject = function (project) {
                 project.Priorities = project.Priorities.split(', ').map(function (priority) {
                     return {

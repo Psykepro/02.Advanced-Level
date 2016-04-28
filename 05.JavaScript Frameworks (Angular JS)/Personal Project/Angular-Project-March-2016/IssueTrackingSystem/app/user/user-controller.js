@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-    .module('issueTrackingSystem.users.usersController', ['ngRoute'])
+    .module('issueTrackingSystem.users.usersController', [])
     .controller('UsersCtrl', [
         '$scope',
         '$rootScope',
@@ -13,6 +13,7 @@ angular
             userService.getAllUsers()
                 .then(function (success) {
                     $scope.users = success;
+                    console.log($scope.users.length);
                 }, function (error) {
                     $.notify('Error occurred when tried to get the users!', 'error');
                 });

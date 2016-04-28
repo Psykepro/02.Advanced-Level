@@ -43,6 +43,9 @@ angular
                     controller: 'AddIssueCtrl'
                 }).then(function(modal) {
                     modal.element.modal();
+                    var usersSelect = $('#assignee');
+                    var fragment = generateUsersOptionsFragment($scope.allUsers);
+                    usersSelect.append(fragment);
                 });
             };
 
@@ -54,6 +57,12 @@ angular
                     controller: 'SingleProjectCtrl'
                 }).then(function(modal) {
                     modal.element.modal();
+                    var usersSelect = $('#leadId');
+                    var fragment = generateUsersOptionsFragment($scope.allUsers);
+                    usersSelect.append(fragment);
+                    setSelectedOption($scope.projectEdit.Lead.Id, usersSelect.selector);
+                    // TODO: Set the selected value
+                    console.log(usersSelect.val());
                 });
             };
 

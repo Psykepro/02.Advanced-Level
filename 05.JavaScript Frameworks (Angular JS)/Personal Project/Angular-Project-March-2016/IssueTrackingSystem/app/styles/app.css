@@ -1,7 +1,7 @@
 /* app css stylesheet */
 @font-face {
   font-family: Audimat;
-  src: url(fonts/AUdimat-Regular.otf);
+  src: url(../fonts/AUdimat-Regular.otf);
 }
 body{
   margin-top: 51px;
@@ -57,6 +57,9 @@ body{
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+}
+.btn-success{
+  font-family: Audimat;
 }
 div.navbar-fixed-top{
   font-family: Audimat;

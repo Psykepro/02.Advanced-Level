@@ -15,6 +15,7 @@
     "jquery": "^2.2.3",
     "notify": "^0.0.1",
     "ng-simplePagination": "^1.0.3",
-    "angular-modal-service": "^0.9.10"
+    "angular-modal-service": "^0.9.10",
+    "angular-material": "^1.0.7"
   }
 }

@@ -16,7 +16,7 @@ angular.module('issueTrackingSystem.home.homeController', [])
                         $rootScope.$broadcast('$routeChangeStart');
                         $.notify("You successfully logged in!", "success");
                     },function(error){
-                        $.notify("You didn't logged in!", "error");
+                        $.notify("The username and the password don't match!", "error");
                     });
             };
 

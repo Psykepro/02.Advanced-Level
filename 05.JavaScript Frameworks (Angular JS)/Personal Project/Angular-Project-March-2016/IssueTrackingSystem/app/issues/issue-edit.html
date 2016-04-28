@@ -3,42 +3,41 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Add issue</h4>
+                <h4 class="modal-title">Edit issue</h4>
             </div>
             <div class="modal-body">
                 <form role="form" name="editIssueForm">
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input required="required" type="text" ng-model="issue.Title" class="form-control" id="title" placeholder="Enter title" />
+                        <input required="required" type="text" ng-model="editIssue.Title" class="form-control" id="title" placeholder="Enter title" />
                     </div>
                     <div class="form-group">
                         <label for="due-date">Assignee</label>
-                        <select required="required" ng-model="issue.AssigneeId">
-                            <option ng-repeat="user in users" value="{{user.Id}}">{{user.Username}}</option>
+                        <select id="users-issue-edit" class="form-control" required="required" ng-model="editIssue.Assignee.Id">
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="due-date">Due Date</label>
-                        <input required="required" type="date" ng-model="issue.DueDate" class="form-control" id="due-date" placeholder="Enter DueDate" />
+                        <input required="required" type="date" ng-model="editIssue.DueDate" class="form-control" id="due-date" placeholder="Enter DueDate" />
                     </div>
                     <div class="form-group">
                         <label for="priority">Priority</label>
-                        <select required="required" id="priority" ng-model="issue.PriorityId ">
-                            <option ng-repeat="priority in priorities" value="{{priority.Id}}">{{priority.Name}}</option>
+                        <select required="required" id="priority" class="form-control" ng-model="editIssue.PriorityId">
+                            <option ng-repeat="priority in issueProject.Priorities" value="{{priority.Id}}">{{priority.Name}}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="labels">Labels</label>
-                        <input required="required" ng-model="issue.Labels | join(', ')" required="required" class="form-control" placeholder="label1, label2, ..." id="labels"/>
+                        <input required="required" ng-model="editIssue.Labels" required="required" class="form-control" placeholder="label1, label2, ..." id="labels"/>
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <input required="required" type="text" ng-model="issue.Description" class="form-control" id="description" placeholder="Enter description" />
+                        <input required="required" type="text" ng-model="editIssue.Description" class="form-control" id="description" placeholder="Enter description" />
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" ng-disabled="editIssueForm.$invalid" ng-click="editIssue(issue)" class="btn btn-success" data-dismiss="modal">Edit issue</button>
+                <button type="button" ng-disabled="editIssueForm.$invalid" ng-click="editIssue(editIssue)" class="btn btn-success" data-dismiss="modal">Edit issue</button>
             </div>
         </div>
     </div>

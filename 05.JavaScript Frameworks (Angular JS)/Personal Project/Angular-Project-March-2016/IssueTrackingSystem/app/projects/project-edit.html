@@ -13,14 +13,13 @@
                     <label for="description">Description</label>
                     <input type="text" required="required" class="form-control" id="description" ng-model="projectEdit.Description">
                     <br>
+                    <label for="leadId" ng-if="isAdmin() === true">LeadId</label>
+                    <select ng-if="isAdmin()" ng-model="projectEdit.Lead.Id" id="leadId" class="form-control">
+                    </select>
+                    <br ng-if="isAdmin()">
                     <label for="project-key">ProjectKey</label>
                     <input type="text" required="required"  placeholder="Some projectEdit => SP" class="form-control" id="project-key" ng-model="projectEdit.ProjectKey">
                     <br>
-                    <label for="LeadId" ng-if="isAdmin()">LeadId</label>
-                    <select ng-if="isAdmin()" ng-model="projectEdit.Lead.Id" id="LeadId" class="form-control">
-                        <option ng-repeat="user in ::allUsers" value="{{::user.Id}}" ng-bind="::user.Username"></option>
-                    </select>
-                    <br ng-if="isAdmin()">
                     <label for="priorities">Priorities (separated by comma)</label>
                     <input type="text" required="required" class="form-control" placeholder="priority1, priority2, ..." id="priorities" ng-model="projectEdit.Priorities">
                     <br>

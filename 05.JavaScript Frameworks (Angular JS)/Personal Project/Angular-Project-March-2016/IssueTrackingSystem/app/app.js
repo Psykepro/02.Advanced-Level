@@ -3,6 +3,7 @@
 angular
     .module('issueTrackingSystem', [
         'ngRoute',
+        'ngMaterial',
         'simplePagination',
         'angularModalService',
         'issueTrackingSystem.home.homeController',

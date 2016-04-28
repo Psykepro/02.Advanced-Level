@@ -1,7 +1,27 @@
-<h3 class="clean-header-green">Users</h3>
-<div class="user-info" ng-repeat="user in ::users">
-    <h4 class="user">{{user.Username}}</h4>
-    <button ng-if="currentUser.isAdmin && !user.isAdmin"
-            ng-click="promoteToAdmin($event, user.Id)"
-            class="btn btn-success">Make Admin</button>
+<h3 class="clean-header-green">All Users</h3>
+<div class="vrepeatContainer users-container" ng-cloak>
+    <md-content layout="column" class="md-content-users">
+        <h3 class="clean-header-green inner-header">Users</h3>
+        <md-virtual-repeat-container id="vertical-container-users">
+            <div md-virtual-repeat="user in users | filter: { isAdmin : false}"
+                 class="repeated-item-vertical" flex>
+                <span class="users-username" ng-bind="user.Username"></span>
+                <button ng-if="currentUser.isAdmin && !user.isAdmin"
+                        ng-click="promoteToAdmin($event, user.Id)"
+                        class="btn btn-success">Make Admin</button>
+            </div>
+        </md-virtual-repeat-container>
+    </md-content>
+    <md-content layout="column" class="md-content-users">
+        <h3 class="clean-header-green inner-header">Admins</h3>
+        <md-virtual-repeat-container id="vertical-container-admins">
+            <div md-virtual-repeat="user in users | filter: { isAdmin : true}"
+                 class="repeated-item-vertical" flex>
+                <span class="users-username" ng-bind="user.Username"></span>
+                <button ng-if="currentUser.isAdmin && !user.isAdmin"
+                        ng-click="promoteToAdmin($event, user.Id)"
+                        class="btn btn-success">Make Admin</button>
+            </div>
+        </md-virtual-repeat-container>
+    </md-content>
 </div>

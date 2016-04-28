@@ -12,12 +12,6 @@ angular
         function($scope, $routeParams, $rootScope, projectService, userService, issueService) {
             var projectId = $routeParams.id;
 
-            userService.getAllUsers()
-                .then(function (success) {
-                    $scope.users = success;
-                }, function (error) {
-
-                });
 
             projectService.getProjectById(projectId)
                 .then(function (success) {
