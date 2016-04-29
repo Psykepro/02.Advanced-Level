@@ -7,24 +7,30 @@
             </div>
             <div class="modal-body">
                 <form name="projectForm">
-                    <label for="name">Name</label>
-                    <input type="text" required="required" class="form-control" id="name" ng-model="project.Name">
-                    <br>
-                    <label for="description">Description</label>
-                    <input type="text" required="required" class="form-control" id="description" ng-model="project.Description">
-                    <br>
-                    <label for="leadId">LeadId</label>
-                    <select required="required" ng-model="project.LeadId" id="leadId" class="form-control">
-                    </select>
-                    <br>
-                    <label for="project-key">ProjectKey</label>
-                    <input type="text" required="required"  placeholder="Some Project => SP" class="form-control" id="project-key" ng-model="project.ProjectKey">
-                    <br>
-                    <label for="priorities">Priorities (separated by comma)</label>
-                    <input type="text" required="required" class="form-control" placeholder="priority1, priority2, ..." id="priorities" ng-model="project.Priorities">
-                    <br>
-                    <label for="labels">Labels (separated by comma)</label>
-                    <input type="text" required="required" class="form-control" placeholder="label1, label2, ..." id="labels" ng-model="project.Labels">
+                    <md-input-container class="input-containers">
+                        <label for="name">Name</label>
+                        <input type="text" required="required" id="name" ng-model="project.Name">
+                    </md-input-container>
+                    <md-input-container class="input-containers">
+                        <label for="description">Description</label>
+                        <input type="text" required="required" id="description" ng-model="project.Description">
+                    </md-input-container>
+                    <div class="modal-select-container">
+                        <label for="leadId" class="modal-select-label">LeadId</label>
+                        <select class="modal-select" required="required" ng-model="project.LeadId" id="leadId"></select>
+                    </div>
+                    <md-input-container class="input-containers">
+                        <label for="project-key">ProjectKey</label>
+                        <input type="text" required="required" id="project-key" ng-model="project.ProjectKey">
+                    </md-input-container>
+                    <md-input-container class="input-containers">
+                        <label for="priorities">Priorities (separated by comma)</label>
+                        <input type="text" required="required" id="priorities" ng-model="project.Priorities">
+                    </md-input-container>
+                    <md-input-container class="input-containers">
+                        <label for="labels">Labels (separated by comma)</label>
+                        <input type="text" required="required" id="labels" ng-model="project.Labels">
+                    </md-input-container>
                 </form>
             </div>
             <div class="modal-footer">

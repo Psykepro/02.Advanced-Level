@@ -29,16 +29,16 @@ angular
                     $scope.isIssueAssignee = identityService.isIssueAssignee;
                     $scope.currentIssue = success.data;
 
-                    $scope.showEditProject = function() {
+                    $scope.showEditIssue = function() {
                         ModalService.showModal({
                             templateUrl: 'app/issues/issue-edit.html',
                             controller: 'IssueCtrl'
                         }).then(function(modal) {
                             modal.element.modal();
                             $scope.editIssue = formatViewEditIssue($scope.currentIssue);
-                            var usersSelect = $('#users-issue-edit');
+                            var usersSelect = document.getElementById('users-issue-edit');
                             if(usersSelect){
-                                usersSelect.append(fragment);
+                                usersSelect.appendChild(fragment);
                                 setSelectedOption($scope.editIssue.Assignee.Id, usersSelect.selector);
                                 console.log(usersSelect);
                                 console.log(usersSelect.val());

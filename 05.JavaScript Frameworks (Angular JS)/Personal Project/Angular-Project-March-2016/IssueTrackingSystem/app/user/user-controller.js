@@ -13,7 +13,6 @@ angular
             userService.getAllUsers()
                 .then(function (success) {
                     $scope.users = success;
-                    console.log($scope.users.length);
                 }, function (error) {
                     $.notify('Error occurred when tried to get the users!', 'error');
                 });

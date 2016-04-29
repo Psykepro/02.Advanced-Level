@@ -43,9 +43,9 @@ angular
                     controller: 'AddIssueCtrl'
                 }).then(function(modal) {
                     modal.element.modal();
-                    var usersSelect = $('#assignee');
+                    var usersSelect = document.getElementById('assignee');
                     var fragment = generateUsersOptionsFragment($scope.allUsers);
-                    usersSelect.append(fragment);
+                    usersSelect.appendChild(fragment);
                 });
             };
 
@@ -57,12 +57,17 @@ angular
                     controller: 'SingleProjectCtrl'
                 }).then(function(modal) {
                     modal.element.modal();
-                    var usersSelect = $('#leadId');
-                    var fragment = generateUsersOptionsFragment($scope.allUsers);
-                    usersSelect.append(fragment);
-                    setSelectedOption($scope.projectEdit.Lead.Id, usersSelect.selector);
-                    // TODO: Set the selected value
-                    console.log(usersSelect.val());
+
+                    // Calling my callback function inside, setTimeout(callback, 0); as browsers by default keep all events in a queue,
+                    // therefore, when digest loop is running, your callback function will enter the queue and get executed
+                    // as soon digest loop is over.
+                    setTimeout(function(){
+                        var usersSelect = document.getElementById('leadId');
+                        var fragment = generateUsersOptionsFragment($scope.allUsers);
+                        usersSelect.appendChild(fragment);
+                        // TODO: Set the selected value
+                        setSelectedOption($scope.projectEdit.Lead.Id, usersSelect.selector);
+                    }, 0);
                 });
             };
 

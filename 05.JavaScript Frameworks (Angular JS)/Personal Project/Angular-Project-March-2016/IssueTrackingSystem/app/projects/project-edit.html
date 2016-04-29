@@ -5,27 +5,32 @@
             <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title">Edit Project</h4>
         </div>
-        <div class="modal-body">
+        <div ng-cloak class="modal-body">
                 <form class="project-form" name="projectEditForm">
-                    <label for="name">Name</label>
-                    <input type="text" required="required" class="form-control" id="name" ng-model="projectEdit.Name">
-                    <br>
-                    <label for="description">Description</label>
-                    <input type="text" required="required" class="form-control" id="description" ng-model="projectEdit.Description">
-                    <br>
-                    <label for="leadId" ng-if="isAdmin() === true">LeadId</label>
-                    <select ng-if="isAdmin()" ng-model="projectEdit.Lead.Id" id="leadId" class="form-control">
-                    </select>
-                    <br ng-if="isAdmin()">
-                    <label for="project-key">ProjectKey</label>
-                    <input type="text" required="required"  placeholder="Some projectEdit => SP" class="form-control" id="project-key" ng-model="projectEdit.ProjectKey">
-                    <br>
-                    <label for="priorities">Priorities (separated by comma)</label>
-                    <input type="text" required="required" class="form-control" placeholder="priority1, priority2, ..." id="priorities" ng-model="projectEdit.Priorities">
-                    <br>
-                    <label for="labels">Labels (separated by comma)</label>
-                    <input type="text" required="required" class="form-control" placeholder="label1, label2, ..." id="labels" ng-model="projectEdit.Labels">
-                    <br>
+                    <md-input-container class="input-containers">
+                        <label for="name">Name</label>
+                        <input type="text" required="required"  id="name" ng-model="projectEdit.Name">
+                    </md-input-container>
+                    <md-input-container class="input-containers">
+                        <label for="description">Description</label>
+                        <input type="text" required="required"  id="description" ng-model="projectEdit.Description">
+                    </md-input-container>
+                    <div ng-if="isAdmin()" class="modal-select-container">
+                        <label class="modal-select-label" for="leadId">LeadId</label>
+                        <select class="modal-select" id="leadId" ng-model="projectEdit.Lead.Id"></select>
+                    </div>
+                    <md-input-container class="input-containers">
+                        <label for="project-key">ProjectKey</label>
+                        <input type="text" required="required"  id="project-key" ng-model="projectEdit.ProjectKey">
+                    </md-input-container>
+                    <md-input-container class="input-containers">
+                        <label for="priorities">Priorities (separated by comma)</label>
+                        <input type="text" required="required" id="priorities" ng-model="projectEdit.Priorities">
+                    </md-input-container>
+                    <md-input-container class="input-containers">
+                        <label for="labels">Labels (separated by comma)</label>
+                        <input type="text" required="required" id="labels" ng-model="projectEdit.Labels">
+                    </md-input-container>
                 </form>
             </div>
             <div class="modal-footer">
