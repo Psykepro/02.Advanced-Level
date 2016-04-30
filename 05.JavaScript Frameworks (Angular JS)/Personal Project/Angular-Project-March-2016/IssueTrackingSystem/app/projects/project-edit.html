@@ -5,36 +5,38 @@
             <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title">Edit Project</h4>
         </div>
-        <div ng-cloak class="modal-body">
+        <div ng-cloak class="modal-body" ng-controller="SingleProjectCtrl as vm">
                 <form class="project-form" name="projectEditForm">
                     <md-input-container class="input-containers">
                         <label for="name">Name</label>
-                        <input type="text" required="required"  id="name" ng-model="projectEdit.Name">
+                        <input type="text" required="required"  id="name" ng-model="vm.projectEdit.Name">
                     </md-input-container>
                     <md-input-container class="input-containers">
                         <label for="description">Description</label>
-                        <input type="text" required="required"  id="description" ng-model="projectEdit.Description">
+                        <input type="text" required="required"  id="description" ng-model="vm.projectEdit.Description">
                     </md-input-container>
-                    <div ng-if="isAdmin()" class="modal-select-container">
+                    <div ng-if="vm.isAdmin()" class="modal-select-container" >
                         <label class="modal-select-label" for="leadId">LeadId</label>
-                        <select class="modal-select" id="leadId" ng-model="projectEdit.Lead.Id"></select>
+                        <select class="modal-select" id="leadId"
+                                ng-model="vm.projectEdit.Lead.Id"
+                                load-users selected-id="{{vm.getSelectedLeadId()}}"></select>
                     </div>
                     <md-input-container class="input-containers">
                         <label for="project-key">ProjectKey</label>
-                        <input type="text" required="required"  id="project-key" ng-model="projectEdit.ProjectKey">
+                        <input type="text" required="required"  id="project-key" ng-model="vm.projectEdit.ProjectKey">
                     </md-input-container>
                     <md-input-container class="input-containers">
                         <label for="priorities">Priorities (separated by comma)</label>
-                        <input type="text" required="required" id="priorities" ng-model="projectEdit.Priorities">
+                        <input type="text" required="required" id="priorities" ng-model="vm.projectEdit.Priorities">
                     </md-input-container>
                     <md-input-container class="input-containers">
                         <label for="labels">Labels (separated by comma)</label>
-                        <input type="text" required="required" id="labels" ng-model="projectEdit.Labels">
+                        <input type="text" required="required" id="labels" ng-model="vm.projectEdit.Labels">
                     </md-input-container>
                 </form>
             </div>
             <div class="modal-footer">
-                <button ng-disabled="projectEditForm.$invalid" ng-click="updateProject(projectEdit)" class="btn btn-success" data-dismiss="modal">Edit project</button>
+                <button ng-disabled="projectEditForm.$invalid" ng-click="vm.updateProject(projectEdit)" class="btn btn-success" data-dismiss="modal">Edit project</button>
             </div>
         </div>
     </div>

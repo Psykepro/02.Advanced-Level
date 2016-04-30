@@ -6,11 +6,9 @@ function generateUsersOptionsFragment(users){
     return fragment;
 }
 
-function setSelectedOption(selectedOptionValue, selectorOfElement){
-    if(selectedOptionValue && selectorOfElement){
-        var queryString = selectorOfElement  + ' option[value=' + selectedOptionValue + ']';
-        $(queryString)
-            .attr('selected','selected');
+function setSelectedOption(selectedOptionValue, selectElement){
+    if(selectedOptionValue && selectElement){
+        selectElement.value = selectedOptionValue;
     }else{
         console.log('Selected option or the select element is undefined!');
     }

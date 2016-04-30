@@ -7,33 +7,32 @@
             </div>
             <div class="modal-body">
                 <form class="add-issue-form" name="addIssueForm">
-                    <div class="form-group">
+                    <md-input-container class="input-containers">
                         <label for="title">Title</label>
-                        <input ng-model="issue.Title" required="required" class="form-control" id="title"/>
+                        <input ng-model="issue.Title" required="required" id="title"/>
+                    </md-input-container>
+                    <div class="modal-select-container">
+                        <label for="assignee" class="modal-select-label">Assignee</label>
+                        <select class="modal-select" ng-model="issue.AssigneeId" required="required" id="assignee"></select>
                     </div>
-                    <div class="form-group">
-                        <label for="assignee">Assignee</label>
-                        <select ng-model="issue.AssigneeId" required="required" id="assignee" class="form-control">
-                        </select>
-                    </div>
-                    <div class="form-group">
+                    <md-input-container class="input-containers">
                         <label for="due-date">DueDate</label>
-                        <input type="date" required="required" ng-model="issue.DueDate" class="form-control" id="due-date" />
-                    </div>
-                    <div class="form-group">
-                        <label for="priority">Priority</label>
-                        <select required="required" ng-model="issue.PriorityId" id="priority" class="form-control">
+                        <input type="date" required="required" ng-model="issue.DueDate" id="due-date" />
+                    </md-input-container>
+                    <div class="modal-select-container">
+                        <label for="priority" class="modal-select-label">Priority</label>
+                        <select class="modal-select" required="required" ng-model="issue.PriorityId" id="priority">
                             <option ng-repeat="priority in ::priorities" value="{{::priority.Id}}" ng-bind="::priority.Name"></option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <md-input-container class="input-containers">
                         <label for="labels">Labels</label>
-                        <input ng-model="issue.Labels" required="required" class="form-control" placeholder="label1, label2, ..." id="labels"/>
-                    </div>
-                    <div class="form-group">
+                        <input ng-model="issue.Labels" required="required" id="labels"/>
+                    </md-input-container>
+                    <md-input-container class="input-containers">
                         <label for="description">Description</label>
-                        <input ng-model="issue.Description" required="required" class="form-control" id="description"/>
-                    </div>
+                        <input ng-model="issue.Description" required="required" id="description"/>
+                    </md-input-container>
                 </form>
             </div>
             <div class="modal-footer">

@@ -15,6 +15,7 @@ angular
         'issueTrackingSystem.issues.issueController',
         'issueTrackingSystem.issues.addIssueController',
         'issueTrackingSystem.components.filters.join',
+        'issueTrackingSystem.components.directives.loadUsersDirective',
         'issueTrackingSystem.components.services.labelService',
         'issueTrackingSystem.components.services.identityService',
         'issueTrackingSystem.components.services.authenticationService',
@@ -46,7 +47,8 @@ angular
             })
             .when('/projects/:id', {
                 templateUrl: 'app/projects/project-page.html',
-                controller: 'SingleProjectCtrl'
+                controller: 'SingleProjectCtrl',
+                controllerAs: 'vm'
             })
             .when('/issues/:id', {
                 templateUrl: 'app/issues/issue-page.html',

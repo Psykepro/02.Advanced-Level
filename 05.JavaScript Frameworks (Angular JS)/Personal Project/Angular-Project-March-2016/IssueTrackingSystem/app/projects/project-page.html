@@ -1,16 +1,16 @@
 <h3 ng-cloak class="clean-header-green">Project</h3>
 <h3>Name:</h3>
-<p>{{project.Name}}</p>
+<p>{{vm.project.Name}}</p>
 <h3>Description:</h3>
-<p>{{project.Description}}</p>
+<p>{{vm.project.Description}}</p>
 
 <div class="issues">
-    <div class="issue-container" ng-repeat="issue in issues">
+    <div class="issue-container" ng-repeat="issue in vm.issues">
         <a href="#/issues/{{issue.Id}}">{{issue.Title}}</a>
     </div>
 </div>
-<div ng-if="project.Lead.Id === currentUser.Id || currentUser.isAdmin === true">
-    <a class="btn btn-success" ng-click="showAddIssue()" role="button">Add Issue</a>
-    <a class="btn btn-success" ng-click="showEditProject()" role="button">Edit project</a>
+<div ng-if="vm.project.Lead.Id === currentUser.Id || currentUser.isAdmin === true">
+    <a class="btn btn-success" ng-click="vm.showAddIssue()" role="button">Add Issue</a>
+    <a class="btn btn-success" ng-click="vm.showEditProject()" role="button">Edit project</a>
 </div>
 

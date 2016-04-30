@@ -8,20 +8,25 @@ angular
         'ModalService',
         'identityService',
         'projectService',
-        'userService',
-        function($scope, $routeParams, ModalService, identityService, projectService, userService) {
-            var currentId = $routeParams.id;
+        function($scope, $routeParams, ModalService, identityService, projectService) {
+            var currentId = $routeParams.id,
+                self = this;
 
             projectService.getProjectById(currentId)
                 .then(function (success) {
-                    $scope.project = success;
-                    $scope.projectEdit = success;
-                    $scope.projectEdit.Labels = $scope.projectEdit.Labels
+                    self.project = success;
+                    self.projectEdit = success;
+
+                    self.getSelectedLeadId = function getSelectedLeadId(){
+                        return self.projectEdit.Lead.Id;
+                    };
+
+                    self.projectEdit.Labels = self.projectEdit.Labels
                         .map(function (labelObj) {
                             return labelObj.Name;
                         })
                         .join(', ');
-                    $scope.projectEdit.Priorities = $scope.projectEdit.Priorities
+                    self.projectEdit.Priorities = self.projectEdit.Priorities
                         .map(function (priorityObj) {
                             return priorityObj.Name;
                         })
@@ -30,48 +35,31 @@ angular
                     console.log(error);
                 });
 
-            userService.getAllUsers()
-                .then(function (success) {
-                    $scope.allUsers = success;
-                }, function (error) {
-                    console.log(error);
-                });
 
-            $scope.showAddIssue = function() {
+            self.showAddIssue = function() {
                 ModalService.showModal({
                     templateUrl: 'app/issues/issue-add.html',
                     controller: 'AddIssueCtrl'
                 }).then(function(modal) {
                     modal.element.modal();
                     var usersSelect = document.getElementById('assignee');
-                    var fragment = generateUsersOptionsFragment($scope.allUsers);
+                    var fragment = generateUsersOptionsFragment(self.users);
                     usersSelect.appendChild(fragment);
                 });
             };
+            
+            self.isAdmin = identityService.isAdmin;
 
-            $scope.isAdmin = identityService.isAdmin;
-
-            $scope.showEditProject = function() {
+            self.showEditProject = function() {
                 ModalService.showModal({
                     templateUrl: 'app/projects/project-edit.html',
                     controller: 'SingleProjectCtrl'
                 }).then(function(modal) {
                     modal.element.modal();
-
-                    // Calling my callback function inside, setTimeout(callback, 0); as browsers by default keep all events in a queue,
-                    // therefore, when digest loop is running, your callback function will enter the queue and get executed
-                    // as soon digest loop is over.
-                    setTimeout(function(){
-                        var usersSelect = document.getElementById('leadId');
-                        var fragment = generateUsersOptionsFragment($scope.allUsers);
-                        usersSelect.appendChild(fragment);
-                        // TODO: Set the selected value
-                        setSelectedOption($scope.projectEdit.Lead.Id, usersSelect.selector);
-                    }, 0);
                 });
             };
 
-            $scope.updateProject = function updateProject(project) {
+            self.updateProject = function updateProject(project) {
                 // Formatting the object
                 project.Priorities = project.Priorities
                     .split(', ')
