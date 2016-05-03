@@ -25,7 +25,6 @@ angular
                         return self.editIssue.Priority.Id;
                     };
                     self.showEditIssue = function() {
-                        console.log(self.issueProject);
                         ModalService.showModal({
                             templateUrl: 'app/issues/issue-edit.html',
                             controller: 'IssueCtrl'

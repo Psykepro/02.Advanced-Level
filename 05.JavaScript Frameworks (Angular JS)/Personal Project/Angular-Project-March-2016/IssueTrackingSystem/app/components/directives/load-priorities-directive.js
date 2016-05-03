@@ -15,22 +15,26 @@ angular
                         priorities,
                         id;
 
+                    attributes.$observe('selectedId', function (value) {
+                        if (value) {
+                            id = value;
+                        }
+                    });
 
                     attributes.$observe('priorities', function (value) {
                         if (value) {
-                            priorities = eval(value);
                             selectElement = element[0];
+                            priorities = eval(value);
                             fragment = generatePrioritiesOptionsFragment(priorities);
                             selectElement.appendChild(fragment);
-                            attributes.$observe('selectedId', function (value) {
-                                if (value) {
-                                    id = value;
-                                    setSelectedOption(id, selectElement);
-                                    console.log(selectElement.value);
-                                }
-                            });
+
+                            if(id){
+                                setSelectedOption(id, selectElement);
+                            }
                         }
                     });
+
+
 
 
 
