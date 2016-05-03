@@ -9,7 +9,7 @@ function generateUsersOptionsFragment(users){
 
 function generatePrioritiesOptionsFragment(priorities){
     var fragment = document.createDocumentFragment();
-    console.log(priorities);
+
     $.each(priorities, function () {
         $("<option />").val(this.Id).text(this.Name).appendTo(fragment);
     });
