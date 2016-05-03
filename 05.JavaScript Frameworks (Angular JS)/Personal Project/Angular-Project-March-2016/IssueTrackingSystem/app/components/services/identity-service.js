@@ -16,8 +16,16 @@ angular.module('issueTrackingSystem.components.services.identityService',[])
             }
 
             function isAdmin() {
-                var isAdmin = sessionStorage["isAdmin"];
-                return isAdmin;
+                var isAdmin = sessionStorage["isAdmin"],
+                    result;
+
+                if(isAdmin === 'true'){
+                    result = true;
+                }else{
+                    result = false;
+                }
+
+                return result;
             }
 
             function isProjectLeader(project) {

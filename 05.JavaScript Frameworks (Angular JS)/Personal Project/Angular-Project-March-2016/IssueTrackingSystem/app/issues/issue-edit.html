@@ -1,4 +1,4 @@
-<div class="modal fade">
+<div ng-controller="IssueCtrl as vm" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,34 +9,43 @@
                 <form name="editIssueForm">
                     <md-input-container class="input-containers">
                         <label for="title">Title</label>
-                        <input required="required" type="text" ng-model="editIssue.Title"  id="title" />
+                        <input required="required" type="text" ng-model="vm.editIssue.Title" id="title" />
                     </md-input-container>
                     <div class="modal-select-container">
                         <label for="due-date" class="modal-select-label">Assignee</label>
-                        <select id="users-issue-edit" class="modal-select" required="required" ng-model="editIssue.Assignee.Id"></select>
+                        <select id="users-issue-edit"
+                                class="modal-select"
+                                required="required"
+                                load-users selected-id="{{vm.getSelectedAssigneeId()}}"
+                                ng-model="vm.editIssue.Assignee.Id"></select>
                     </div>
                     <md-input-container class="input-containers">
                         <label for="due-date">Due Date</label>
-                        <input required="required" type="date" ng-model="editIssue.DueDate"  id="due-date" />
+                        <input required="required" type="date" ng-model="vm.editIssue.DueDate"  id="due-date" />
                     </md-input-container>
                     <div class="modal-select-container">
                         <label for="priority" class="modal-select-label">Priority</label>
-                        <select required="required" id="priority" class="modal-select" ng-model="editIssue.PriorityId">
-                            <option ng-repeat="priority in ::issueProject.Priorities" value="{{priority.Id}}" ng-bind="priority.Name"></option>
+                        <select required="required"
+                                id="priority"
+                                class="modal-select"
+                                ng-model="vm.editIssue.Priority.Id"
+                                load-priorities priorities="{{vm.issueProject.Priorities}}"
+                                selected-id="{{vm.getSelectedPriorityId()}}">
+
                         </select>
                     </div>
                     <md-input-container class="input-containers">
                         <label for="labels">Labels</label>
-                        <input required="required" ng-model="editIssue.Labels" required="required"  id="labels"/>
+                        <input required="required" ng-model="vm.editIssue.Labels" required="required"  id="labels"/>
                     </md-input-container>
                     <md-input-container class="input-containers">
                         <label for="description">Description</label>
-                        <input required="required" type="text" ng-model="editIssue.Description"  id="description" />
+                        <input required="required" type="text" ng-model="vm.editIssue.Description"  id="description" />
                     </md-input-container>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" ng-disabled="editIssueForm.$invalid" ng-click="updateIssue(editIssue)" class="btn btn-success" data-dismiss="modal">Edit issue</button>
+                <button type="button" ng-disabled="editIssueForm.$invalid" ng-click="vm.updateIssue(editIssue)" class="btn btn-success" data-dismiss="modal">Edit issue</button>
             </div>
         </div>
     </div>

@@ -16,6 +16,7 @@ angular
         'issueTrackingSystem.issues.addIssueController',
         'issueTrackingSystem.components.filters.join',
         'issueTrackingSystem.components.directives.loadUsersDirective',
+        'issueTrackingSystem.components.directives.loadPrioritiesDirective',
         'issueTrackingSystem.components.services.labelService',
         'issueTrackingSystem.components.services.identityService',
         'issueTrackingSystem.components.services.authenticationService',
@@ -52,7 +53,8 @@ angular
             })
             .when('/issues/:id', {
                 templateUrl: 'app/issues/issue-page.html',
-                controller: 'IssueCtrl'
+                controller: 'IssueCtrl',
+                controllerAs: 'vm'
             });
     }])
     .constant('BASE_URL','http://softuni-issue-tracker.azurewebsites.net/');

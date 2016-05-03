@@ -3,55 +3,42 @@
 angular
     .module('issueTrackingSystem.issues.issueController',[])
     .controller('IssueCtrl',[
-        '$scope',
         '$routeParams',
         'issueService',
         'projectService',
         'identityService',
-        'userService',
         'ModalService',
-        function($scope, $routeParams, issueService, projectService, identityService, userService, ModalService) {
+        function($routeParams, issueService, projectService, identityService, ModalService) {
             var issueId = $routeParams.id,
-                fragment;
-
-            userService
-                .getAllUsers()
-                .then(function(success) {
-                    $scope.users = success;
-                    fragment = generateUsersOptionsFragment($scope.users);
-                }, function(error){
-                    console.log(error);
-                });
+                self = this;
 
             issueService
                 .getIssueById(issueId)
                 .then(function(success){
-                    $scope.isIssueAssignee = identityService.isIssueAssignee;
-                    $scope.currentIssue = success.data;
-
-                    $scope.showEditIssue = function() {
+                    self.currentIssue = success.data;
+                    self.isIssueAssignee = identityService.isIssueAssignee;
+                    self.editIssue = formatViewEditIssue(self.currentIssue);
+                    self.getSelectedAssigneeId = function getSelectedAssigneeId(){
+                        return self.editIssue.Assignee.Id;
+                    };
+                    self.getSelectedPriorityId = function getSelectedPriorityId(){
+                        return self.editIssue.Priority.Id;
+                    };
+                    self.showEditIssue = function() {
+                        console.log(self.issueProject);
                         ModalService.showModal({
                             templateUrl: 'app/issues/issue-edit.html',
                             controller: 'IssueCtrl'
                         }).then(function(modal) {
                             modal.element.modal();
-                            $scope.editIssue = formatViewEditIssue($scope.currentIssue);
-                            var usersSelect = document.getElementById('users-issue-edit');
-                            if(usersSelect){
-                                usersSelect.appendChild(fragment);
-                                setSelectedOption($scope.editIssue.Assignee.Id, usersSelect.selector);
-                                console.log(usersSelect);
-                                console.log(usersSelect.val());
-                                console.log(usersSelect[0].options[usersSelect[0].selectedIndex].innerHTML);
-                            }
                         });
                     };
 
                     projectService
-                        .getProjectById($scope.currentIssue.Project.Id)
+                        .getProjectById(self.currentIssue.Project.Id)
                         .then(function(success){
-                            $scope.issueProject = success;
-                            $scope.isProjectLeader = identityService.isProjectLeader;
+                            self.issueProject = success;
+                            self.isProjectLeader = identityService.isProjectLeader;
                         }, function(error){
                             console.log(error);
                         });

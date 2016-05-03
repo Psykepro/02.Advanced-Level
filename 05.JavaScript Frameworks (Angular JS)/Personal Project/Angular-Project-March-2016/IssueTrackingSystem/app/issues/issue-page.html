@@ -2,38 +2,38 @@
 <div class="issue-page col-md-5 col-md-offset-1">
     <div>
         <h3>Title:</h3>
-        <p ng-bind="currentIssue.Title"></p>
+        <p ng-bind="vm.currentIssue.Title"></p>
     </div>
     <div>
         <h3>Description:</h3>
-        <p ng-bind="currentIssue.Description"></p>
+        <p ng-bind="vm.currentIssue.Description"></p>
     </div>
     <div>
         <h3>Assignee:</h3>
-        <p ng-bind="currentIssue.Assignee.Username"></p>
+        <p ng-bind="vm.currentIssue.Assignee.Username"></p>
     </div>
     <div>
         <h3>Author:</h3>
-        <p ng-bind="currentIssue.Author.Username"></p>
+        <p ng-bind="vm.currentIssue.Author.Username"></p>
     </div>
     <div>
         <h3>Current Status:</h3>
-        <button id="current-status-btn" class="btn btn-success" ng-bind="currentIssue.Status.Name" disabled></button>
+        <button id="current-status-btn" class="btn btn-success" ng-bind="vm.currentIssue.Status.Name" disabled></button>
     </div>
-    <div ng-if="currentIssue.Status.Name !== 'Closed'">
+    <div ng-if="vm.currentIssue.Status.Name !== 'Closed'">
         <h3>Change Status:</h3>
-        <ul ng-if="isIssueAssignee(currentIssue)" id="change-status-ul">
-            <li ng-repeat="status in currentIssue.AvailableStatuses">
-                <button class="btn btn-primary change-status-btn" ng-click="changeStatus(status.Id)" ng-bind="status.Name"></button>
+        <ul ng-if="vm.isIssueAssignee(vm.currentIssue)" id="change-status-ul">
+            <li ng-repeat="status in vm.currentIssue.AvailableStatuses">
+                <button class="btn btn-primary change-status-btn" ng-click="vm.changeStatus(status.Id)" ng-bind="status.Name"></button>
             </li>
         </ul>
     </div>
-    <div ng-if="isProjectLeader(issueProject)">
-        <button class="btn btn-success" ng-click="showEditIssue()">Edit Issue</button>
+    <div ng-if="vm.isProjectLeader(vm.issueProject)">
+        <button class="btn btn-success" ng-click="vm.showEditIssue()">Edit Issue</button>
     </div>
 </div>
 <div class="comments col-md-6">
-    <div class="comment-holder" ng-repeat="comment in comments">
+    <div class="comment-holder" ng-repeat="comment in vm.comments">
         <div class="row">
             <div class="col-md-2">
                 <div class="thumbnail">
@@ -51,14 +51,14 @@
             </div><!-- /col-sm-5 -->
         </div><!-- /container -->
     </div>
-    <div class="add-comment" ng-if="isProjectLeader(issueProject) || isIssueAssignee(currentIssue)">
+    <div class="add-comment" ng-show="vm.isProjectLeader(vm.issueProject) || vm.isIssueAssignee(vm.currentIssue)">
         <div>
             <div class="col-md-10 col-md-offset-2">
                 <div class="widget-area no-padding blank">
                     <div class="status-upload">
                         <form>
-                            <textarea ng-model="comment.text" placeholder="Say something about this issue." ></textarea>
-                            <button type="submit" ng-click="addComment(comment)" class="btn btn-success green"><i class="fa fa-share"></i>Add Comment</button>
+                            <textarea ng-model="vm.newComment.text" placeholder="Say something about this issue." ></textarea>
+                            <button type="submit" ng-click="vm.addComment(vm.newComment)" class="btn btn-success green"><i class="fa fa-share"></i>Add Comment</button>
                         </form>
                     </div><!-- Status Upload  -->
                 </div><!-- Widget Area -->

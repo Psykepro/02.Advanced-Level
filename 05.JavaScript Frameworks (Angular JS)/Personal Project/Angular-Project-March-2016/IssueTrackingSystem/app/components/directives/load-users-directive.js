@@ -1,3 +1,5 @@
+'use strict';
+
 angular
     .module('issueTrackingSystem.components.directives.loadUsersDirective', [])
     .directive('loadUsers', [
@@ -8,11 +10,11 @@ angular
                 scope: {
                     selectedId: '@'
                 },
-                link: function (scope, element, attrs) {
+                link: function (scope, element, attributes) {
                     var fragment,
                         selectElement,
                         id;
-                    attrs.$observe('selectedId', function (value) {
+                    attributes.$observe('selectedId', function (value) {
                         if (value) {
                             id = value;
                         }
@@ -29,7 +31,6 @@ angular
                             // Set the selected lead id if it is passed
                             if (id) {
                                 setSelectedOption(id, selectElement);
-                                console.log(selectElement.value);
                             }
                         });
                 }

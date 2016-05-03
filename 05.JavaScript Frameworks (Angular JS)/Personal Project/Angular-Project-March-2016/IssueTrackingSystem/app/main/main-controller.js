@@ -17,10 +17,12 @@ angular
                         var currentUser = success.data;
                         sessionStorage['userId'] = success.data.Id;
                         sessionStorage['isAdmin'] = success.data.isAdmin;
+                        $scope.isAdmin = identityService.isAdmin;
                         $scope.currentUser = currentUser;
                     });
                 }
             });
+
             $scope.showCreateProject = function(){
                 ModalService.showModal({
                     templateUrl: 'app/projects/project-add.html',

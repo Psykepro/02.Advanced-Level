@@ -9,13 +9,16 @@ angular
         'projectService',
         'Pagination',
         function DashboardCtrl($scope, issueService, identityService, projectService, Pagination) {
-            getIssuesAndAssignedProjects();
+            var self = this;
+
             getMyProjects();
-            $scope.$on('updateIssuesAndAssignedProjects', function(){
-                getIssuesAndAssignedProjects();
-            });
+            getIssuesAndAssignedProjects();
+
             $scope.$on('updateMyProjects', function(){
                 getMyProjects();
+            });
+            $scope.$on('updateIssuesAndAssignedProjects', function(){
+                getIssuesAndAssignedProjects();
             });
 
 
@@ -25,9 +28,9 @@ angular
                         var myProjects = success.filter(function (project) {
                             return identityService.isProjectLeader(project);
                         });
-                        $scope.myProjects = myProjects;
-                        $scope.projectsPagination = Pagination.getNew(5);
-                        $scope.projectsPagination.numPages = Math.ceil($scope.myProjects.length / $scope.projectsPagination.perPage);
+                        self.myProjects = myProjects;
+                        self.projectsPagination = Pagination.getNew(5);
+                        self.projectsPagination.numPages = Math.ceil(self.myProjects.length / self.projectsPagination.perPage);
                     }, function (error) {
                         console.log(error);
                     });
@@ -36,12 +39,16 @@ angular
             function getIssuesAndAssignedProjects(){
                 issueService.getMyIssues(100)
                     .then(function (success) {
-                        $scope.myIssues = success;
-                        $scope.assignedProjects = projectService.extractAssignedProjectsFromIssues($scope.myIssues);
-                        $scope.assignedProjectsPagination = Pagination.getNew(5);
-                        $scope.assignedProjectsPagination.numPages = Math.ceil($scope.assignedProjects.length / $scope.assignedProjectsPagination.perPage);
-                        $scope.issuesPagination = Pagination.getNew(5);
-                        $scope.issuesPagination.numPages = Math.ceil($scope.myIssues.length / $scope.issuesPagination.perPage);
+                        // Issues \\
+                        self.myIssues = success;
+                        self.issuesPagination = Pagination.getNew(5);
+                        self.issuesPagination.numPages = Math.ceil(self.myIssues.length / self.issuesPagination.perPage);
+
+                        // Assigned Projects \\
+                        self.assignedProjects = projectService.extractAssignedProjectsFromIssues(self.myIssues);
+                        self.assignedProjectsPagination = Pagination.getNew(5);
+                        self.assignedProjectsPagination.numPages = Math.ceil(self.assignedProjects.length / self.assignedProjectsPagination.perPage);
+
                     }, function (error) {
                         console.log(error);
                     });

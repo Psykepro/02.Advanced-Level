@@ -2,12 +2,12 @@
 
 angular.module('issueTrackingSystem.home.homeController', [])
     .controller('HomeCtrl', [
-        '$scope',
         '$rootScope',
         'authenticationService',
-        function HomeCtrl($scope, $rootScope, authenticationService) {
+        function HomeCtrl($rootScope, authenticationService) {
+            var self = this;
 
-            $scope.login = function(user){
+            self.login = function login(user) {
                 authenticationService
                     .loginUser(user)
                     .then(function (success) {
@@ -15,18 +15,23 @@ angular.module('issueTrackingSystem.home.homeController', [])
                         sessionStorage['isAdmin'] = success.data.isAdmin;
                         $rootScope.$broadcast('$routeChangeStart');
                         $.notify("You successfully logged in!", "success");
-                    },function(error){
+                    }, function (error) {
                         $.notify("The username and the password don't match!", "error");
                     });
             };
 
-            $scope.register = function(user){
+            self.register = function register(user) {
                 authenticationService
                     .registerUser(user)
                     .then(function (success) {
-                        $scope.login(user);
-                    },function(error){
-                        console.log(error);
+                        console.log(user);
+                        console.log(user['email']);
+                        $.notify("You successfully registered new user!", "success");
+                        setTimeout(function(){
+                            self.login(user);
+                        }, 1500);
+                    }, function (error) {
+                        $.notify("Registration wasn't successful!", "error");
                     });
             };
-    }]);
+        }]);
