@@ -11,7 +11,9 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 getMyIssues: getMyIssues,
                 addIssue: addIssue,
                 getIssueById: getIssueById,
-                updateIssue: updateIssue
+                updateIssue: updateIssue,
+                formatViewEditIssueModel: formatViewEditIssueModel,
+                formatBindingEditIssueModel: formatBindingEditIssueModel
             };
 
             function getMyIssues(pageSize, pageNumber, orderBy) {
@@ -77,6 +79,29 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                     });
 
                 return deferred.promise;
+            }
+
+            function formatViewEditIssueModel(issue){
+                issue.DueDate = new Date(issue.DueDate);
+                issue.AssigneeId = issue.Assignee.Id;
+                issue.PriorityId = issue.Priority.Id;
+                issue.Labels = issue.Labels.map(function(labelObj){
+                    return labelObj.Name;
+                }).join(', ');
+
+                return issue;
+            }
+
+            function formatBindingEditIssueModel(issue){
+                issue.Labels = issue.Labels
+                    .split(', ')
+                    .map(function (label) {
+                        return {
+                            Name: label
+                        }
+                    });
+
+                return issue;
             }
 
             return issueService;

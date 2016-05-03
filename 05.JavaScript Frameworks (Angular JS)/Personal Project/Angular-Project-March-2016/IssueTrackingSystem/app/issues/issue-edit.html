@@ -16,7 +16,7 @@
                         <select id="users-issue-edit"
                                 class="modal-select"
                                 required="required"
-                                load-users selected-id="{{vm.getSelectedAssigneeId()}}"
+                                load-users selected-id="{{vm.editIssue.AssigneeId}}"
                                 ng-model="vm.editIssue.AssigneeId"></select>
                     </div>
                     <md-input-container class="input-containers">
@@ -29,8 +29,8 @@
                                 id="priority"
                                 class="modal-select"
                                 ng-model="vm.editIssue.PriorityId"
-                                load-priorities priorities="{{vm.getPriorities()}}"
-                                selected-id="{{vm.getSelectedPriorityId()}}">
+                                load-priorities priorities="{{vm.issueProject.Priorities}}"
+                                selected-id="{{vm.editIssue.PriorityId}}">
 
                         </select>
                     </div>
