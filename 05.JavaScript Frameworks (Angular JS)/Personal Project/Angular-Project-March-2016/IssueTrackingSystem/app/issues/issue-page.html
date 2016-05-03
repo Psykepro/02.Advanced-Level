@@ -51,7 +51,7 @@
             </div><!-- /col-sm-5 -->
         </div><!-- /container -->
     </div>
-    <div class="add-comment" ng-if="isProjectLeader(vm.issueProject) || isIssueAssignee(vm.currentIssue)">
+    <div class="add-comment" ng-if="vm.isProjectLeader(vm.issueProject) || vm.isIssueAssignee(vm.currentIssue)">
         <div>
             <div class="col-md-10 col-md-offset-2">
                 <div class="widget-area no-padding blank">

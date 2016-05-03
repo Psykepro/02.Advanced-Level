@@ -12,6 +12,7 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 addIssue: addIssue,
                 getIssueById: getIssueById,
                 updateIssue: updateIssue,
+                updateIssueStatus: updateIssueStatus,
                 formatViewEditIssueModel: formatViewEditIssueModel,
                 formatBindingEditIssueModel: formatBindingEditIssueModel
             };
@@ -56,6 +57,21 @@ angular.module('issueTrackingSystem.issues.issueService',[])
 
                 $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
                 $http.get(BASE_URL + 'issues/' + id)
+                    .then(function(success){
+                        deferred.resolve(success);
+                    }, function(error){
+                        deferred.reject(error);
+                    });
+
+                return deferred.promise;
+            }
+
+            function updateIssueStatus(issueId, statusId){
+                var deferred = $q.defer(),
+                    accessToken = sessionStorage["userAuth"];
+
+                $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
+                $http.put(BASE_URL + 'issues/' + issueId + '/changestatus?statusid=' + statusId)
                     .then(function(success){
                         deferred.resolve(success);
                     }, function(error){

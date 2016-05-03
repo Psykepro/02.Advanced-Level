@@ -3,13 +3,14 @@
 angular
     .module('issueTrackingSystem.issues.issueController',[])
     .controller('IssueCtrl',[
+        '$scope',
         '$routeParams',
         '$route',
         'issueService',
         'projectService',
         'identityService',
         'ModalService',
-        function($routeParams, $route, issueService, projectService, identityService, ModalService) {
+        function($scope, $routeParams, $route, issueService, projectService, identityService, ModalService) {
             var issueId = $routeParams.id,
                 self = this;
 
@@ -40,6 +41,17 @@ angular
                 });
             };
 
+            self.changeStatus = function changeStatus(statusId){
+                issueService
+                    .updateIssueStatus(issueId ,statusId)
+                    .then(function(success){
+                        console.log(success);
+                        $route.reload();
+                    }, function(error){
+                        console.log(error);
+                    })
+            };
+
             self.updateIssue = function updateIssue(editedIssue) {
                 editedIssue = issueService.formatBindingEditIssueModel(editedIssue);
 
@@ -48,8 +60,10 @@ angular
                     .then(function(success){
                         $.notify('You successfully edited the issue!', 'success');
                         // TODO : if you can't update controllers property change to use $scope \\
-                        self.currentIssue = success.data;
-                        $route.reload();
+                        $scope.$evalAsync(function(){
+                            self.currentIssue.Title = success.data.Title;
+                        });
+
                         //self.editIssue = formatEditIssue(self.currentIssue);
                     }, function(error){
                         $.notify("Editing wasn't successful!", "error");
