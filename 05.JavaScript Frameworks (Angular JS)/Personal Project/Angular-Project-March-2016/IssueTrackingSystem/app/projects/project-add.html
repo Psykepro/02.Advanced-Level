@@ -1,4 +1,4 @@
-<div class="modal fade">
+<div ng-controller="ProjectsCtrl as vm" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,35 +9,35 @@
                 <form name="projectForm">
                     <md-input-container class="input-containers">
                         <label for="name">Name</label>
-                        <input type="text" required="required" id="name" ng-model="project.Name">
+                        <input type="text" required="required" id="name" ng-model="vm.project.Name">
                     </md-input-container>
                     <md-input-container class="input-containers">
                         <label for="description">Description</label>
-                        <input type="text" required="required" id="description" ng-model="project.Description">
+                        <input type="text" required="required" id="description" ng-model="vm.project.Description">
                     </md-input-container>
                     <div class="modal-select-container">
                         <label for="leadId" class="modal-select-label">LeadId</label>
                         <select class="modal-select"
                                 required="required"
-                                ng-model="project.LeadId"
+                                ng-model="vm.project.LeadId"
                                 id="leadId" load-users></select>
                     </div>
                     <md-input-container class="input-containers">
                         <label for="project-key">ProjectKey</label>
-                        <input type="text" required="required" id="project-key" ng-model="project.ProjectKey">
+                        <input type="text" required="required" id="project-key" ng-model="vm.project.ProjectKey">
                     </md-input-container>
                     <md-input-container class="input-containers">
                         <label for="priorities">Priorities (separated by single space and comma)</label>
-                        <input type="text" required="required" id="priorities" ng-model="project.Priorities">
+                        <input type="text" required="required" id="priorities" ng-model="vm.project.Priorities">
                     </md-input-container>
                     <md-input-container class="input-containers">
                         <label for="labels">Labels (separated by single space and comma)</label>
-                        <input type="text" required="required" id="labels" ng-model="project.Labels">
+                        <input type="text" required="required" id="labels" ng-model="vm.project.Labels">
                     </md-input-container>
                 </form>
             </div>
             <div class="modal-footer">
-                <button ng-disabled="projectForm.$invalid" ng-click="addProject(project)" class="btn btn-success" data-dismiss="modal">Create Project</button>
+                <button ng-disabled="projectForm.$invalid" ng-click="vm.addProject(vm.project)" class="btn btn-success" data-dismiss="modal">Create Project</button>
             </div>
         </div>
     </div>

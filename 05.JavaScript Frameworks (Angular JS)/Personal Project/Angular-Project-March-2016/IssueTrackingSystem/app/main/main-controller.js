@@ -29,14 +29,6 @@ angular
                     controller: 'ProjectsCtrl'
                 }).then(function(modal) {
                     modal.element.modal();
-                    userService
-                        .getAllUsers()
-                        .then(function (success) {
-                            var usersSelect = $('#leadId');
-                            var fragment = generateUsersOptionsFragment(success);
-                            usersSelect.append(fragment);
-                        });
-
                 });
             };
 

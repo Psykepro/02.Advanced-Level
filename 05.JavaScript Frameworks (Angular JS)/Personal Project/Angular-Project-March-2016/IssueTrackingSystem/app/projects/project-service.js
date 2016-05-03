@@ -24,6 +24,18 @@ angular
                 var deferred = $q.defer(),
                     accessToken = sessionStorage["userAuth"];
 
+                // Formatting the project \\
+                project.Priorities = project.Priorities.split(', ').map(function (priority) {
+                    return {
+                        Name: priority
+                    }
+                });
+                project.Labels = project.Labels.split(', ').map(function (label) {
+                    return {
+                        Name: label
+                    }
+                });
+
                 $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
                 $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
                 $http.post(BASE_URL + 'projects', project).then(function (success) {

@@ -39,13 +39,10 @@ angular
                 templateUrl: 'app/user/user-change-password.html',
                 controller: 'UsersCtrl'
             })
-            .when('/projects/add', {
-                templateUrl: 'app/projects/project-add.html',
-                controller: 'ProjectsCtrl'
-            })
             .when('/projects', {
                 templateUrl: 'app/projects/projects.html',
-                controller: 'ProjectsCtrl'
+                controller: 'ProjectsCtrl',
+                controllerAs: 'vm'
             })
             .when('/projects/:id', {
                 templateUrl: 'app/projects/project-page.html',
