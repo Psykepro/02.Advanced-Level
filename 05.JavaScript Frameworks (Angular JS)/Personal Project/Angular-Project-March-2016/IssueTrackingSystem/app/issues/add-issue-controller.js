@@ -3,22 +3,22 @@
 angular
     .module('issueTrackingSystem.issues.addIssueController',[])
     .controller('AddIssueCtrl',[
-        '$scope',
         '$routeParams',
         '$rootScope',
         'projectService',
         'userService',
         'issueService',
-        function($scope, $routeParams, $rootScope, projectService, userService, issueService) {
-            var projectId = $routeParams.id;
+        function($routeParams, $rootScope, projectService, userService, issueService) {
+            var projectId = $routeParams.id,
+                self = this;
 
 
             projectService.getProjectById(projectId)
                 .then(function (success) {
-                    $scope.priorities = success.Priorities;
+                    self.priorities = success.Priorities;
                 });
 
-            $scope.addIssue = function (issue) {
+            self.addIssue = function (issue) {
                 issue.Labels = issue.Labels
                     .split(', ')
                     .map(function (issue) {
@@ -29,10 +29,12 @@ angular
                 issue.ProjectId = parseInt(projectId);
                 issue.PriorityId = parseInt(issue.PriorityId);
 
+
                 issueService
                     .addIssue(issue)
                     .then(function(success){
                         $.notify('You successfully added new issue!','success');
+                        console.log(success);
                         $rootScope.$broadcast('updateIssuesAndAssignedProjects');
                     },function(error){
                         $.notify("Issue isn't created!",'error');
