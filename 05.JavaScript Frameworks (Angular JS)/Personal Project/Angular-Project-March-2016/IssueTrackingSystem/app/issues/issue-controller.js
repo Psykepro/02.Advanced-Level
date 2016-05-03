@@ -19,15 +19,6 @@ angular
                     self.currentIssue = success.data;
                     self.isIssueAssignee = identityService.isIssueAssignee;
                     self.editIssue = issueService.formatViewEditIssueModel(self.currentIssue);
-                    self.showEditIssue = function() {
-                        ModalService.showModal({
-                            templateUrl: 'app/issues/issue-edit.html',
-                            controller: 'IssueCtrl'
-                        }).then(function(modal) {
-                            modal.element.modal();
-                        });
-                    };
-
                     projectService
                         .getProjectById(self.currentIssue.Project.Id)
                         .then(function(success){
@@ -39,6 +30,15 @@ angular
                 }, function(error){
                     $.notify("Can't find this issue!", "error");
                 });
+
+            self.showEditIssue = function() {
+                ModalService.showModal({
+                    templateUrl: 'app/issues/issue-edit.html',
+                    controller: 'IssueCtrl'
+                }).then(function(modal) {
+                    modal.element.modal();
+                });
+            };
 
             self.updateIssue = function updateIssue(editedIssue) {
                 editedIssue = issueService.formatBindingEditIssueModel(editedIssue);

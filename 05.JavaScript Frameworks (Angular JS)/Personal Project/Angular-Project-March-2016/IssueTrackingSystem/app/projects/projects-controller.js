@@ -3,17 +3,17 @@
 angular
     .module('issueTrackingSystem.projects.projectsController', [])
     .controller('ProjectsCtrl',[
-        '$rootScope',
+        '$route',
         'userService',
         'projectService',
         'Pagination',
-        function($rootScope, userService, projectService, Pagination) {
+        function($route, userService, projectService, Pagination) {
             var self = this;
 
             self.addProject = function (project) {
                 projectService.addProject(project).then(function (success) {
                     $.notify('You successfully created new project!', 'success');
-                    $rootScope.$broadcast('updateMyProjects');
+                    $route.reload();
                 }, function (error) {
                     $.notify("Project creation wasn't successful!", 'error');
                 })

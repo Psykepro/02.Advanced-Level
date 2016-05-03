@@ -60,7 +60,7 @@
                | limitTo: vm.projectsPagination.perPage" href="#/projects/{{project.Id}}"></a>
             <ul ng-if="vm.projectsPagination.numPages > 1" class="pagination">
                 <li><a href="" ng-click="vm.projectsPagination.prevPage()">&laquo;</a></li>
-                <li ng-repeat="n in [] | range: projectsPagination.numPages" ng-class="{active: n == vm.projectsPagination.page}">
+                <li ng-repeat="n in [] | range: vm.projectsPagination.numPages" ng-class="{active: n == vm.projectsPagination.page}">
                     <a href="" ng-click="vm.projectsPagination.toPageId(n)">{{n + 1}}</a>
                 </li>
                 <li><a href="" ng-click="vm.projectsPagination.nextPage()">&raquo;</a></li>
