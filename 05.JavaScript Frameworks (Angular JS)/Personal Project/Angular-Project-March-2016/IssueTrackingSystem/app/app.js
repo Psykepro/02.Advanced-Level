@@ -32,7 +32,8 @@ angular
             })
             .when('/users', {
                 templateUrl: 'app/user/users.html',
-                controller: 'UsersCtrl'
+                controller: 'UsersCtrl',
+                controllerAs: 'vm'
             })
             .when('/profile/password', {
                 templateUrl: 'app/user/user-change-password.html',
