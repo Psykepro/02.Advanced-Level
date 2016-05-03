@@ -17,7 +17,7 @@
                                 class="modal-select"
                                 required="required"
                                 load-users selected-id="{{vm.getSelectedAssigneeId()}}"
-                                ng-model="vm.editIssue.Assignee.Id"></select>
+                                ng-model="vm.editIssue.AssigneeId"></select>
                     </div>
                     <md-input-container class="input-containers">
                         <label for="due-date">Due Date</label>
@@ -28,14 +28,14 @@
                         <select required="required"
                                 id="priority"
                                 class="modal-select"
-                                ng-model="vm.editIssue.Priority.Id"
-                                load-priorities priorities="{{vm.issueProject.Priorities}}"
+                                ng-model="vm.editIssue.PriorityId"
+                                load-priorities priorities="{{vm.getPriorities()}}"
                                 selected-id="{{vm.getSelectedPriorityId()}}">
 
                         </select>
                     </div>
                     <md-input-container class="input-containers">
-                        <label for="labels">Labels</label>
+                        <label for="labels">Labels (separated by comma and single space)</label>
                         <input required="required" ng-model="vm.editIssue.Labels" required="required"  id="labels"/>
                     </md-input-container>
                     <md-input-container class="input-containers">
@@ -45,7 +45,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" ng-disabled="editIssueForm.$invalid" ng-click="vm.updateIssue(editIssue)" class="btn btn-success" data-dismiss="modal">Edit issue</button>
+                <button type="button" ng-disabled="editIssueForm.$invalid" ng-click="vm.updateIssue(vm.editIssue)" class="btn btn-success" data-dismiss="modal">Edit issue</button>
             </div>
         </div>
     </div>
