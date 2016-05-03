@@ -28,6 +28,7 @@ angular
                             fragment = generatePrioritiesOptionsFragment(priorities);
                             selectElement.appendChild(fragment);
 
+                            // Setting the selected option if it have been passed \\
                             if(id){
                                 setSelectedOption(id, selectElement);
                             }

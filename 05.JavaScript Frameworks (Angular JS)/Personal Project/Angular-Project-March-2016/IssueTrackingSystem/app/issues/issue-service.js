@@ -10,14 +10,14 @@ angular.module('issueTrackingSystem.issues.issueService',[])
             var issueService = {
                 getMyIssues: getMyIssues,
                 addIssue: addIssue,
-                getIssueById: getIssueById
+                getIssueById: getIssueById,
+                updateIssue: updateIssue
             };
 
             function getMyIssues(pageSize, pageNumber, orderBy) {
                 pageSize = pageSize || 10;
                 pageNumber = pageNumber || 1;
                 orderBy = orderBy || 'DueDate desc';
-
                 var deferred = $q.defer();
 
                 var accessToken = sessionStorage["userAuth"];
@@ -63,6 +63,21 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 return deferred.promise;
             }
 
+            function updateIssue(id, editedIssue){
+                var deferred = $q.defer(),
+                    accessToken = sessionStorage["userAuth"];
+
+                $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
+                $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
+                $http.put(BASE_URL + 'issues/' + id, editedIssue)
+                    .then(function(success){
+                        deferred.resolve(success);
+                    }, function(error){
+                        deferred.reject(error);
+                    });
+
+                return deferred.promise;
+            }
 
             return issueService;
         }]);
