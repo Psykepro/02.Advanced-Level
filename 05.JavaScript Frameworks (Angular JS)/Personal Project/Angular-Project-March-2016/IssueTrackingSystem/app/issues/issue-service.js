@@ -12,6 +12,8 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 addIssue: addIssue,
                 getIssueById: getIssueById,
                 updateIssue: updateIssue,
+                addIssueComment: addIssueComment,
+                getIssueComments: getIssueComments,
                 updateIssueStatus: updateIssueStatus,
                 formatViewEditIssueModel: formatViewEditIssueModel,
                 formatBindingEditIssueModel: formatBindingEditIssueModel
@@ -51,6 +53,35 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 return deferred.promise;
             }
 
+            function addIssueComment(id, comment){
+                var deferred = $q.defer(),
+                    accessToken = sessionStorage["userAuth"];
+
+                $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
+                $http.post(BASE_URL + 'issues/' + id + '/comments', comment)
+                    .then(function (success) {
+                        deferred.resolve(success);
+                    }, function (error) {
+                        deferred.reject(error);
+                    });
+
+                return deferred.promise;
+            }
+
+            function getIssueComments(id){
+                var deferred = $q.defer(),
+                    accessToken = sessionStorage["userAuth"];
+
+                $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
+                $http.get(BASE_URL + 'issues/' + id + '/comments')
+                    .then(function (success) {
+                        deferred.resolve(success);
+                    }, function (error) {
+                        deferred.reject(error);
+                    });
+
+                return deferred.promise;
+            }
             function getIssueById(id){
                 var deferred = $q.defer(),
                     accessToken = sessionStorage["userAuth"];

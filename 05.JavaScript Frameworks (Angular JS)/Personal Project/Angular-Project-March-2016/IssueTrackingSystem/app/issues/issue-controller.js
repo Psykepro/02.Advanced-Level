@@ -32,6 +32,14 @@ angular
                     $.notify("Can't find this issue!", "error");
                 });
 
+            issueService
+                .getIssueComments(issueId)
+                .then(function(success){
+                    self.comments = success.data;
+                }, function(error){
+                    console.log(error);
+                });
+
             self.showEditIssue = function() {
                 ModalService.showModal({
                     templateUrl: 'app/issues/issue-edit.html',
@@ -47,6 +55,16 @@ angular
                     .then(function(success){
                         console.log(success);
                         $route.reload();
+                    }, function(error){
+                        console.log(error);
+                    })
+            };
+
+            self.addComment = function addComment(comment){
+                issueService
+                    .addIssueComment(issueId, comment)
+                    .then(function(success){
+                        console.log(success);
                     }, function(error){
                         console.log(error);
                     })
