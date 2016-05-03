@@ -1,8 +1,8 @@
 'use strict';
 
 angular
-    .module('issueTrackingSystem.projects.singleProjectController', [])
-    .controller('SingleProjectCtrl',[
+    .module('issueTrackingSystem.projects.projectController', [])
+    .controller('ProjectCtrl',[
         '$routeParams',
         'ModalService',
         'identityService',

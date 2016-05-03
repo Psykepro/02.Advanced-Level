@@ -21,8 +21,9 @@ angular
         'issueTrackingSystem.components.services.labelService',
         'issueTrackingSystem.components.services.identityService',
         'issueTrackingSystem.components.services.authenticationService',
-        'issueTrackingSystem.projects.projectsController',
-        'issueTrackingSystem.projects.singleProjectController',
+        'issueTrackingSystem.projects.allProjectsController',
+        'issueTrackingSystem.projects.projectController',
+        'issueTrackingSystem.projects.addProjectController',
         'issueTrackingSystem.projects.projectService'
     ])
     .config(['$routeProvider', function($routeProvider) {
@@ -38,16 +39,17 @@ angular
             })
             .when('/profile/password', {
                 templateUrl: 'app/user/user-change-password.html',
-                controller: 'UsersCtrl'
+                controller: 'UsersCtrl',
+                controllerAs: 'vm'
             })
             .when('/projects', {
                 templateUrl: 'app/projects/projects.html',
-                controller: 'ProjectsCtrl',
+                controller: 'AllProjectsCtrl',
                 controllerAs: 'vm'
             })
             .when('/projects/:id', {
                 templateUrl: 'app/projects/project-page.html',
-                controller: 'SingleProjectCtrl',
+                controller: 'ProjectCtrl',
                 controllerAs: 'vm'
             })
             .when('/issues/:id', {
@@ -56,4 +58,4 @@ angular
                 controllerAs: 'vm'
             });
     }])
-    .constant('BASE_URL','http://softuni-issue-tracker.azurewebsites.net/');
+    .constant('BASE_URL', 'http://softuni-issue-tracker.azurewebsites.net/');
