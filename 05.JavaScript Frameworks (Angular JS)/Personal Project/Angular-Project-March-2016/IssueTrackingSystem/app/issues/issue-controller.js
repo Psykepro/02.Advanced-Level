@@ -4,11 +4,12 @@ angular
     .module('issueTrackingSystem.issues.issueController',[])
     .controller('IssueCtrl',[
         '$routeParams',
+        '$route',
         'issueService',
         'projectService',
         'identityService',
         'ModalService',
-        function($routeParams, issueService, projectService, identityService, ModalService) {
+        function($routeParams, $route, issueService, projectService, identityService, ModalService) {
             var issueId = $routeParams.id,
                 self = this;
 
@@ -47,7 +48,8 @@ angular
                     .then(function(success){
                         $.notify('You successfully edited the issue!', 'success');
                         // TODO : if you can't update controllers property change to use $scope \\
-                        self.currentIssue.Title = success.data.Title;
+                        self.currentIssue = success.data;
+                        $route.reload();
                         //self.editIssue = formatEditIssue(self.currentIssue);
                     }, function(error){
                         $.notify("Editing wasn't successful!", "error");
