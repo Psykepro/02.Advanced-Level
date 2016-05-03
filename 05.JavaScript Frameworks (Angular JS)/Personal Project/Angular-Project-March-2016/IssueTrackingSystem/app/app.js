@@ -14,6 +14,7 @@ angular
         'issueTrackingSystem.issues.issueService',
         'issueTrackingSystem.issues.issueController',
         'issueTrackingSystem.issues.addIssueController',
+        'issueTrackingSystem.issues.editIssueController',
         'issueTrackingSystem.components.filters.join',
         'issueTrackingSystem.components.directives.loadUsersDirective',
         'issueTrackingSystem.components.directives.loadPrioritiesDirective',

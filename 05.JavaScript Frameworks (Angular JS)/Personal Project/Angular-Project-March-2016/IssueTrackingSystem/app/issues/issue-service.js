@@ -15,8 +15,7 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 addIssueComment: addIssueComment,
                 getIssueComments: getIssueComments,
                 updateIssueStatus: updateIssueStatus,
-                formatViewEditIssueModel: formatViewEditIssueModel,
-                formatBindingEditIssueModel: formatBindingEditIssueModel
+                formatViewEditIssueModel: formatViewEditIssueModel
             };
 
             function getMyIssues(pageSize, pageNumber, orderBy) {
@@ -116,6 +115,7 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 var deferred = $q.defer(),
                     accessToken = sessionStorage["userAuth"];
 
+                editedIssue = formatBindingEditIssueModel(editedIssue);
                 $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
                 $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
                 $http.put(BASE_URL + 'issues/' + id, editedIssue)

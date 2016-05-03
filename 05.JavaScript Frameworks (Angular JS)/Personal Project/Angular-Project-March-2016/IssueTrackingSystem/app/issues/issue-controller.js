@@ -19,7 +19,6 @@ angular
                 .then(function(success){
                     self.currentIssue = success.data;
                     self.isIssueAssignee = identityService.isIssueAssignee;
-                    self.editIssue = issueService.formatViewEditIssueModel(self.currentIssue);
                     projectService
                         .getProjectById(self.currentIssue.Project.Id)
                         .then(function(success){
@@ -43,7 +42,7 @@ angular
             self.showEditIssue = function() {
                 ModalService.showModal({
                     templateUrl: 'app/issues/issue-edit.html',
-                    controller: 'IssueCtrl'
+                    controller: 'EditIssueCtrl'
                 }).then(function(modal) {
                     modal.element.modal();
                 });
@@ -53,10 +52,9 @@ angular
                 issueService
                     .updateIssueStatus(issueId ,statusId)
                     .then(function(success){
-                        console.log(success);
                         $route.reload();
                     }, function(error){
-                        console.log(error);
+                        $.notify('Some error occured when tried to change the status!', 'error');
                     })
             };
 
@@ -67,24 +65,6 @@ angular
                         console.log(success);
                     }, function(error){
                         console.log(error);
-                    })
-            };
-
-            self.updateIssue = function updateIssue(editedIssue) {
-                editedIssue = issueService.formatBindingEditIssueModel(editedIssue);
-
-                issueService
-                    .updateIssue(issueId, editedIssue)
-                    .then(function(success){
-                        $.notify('You successfully edited the issue!', 'success');
-                        // TODO : if you can't update controllers property change to use $scope \\
-                        $scope.$evalAsync(function(){
-                            self.currentIssue.Title = success.data.Title;
-                        });
-
-                        //self.editIssue = formatEditIssue(self.currentIssue);
-                    }, function(error){
-                        $.notify("Editing wasn't successful!", "error");
                     })
             };
         }]);
