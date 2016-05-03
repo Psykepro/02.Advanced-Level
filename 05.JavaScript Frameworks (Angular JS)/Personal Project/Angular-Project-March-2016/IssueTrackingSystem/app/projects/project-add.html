@@ -17,18 +17,21 @@
                     </md-input-container>
                     <div class="modal-select-container">
                         <label for="leadId" class="modal-select-label">LeadId</label>
-                        <select class="modal-select" required="required" ng-model="project.LeadId" id="leadId"></select>
+                        <select class="modal-select"
+                                required="required"
+                                ng-model="project.LeadId"
+                                id="leadId" load-users></select>
                     </div>
                     <md-input-container class="input-containers">
                         <label for="project-key">ProjectKey</label>
                         <input type="text" required="required" id="project-key" ng-model="project.ProjectKey">
                     </md-input-container>
                     <md-input-container class="input-containers">
-                        <label for="priorities">Priorities (separated by comma)</label>
+                        <label for="priorities">Priorities (separated by single space and comma)</label>
                         <input type="text" required="required" id="priorities" ng-model="project.Priorities">
                     </md-input-container>
                     <md-input-container class="input-containers">
-                        <label for="labels">Labels (separated by comma)</label>
+                        <label for="labels">Labels (separated by single space and comma)</label>
                         <input type="text" required="required" id="labels" ng-model="project.Labels">
                     </md-input-container>
                 </form>
