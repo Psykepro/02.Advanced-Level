@@ -11,6 +11,8 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 issueComments;
 
             var issueService = {
+                initCommentsByIssueId: initCommentsByIssueId,
+                updateCommentsByIssueId: updateCommentsByIssueId,
                 initMyIssues: initMyIssues,
                 updateMyIssues: updateMyIssues,
                 initCurrentIssueById: initCurrentIssueById,

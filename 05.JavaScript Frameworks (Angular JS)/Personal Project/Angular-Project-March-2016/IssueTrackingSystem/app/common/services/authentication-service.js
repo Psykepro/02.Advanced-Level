@@ -28,7 +28,6 @@ angular.module('issueTrackingSystem.common.services.authenticationService', [])
 
             function loginUser(user) {
                 var deferred = $q.defer();
-                //TODO : change this with Content-Type application/json
                 var request = {
                     method: 'POST',
                     url: BASE_URL + 'api/Token',

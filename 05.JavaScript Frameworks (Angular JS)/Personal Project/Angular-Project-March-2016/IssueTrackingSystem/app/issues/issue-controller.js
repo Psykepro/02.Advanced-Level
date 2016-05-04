@@ -19,14 +19,6 @@ angular
             //////////
             init();
 
-            issueService
-                .getIssueComments(issueId)
-                .then(function(success){
-                    self.comments = success;
-                }, function(error){
-                    $.notify('Some error occurred when tried to get the comments!', 'error');
-                });
-
             self.showEditIssue = function() {
                 ModalService.showModal({
                     templateUrl: 'app/issues/issue-edit.html',
@@ -50,12 +42,12 @@ angular
                 issueService
                     .addIssueComment(issueId, comment)
                     .then(function(success){
-                        console.log(success);
+                        issueService.updateCommentsByIssueId(issueId);
+                        $.notify('You successfully added new comment!', 'success');
                     }, function(error){
-                        console.log(error);
+                        $.notify("You didn't succeed to add new comment!", 'error');
                     })
             };
-
 
             function init(){
                 self.isIssueAssignee = identityService.isIssueAssignee;
@@ -81,6 +73,13 @@ angular
                         }, function(error){
                             $.notify("Can't find this issue!", "error");
                         });
+                    issueService
+                        .initCommentsByIssueId(issueId)
+                        .then(function(success){
+                            self.issueComments = success;
+                        }, function(error){
+                            $.notify('Some error occurred when tried to get the comments!', 'error');
+                        })
                 }
             }
         }]);
