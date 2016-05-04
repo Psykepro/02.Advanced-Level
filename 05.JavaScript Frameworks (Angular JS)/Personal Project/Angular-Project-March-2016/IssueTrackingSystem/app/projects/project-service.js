@@ -4,11 +4,9 @@ angular
     .module('issueTrackingSystem.projects.projectService', [])
     .factory('projectService', [
         '$q',
-        '$routeParams',
-        '$rootScope',
         '$http',
         'BASE_URL',
-        function ProjectService($q, $routeParams, $rootScope, $http, BASE_URL) {
+        function ProjectService($q, $http, BASE_URL) {
 
             var projectService = {
                 projects: [],
@@ -21,25 +19,15 @@ angular
                 updateProject: updateProject,
                 extractAssignedProjectsFromIssues: extractAssignedProjectsFromIssues,
                 formatViewEditProjectModel: formatViewEditProjectModel,
-                formatBindingEditProjectModel: formatBindingEditProjectModel
+                formatBindingProjectModel: formatBindingProjectModel
             };
+
 
             function addProject(project) {
                 var deferred = $q.defer(),
                     accessToken = sessionStorage["userAuth"];
 
-                // Formatting the project \\
-                project.Priorities = project.Priorities.split(', ').map(function (priority) {
-                    return {
-                        Name: priority
-                    }
-                });
-                project.Labels = project.Labels.split(', ').map(function (label) {
-                    return {
-                        Name: label
-                    }
-                });
-
+                project = formatBindingProjectModel(project);
                 $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
                 $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
                 $http.post(BASE_URL + 'projects', project).then(function (success) {
@@ -119,7 +107,7 @@ angular
                 return deferred.promise;
             }
 
-            function formatBindingEditProjectModel(project){
+            function formatBindingProjectModel(project){
                 project.Priorities = project.Priorities
                     .split(', ')
                     .map(function (priority) {
@@ -169,7 +157,6 @@ angular
 
                 return deferred.promise;
             }
-
 
             return projectService;
         }]);

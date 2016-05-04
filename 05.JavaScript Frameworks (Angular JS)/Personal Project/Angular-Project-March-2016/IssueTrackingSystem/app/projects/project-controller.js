@@ -3,17 +3,19 @@
 angular
     .module('issueTrackingSystem.projects.projectController', [])
     .controller('ProjectCtrl',[
+        '$scope',
+        '$rootScope',
         '$routeParams',
         'ModalService',
         'identityService',
         'projectService',
-        function($routeParams, ModalService, identityService, projectService) {
+        function($scope, $rootScope, $routeParams, ModalService, identityService, projectService) {
             var currentId = parseInt($routeParams.id),
                 self = this;
 
-             //////////////////
-            // Init Project //
-           //////////////////
+            //////////
+            // Init //
+            //////////
             init();
 
             self.showAddIssue = function () {
@@ -25,8 +27,6 @@ angular
                 });
             };
 
-            self.isAdmin = identityService.isAdmin;
-
             self.showEditProject = function () {
                 ModalService.showModal({
                     templateUrl: 'app/projects/project-edit.html',
@@ -36,24 +36,22 @@ angular
                 });
             };
 
-
-            function init(){
-                  ////////////////////////////////////////////////////////
-                 // Check if need to update the currentIssue reference //
-                ////////////////////////////////////////////////////////
-                if(!projectService.currentProject || projectService.currentProject.Id !== currentId) {
+            function init() {
+                self.isAdmin = identityService.isAdmin;
+                //////////////////////////////////////////////////////////
+                // Check if need to update the currentProject reference //
+                //////////////////////////////////////////////////////////
+                if (!projectService.currentProject || projectService.currentProject.Id !== currentId) {
                     projectService.getProjectById(currentId)
                         .then(function (success) {
                             self.currentProject = projectService.currentProject;
-                            console.log(projectService.currentProject);
-                            console.log('call project-ctrl');
                         }, function (error) {
                             console.log(error);
                         });
-                }else{
-                    self.currentProject = projectService.currentProject;
-                    console.log('already inited project-ctrl');
+                } else {
+                    if (!self.currentProject) {
+                        self.currentProject = projectService.currentProject;
+                    }
                 }
             }
-
         }]);
