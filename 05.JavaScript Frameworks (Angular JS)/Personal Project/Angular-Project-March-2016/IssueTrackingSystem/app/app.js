@@ -23,6 +23,7 @@ angular
         'issueTrackingSystem.components.services.authenticationService',
         'issueTrackingSystem.projects.allProjectsController',
         'issueTrackingSystem.projects.projectController',
+        'issueTrackingSystem.projects.editProjectController',
         'issueTrackingSystem.projects.addProjectController',
         'issueTrackingSystem.projects.projectService'
     ])

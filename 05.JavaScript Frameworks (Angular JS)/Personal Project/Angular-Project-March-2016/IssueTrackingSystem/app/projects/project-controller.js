@@ -8,50 +8,52 @@ angular
         'identityService',
         'projectService',
         function($routeParams, ModalService, identityService, projectService) {
-            var currentId = $routeParams.id,
+            var currentId = parseInt($routeParams.id),
                 self = this;
 
-            projectService.getProjectById(currentId)
-                .then(function (success) {
-                    self.currentProject = success;
-                    self.editProject = projectService.formatViewEditProjectModel(success);
-                }, function (error) {
-                    console.log(error);
-                });
+             //////////////////
+            // Init Project //
+           //////////////////
+            init();
 
-
-            self.showAddIssue = function() {
+            self.showAddIssue = function () {
                 ModalService.showModal({
                     templateUrl: 'app/projects/project-add.html',
                     controller: 'AddIssueCtrl'
-                }).then(function(modal) {
+                }).then(function (modal) {
                     modal.element.modal();
                 });
             };
-            
+
             self.isAdmin = identityService.isAdmin;
 
-            self.showEditProject = function() {
+            self.showEditProject = function () {
                 ModalService.showModal({
                     templateUrl: 'app/projects/project-edit.html',
-                    controller: 'SingleProjectCtrl'
-                }).then(function(modal) {
+                    controller: 'EditProjectCtrl'
+                }).then(function (modal) {
                     modal.element.modal();
                 });
             };
 
-            self.updateProject = function updateProject(project) {
-                // Formatting the object
-                project = projectService.formatBindingEditProjectModel(project);
-                // Updating
-                projectService
-                    .updateProject(currentId, project)
-                    .then(function (success) {
-                        $.notify('You successfully edited the project!', 'success');
-                        self.currentProject.Name = success.data.Name;
-                    }, function (error) {
-                        $.notify('You added invalid information!', 'error');
-                    });
-     
-            };
+
+            function init(){
+                  ////////////////////////////////////////////////////////
+                 // Check if need to update the currentIssue reference //
+                ////////////////////////////////////////////////////////
+                if(!projectService.currentProject || projectService.currentProject.Id !== currentId) {
+                    projectService.getProjectById(currentId)
+                        .then(function (success) {
+                            self.currentProject = projectService.currentProject;
+                            console.log(projectService.currentProject);
+                            console.log('call project-ctrl');
+                        }, function (error) {
+                            console.log(error);
+                        });
+                }else{
+                    self.currentProject = projectService.currentProject;
+                    console.log('already inited project-ctrl');
+                }
+            }
+
         }]);
