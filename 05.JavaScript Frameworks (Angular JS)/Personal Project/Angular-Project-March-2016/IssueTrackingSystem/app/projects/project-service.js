@@ -3,12 +3,16 @@
 angular
     .module('issueTrackingSystem.projects.projectService', [])
     .factory('projectService', [
-        '$http',
         '$q',
+        '$routeParams',
+        '$rootScope',
+        '$http',
         'BASE_URL',
-        function ProjectService($http, $q, BASE_URL) {
+        function ProjectService($q, $routeParams, $rootScope, $http, BASE_URL) {
 
             var projectService = {
+                projects: [],
+                currentProject: {},
                 addProject: addProject,
                 getAllProjects: getAllProjects,
                 getIssuesByProjectId: getIssuesByProjectId,
@@ -71,6 +75,7 @@ angular
                 $http.get(BASE_URL + 'projects/')
                     .then(function (success) {
                         deferred.resolve(success.data);
+                        projectService.projects = success.data;
                     }, function (error) {
                         deferred.reject(error);
                     });
@@ -134,19 +139,19 @@ angular
                 return project;
             }
 
-            function formatViewEditProjectModel(project){
-                project.Labels = project.Labels
+            function formatViewEditProjectModel(project) {
+                var editProject = project;
+                editProject.Labels = project.Labels
                     .map(function (labelObj) {
                         return labelObj.Name;
-                    })
-                    .join(', ');
-                project.Priorities = project.Priorities
+                    }).join(', ');
+
+                editProject.Priorities = project.Priorities
                     .map(function (priorityObj) {
                         return priorityObj.Name;
-                    })
-                    .join(', ');
+                    }).join(', ');
 
-                return project;
+                return editProject;
             }
 
             function getProjectById(id) {
@@ -157,6 +162,7 @@ angular
                 $http.get(BASE_URL + 'projects/' + id)
                     .then(function (success) {
                         deferred.resolve(success.data);
+                        projectService.currentProject = success.data;
                     }, function (error) {
                         deferred.reject(error);
                     });
