@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-    .module('issueTrackingSystem.users.adminService', [])
+    .module('issueTrackingSystem.user.adminService', [])
     .factory('adminService',[
         '$http',
         '$q',

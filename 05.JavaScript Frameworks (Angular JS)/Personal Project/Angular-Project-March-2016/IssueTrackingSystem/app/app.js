@@ -6,26 +6,11 @@ angular
         'ngMaterial',
         'simplePagination',
         'angularModalService',
-        'issueTrackingSystem.home.homeController',
-        'issueTrackingSystem.home.dashboardController',
-        'issueTrackingSystem.user.userService',
-        'issueTrackingSystem.users.adminService',
-        'issueTrackingSystem.users.usersController',
-        'issueTrackingSystem.issues.issueService',
-        'issueTrackingSystem.issues.issueController',
-        'issueTrackingSystem.issues.addIssueController',
-        'issueTrackingSystem.issues.editIssueController',
-        'issueTrackingSystem.common.filters.join',
-        'issueTrackingSystem.common.directives.loadUsersDirective',
-        'issueTrackingSystem.common.directives.loadPrioritiesDirective',
-        'issueTrackingSystem.common.services.labelService',
-        'issueTrackingSystem.common.services.identityService',
-        'issueTrackingSystem.common.services.authenticationService',
-        'issueTrackingSystem.projects.allProjectsController',
-        'issueTrackingSystem.projects.projectController',
-        'issueTrackingSystem.projects.editProjectController',
-        'issueTrackingSystem.projects.addProjectController',
-        'issueTrackingSystem.projects.projectService'
+        'issueTrackingSystem.home',
+        'issueTrackingSystem.user',
+        'issueTrackingSystem.issues',
+        'issueTrackingSystem.common',
+        'issueTrackingSystem.projects'
     ])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider
