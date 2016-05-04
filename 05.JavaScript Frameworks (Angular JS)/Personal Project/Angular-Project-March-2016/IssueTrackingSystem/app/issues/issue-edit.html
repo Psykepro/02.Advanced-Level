@@ -16,8 +16,8 @@
                         <select id="users-issue-edit"
                                 class="modal-select"
                                 required="required"
-                                load-users selected-id="{{vm.editIssue.AssigneeId}}"
-                                ng-model="vm.editIssue.AssigneeId"></select>
+                                ng-model="vm.editIssue.Assignee.Id"
+                                load-users selected-id="{{vm.editIssue.Assignee.Id}}"></select>
                     </div>
                     <md-input-container class="input-containers">
                         <label for="due-date">Due Date</label>
@@ -25,22 +25,21 @@
                     </md-input-container>
                     <div class="modal-select-container">
                         <label for="priority" class="modal-select-label">Priority</label>
-                        <select required="required"
+                        <select load-priorities
                                 id="priority"
                                 class="modal-select"
-                                ng-model="vm.editIssue.PriorityId"
-                                load-priorities priorities="{{vm.issueProject.Priorities}}"
-                                selected-id="{{vm.editIssue.PriorityId}}">
-
-                        </select>
+                                required="required"
+                                ng-model="vm.editIssue.Priority.Id"
+                                selected-id="{{vm.editIssue.Priority.Id}}"
+                                priorities="{{vm.issueProject.Priorities}}"></select>
                     </div>
                     <md-input-container class="input-containers">
                         <label for="labels">Labels (separated by comma and single space)</label>
-                        <input required="required" ng-model="vm.editIssue.Labels" required="required"  id="labels"/>
+                        <input required="required" ng-model="vm.editIssue.Labels" required="required" id="labels"/>
                     </md-input-container>
                     <md-input-container class="input-containers">
                         <label for="description">Description</label>
-                        <input required="required" type="text" ng-model="vm.editIssue.Description"  id="description" />
+                        <input required="required" type="text" ng-model="vm.editIssue.Description" id="description" />
                     </md-input-container>
                 </form>
             </div>

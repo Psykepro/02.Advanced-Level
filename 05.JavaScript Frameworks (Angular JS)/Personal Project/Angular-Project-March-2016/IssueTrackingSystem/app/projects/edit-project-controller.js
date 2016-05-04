@@ -43,7 +43,7 @@ angular
                 //////////////////////////////////////////////////////////
                 if (!self.editProject || self.editProject.Id !== currentId) {
                     projectService
-                        .initCurrentProject(currentId)
+                        .initCurrentProjectById(currentId)
                         .then(function (success) {
                             self.editProject = projectService.formatViewEditProjectModel(angular.copy(success));
                         })

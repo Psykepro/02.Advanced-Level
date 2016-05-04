@@ -3,7 +3,6 @@
 <p ng-bind="vm.currentProject.Name"></p>
 <h3>Description:</h3>
 <p ng-bind="vm.currentProject.Description"></p>
-
 <div class="issues">
     <div class="issue-container" ng-repeat="issue in vm.issues">
         <a href="#/issues/{{issue.Id}}">{{issue.Title}}</a>

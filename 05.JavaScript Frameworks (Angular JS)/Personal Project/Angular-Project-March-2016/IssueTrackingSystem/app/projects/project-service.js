@@ -13,7 +13,7 @@ angular
             var projectService = {
                 updateProjects: updateProjects,
                 initProjects: initProjects,
-                initCurrentProject: initCurrentProject,
+                initCurrentProjectById: initCurrentProjectById,
                 updateCurrentProject: updateCurrentProject,
                 addProject: addProject,
                 getAllProjects: getAllProjects,
@@ -30,9 +30,7 @@ angular
                 projectService
                     .getAllProjects()
                     .then(function (success) {
-                        console.log(success);
                         projects.ShallowCopy(success);
-                        console.log(projects);
                     });
             }
 
@@ -59,7 +57,7 @@ angular
                 currentProject.ShallowCopy(updatedProject);
             }
 
-            function initCurrentProject(id){
+            function initCurrentProjectById(id){
                 var deferred = $q.defer();
 
                 if(!currentProject || currentProject.Id !== id){

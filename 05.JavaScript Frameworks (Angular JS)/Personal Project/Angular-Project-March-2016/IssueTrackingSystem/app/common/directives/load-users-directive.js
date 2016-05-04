@@ -1,44 +1,38 @@
 'use strict';
 
 angular
-    .module('issueTrackingSystem.components.directives.loadPrioritiesDirective', [])
-    .directive('loadPriorities', [function loadPriorities() {
+    .module('issueTrackingSystem.common.directives.loadUsersDirective', [])
+    .directive('loadUsers', [
+        'userService',
+        function loadUsers(userService) {
             return {
                 restrict: 'A',
                 scope: {
-                    selectedId: '@',
-                    priorities: '@'
+                    selectedId: '@'
                 },
                 link: function (scope, element, attributes) {
                     var fragment,
                         selectElement,
-                        priorities,
                         id;
-
                     attributes.$observe('selectedId', function (value) {
                         if (value) {
                             id = value;
                         }
                     });
 
-                    attributes.$observe('priorities', function (value) {
-                        if (value) {
+                    userService
+                        .getAllUsers()
+                        .then(function (success) {
+                            scope.users = success;
+                            fragment = generateUsersOptionsFragment(scope.users);
                             selectElement = element[0];
-                            priorities = eval(value);
-                            fragment = generatePrioritiesOptionsFragment(priorities);
                             selectElement.appendChild(fragment);
 
-                            // Setting the selected option if it have been passed \\
-                            if(id){
+                            // Set the selected lead id if it is passed
+                            if (id) {
                                 setSelectedOption(id, selectElement);
                             }
-                        }
-                    });
-
-
-
-
-
+                        });
                 }
             };
         }]);

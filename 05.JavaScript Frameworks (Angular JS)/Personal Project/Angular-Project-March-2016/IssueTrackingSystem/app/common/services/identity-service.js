@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('issueTrackingSystem.components.services.identityService',[])
+angular.module('issueTrackingSystem.common.services.identityService',[])
     .factory('identityService',[
         function identity() {
             var identity = {
@@ -29,11 +29,17 @@ angular.module('issueTrackingSystem.components.services.identityService',[])
             }
 
             function isProjectLeader(project) {
+                if(!project){
+                    return;
+                }
                 var userId = sessionStorage['userId'];
                 return project.Lead.Id === userId;
             }
 
             function isIssueAssignee(issue){
+                if(!issue){
+                    return;
+                }
                 var userId = sessionStorage['userId'];
                 return issue.Assignee.Id === userId;
             }

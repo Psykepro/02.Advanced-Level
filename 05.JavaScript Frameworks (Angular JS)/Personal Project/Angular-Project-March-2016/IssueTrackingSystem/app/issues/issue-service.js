@@ -7,12 +7,13 @@ angular.module('issueTrackingSystem.issues.issueService',[])
         'BASE_URL',
         function issueService($http, $q, BASE_URL) {
             var myIssues,
-                currentIssue;
+                currentIssue,
+                issueComments;
 
             var issueService = {
                 initMyIssues: initMyIssues,
                 updateMyIssues: updateMyIssues,
-                initCurrentIssue: initCurrentIssue,
+                initCurrentIssueById: initCurrentIssueById,
                 updateCurrentIssue: updateCurrentIssue,
                 getMyIssues: getMyIssues,
                 addIssue: addIssue,
@@ -24,6 +25,32 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 formatViewEditIssueModel: formatViewEditIssueModel
             };
 
+            function updateCommentsByIssueId(id) {
+                issueService
+                    .getIssueComments(id)
+                    .then(function (success) {
+                        issueComments.ShallowCopy(success);
+                    });
+            }
+
+            function initCommentsByIssueId(id) {
+                var deferred = $q.defer();
+
+                if (!issueComments) {
+                    issueService
+                        .getIssueComments(id)
+                        .then(function (success) {
+                            issueComments = success;
+                            deferred.resolve(issueComments);
+                        }, function (error) {
+                            deferred.reject(error);
+                        });
+                } else {
+                    deferred.resolve(issueComments);
+                }
+
+                return deferred.promise;
+            }
 
             function updateMyIssues() {
                 issueService
@@ -56,7 +83,7 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 currentIssue.ShallowCopy(updatedIssue);
             }
 
-            function initCurrentIssue(id) {
+            function initCurrentIssueById(id) {
                 var deferred = $q.defer();
 
                 if (!currentIssue || currentIssue.Id !== id) {
@@ -69,7 +96,7 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                             deferred.reject(error);
                         });
                 } else {
-                    currentIssue.resolve(currentIssue);
+                    deferred.resolve(currentIssue);
                 }
 
                 return deferred.promise;
@@ -131,7 +158,7 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
                 $http.get(BASE_URL + 'issues/' + id + '/comments')
                     .then(function (success) {
-                        deferred.resolve(success);
+                        deferred.resolve(success.data);
                     }, function (error) {
                         deferred.reject(error);
                     });
@@ -146,8 +173,7 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
                 $http.get(BASE_URL + 'issues/' + id)
                     .then(function (success) {
-                        issueService.currentIssue = success.data;
-                        deferred.resolve(success);
+                        deferred.resolve(success.data);
                     }, function (error) {
                         deferred.reject(error);
                     });
@@ -189,8 +215,6 @@ angular.module('issueTrackingSystem.issues.issueService',[])
 
             function formatViewEditIssueModel(issue) {
                 issue.DueDate = new Date(issue.DueDate);
-                issue.AssigneeId = issue.Assignee.Id;
-                issue.PriorityId = issue.Priority.Id;
                 issue.Labels = issue.Labels.map(function (labelObj) {
                     return labelObj.Name;
                 }).join(', ');
@@ -199,6 +223,8 @@ angular.module('issueTrackingSystem.issues.issueService',[])
             }
 
             function formatBindingEditIssueModel(issue) {
+                issue.AssigneeId = issue.Assignee.Id;
+                issue.PriorityId = issue.Priority.Id;
                 issue.Labels = issue.Labels
                     .split(', ')
                     .map(function (label) {

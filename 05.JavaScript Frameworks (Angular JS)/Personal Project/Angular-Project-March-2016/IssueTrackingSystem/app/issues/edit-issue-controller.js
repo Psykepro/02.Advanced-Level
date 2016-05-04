@@ -9,35 +9,47 @@ angular
         'identityService',
         'issueService',
         function($route, $routeParams, projectService, identityService, issueService) {
-            var issueId = $routeParams.id,
+            var issueId = parseInt($routeParams.id),
                 self = this;
 
-            issueService
-                .getIssueById(issueId)
-                .then(function (success) {
-                    self.isIssueAssignee = identityService.isIssueAssignee;
-                    self.editIssue = issueService.formatViewEditIssueModel(success.data);
-                    projectService
-                        .getProjectById(self.editIssue.Project.Id)
-                        .then(function (success) {
-                            self.issueProject = success;
-                            self.isProjectLeader = identityService.isProjectLeader;
-                        }, function (error) {
-                            console.log(error);
-                        });
-                }, function (error) {
-                    $.notify("Can't find this issue!", "error");
-                });
-
+            //////////
+            // Init //
+            //////////
+            init();
 
             self.updateIssue = function updateIssue(editedIssue) {
                 issueService
                     .updateIssue(issueId, editedIssue)
                     .then(function (success) {
+                        issueService.updateCurrentIssue(success.data);
+                        issueService.updateMyIssues();
                         $.notify('You successfully edited the issue!', 'success');
-                        $route.reload();
                     }, function (error) {
                         $.notify("Editing wasn't successful!", "error");
                     })
             };
+
+            function init() {
+                self.isIssueAssignee = identityService.isIssueAssignee;
+                self.isProjectLeader = identityService.isProjectLeader;
+                //////////////////////////////////////////////////////////
+                // Check if need to update the currentProject reference //
+                //////////////////////////////////////////////////////////
+                if (!self.editIssue || self.editIssue.Id !== issueId) {
+                    issueService
+                        .initCurrentIssueById(issueId)
+                        .then(function (success) {
+                            self.editIssue = issueService.formatViewEditIssueModel(angular.copy(success));
+                            projectService
+                                .initCurrentProjectById(self.editIssue.Project.Id)
+                                .then(function(success){
+                                    self.issueProject = success;
+                                }, function (error) {
+                                    $.notify("Can't find this issue's project!", "error");
+                                })
+                        }, function (error) {
+                            $.notify("Can't find this issue!", "error");
+                        })
+                }
+            }
         }]);

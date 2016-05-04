@@ -4,12 +4,11 @@ angular
     .module('issueTrackingSystem.projects.projectController', [])
     .controller('ProjectCtrl',[
         '$scope',
-        '$rootScope',
         '$routeParams',
         'ModalService',
         'identityService',
         'projectService',
-        function($scope, $rootScope, $routeParams, ModalService, identityService, projectService) {
+        function($scope, $routeParams, ModalService, identityService, projectService) {
             var currentId = parseInt($routeParams.id),
                 self = this;
 
@@ -43,7 +42,7 @@ angular
                 //////////////////////////////////////////////////////////
                 if (!self.currentProject || self.currentProject.Id !== currentId) {
                     projectService
-                        .initCurrentProject(currentId)
+                        .initCurrentProjectById(currentId)
                         .then(function(success){
                             self.currentProject = success;
                         })

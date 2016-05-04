@@ -11,32 +11,20 @@ angular
         'identityService',
         'ModalService',
         function($scope, $routeParams, $route, issueService, projectService, identityService, ModalService) {
-            var issueId = $routeParams.id,
-                self = this;
+            var issueId = parseInt($routeParams.id);
+            var self = this;
 
-            issueService
-                .getIssueById(issueId)
-                .then(function(success){
-                    self.currentIssue = success.data;
-                    self.isIssueAssignee = identityService.isIssueAssignee;
-                    projectService
-                        .getProjectById(self.currentIssue.Project.Id)
-                        .then(function(success){
-                            self.issueProject = success;
-                            self.isProjectLeader = identityService.isProjectLeader;
-                        }, function(error){
-                            console.log(error);
-                        });
-                }, function(error){
-                    $.notify("Can't find this issue!", "error");
-                });
+            //////////
+            // Init //
+            //////////
+            init();
 
             issueService
                 .getIssueComments(issueId)
                 .then(function(success){
-                    self.comments = success.data;
+                    self.comments = success;
                 }, function(error){
-                    console.log(error);
+                    $.notify('Some error occurred when tried to get the comments!', 'error');
                 });
 
             self.showEditIssue = function() {
@@ -52,9 +40,9 @@ angular
                 issueService
                     .updateIssueStatus(issueId ,statusId)
                     .then(function(success){
-                        $route.reload();
+
                     }, function(error){
-                        $.notify('Some error occured when tried to change the status!', 'error');
+                        $.notify('Some error occurred when tried to change the status!', 'error');
                     })
             };
 
@@ -67,5 +55,33 @@ angular
                         console.log(error);
                     })
             };
+
+
+            function init(){
+                self.isIssueAssignee = identityService.isIssueAssignee;
+                self.isProjectLeader = identityService.isProjectLeader;
+
+                ////////////////////////////////////////////////////////
+                // Check if need to update the currentIssue reference //
+                ////////////////////////////////////////////////////////
+                if(!self.currentIssue || self.currentIssue.Id !== issueId){
+                    issueService
+                        .initCurrentIssueById(issueId)
+                        .then(function(success){
+                            self.currentIssue = success;
+                            if(!issueService.issueProject || issueService.issueProject.Id !== self.currentIssue.Project.Id){
+                                projectService
+                                    .initCurrentProjectById(self.currentIssue.Project.Id)
+                                    .then(function(success){
+                                        self.issueProject = success;
+                                    }, function(error){
+                                        $.notify("Can't find this issue's project!", "error");
+                                    });
+                            }
+                        }, function(error){
+                            $.notify("Can't find this issue!", "error");
+                        });
+                }
+            }
         }]);
 

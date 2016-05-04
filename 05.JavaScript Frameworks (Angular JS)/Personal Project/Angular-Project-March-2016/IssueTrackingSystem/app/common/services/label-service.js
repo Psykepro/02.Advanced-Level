@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('issueTrackingSystem.components.services.labelService',[])
+angular.module('issueTrackingSystem.common.services.labelService',[])
     .factory('labelService',[
         '$q',
         '$http',

@@ -1,5 +1,6 @@
 function generateUsersOptionsFragment(users){
     var fragment = document.createDocumentFragment();
+
     $.each(users, function () {
         $("<option />").val(this.Id).text(this.Username).appendTo(fragment);
     });
