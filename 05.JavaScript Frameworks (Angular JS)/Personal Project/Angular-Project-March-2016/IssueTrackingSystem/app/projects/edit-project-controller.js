@@ -30,7 +30,7 @@ angular
                         /////////////////////////////////////////////////
                         // Update properties currentProject reference //
                         /////////////////////////////////////////////////
-                        projectService.currentProject.ShallowCopy(success.data);
+                        projectService.updateCurrentProjectProperties(success.data);
                     }, function (error) {
                         $.notify('You added invalid information!', 'error');
                     });
@@ -41,17 +41,12 @@ angular
                 //////////////////////////////////////////////////////////
                 // Check if need to update the currentProject reference //
                 //////////////////////////////////////////////////////////
-                if (!projectService.currentProject || projectService.currentProject.Id !== currentId) {
-                    projectService.getProjectById(currentId)
+                if (!self.editProject || self.editProject.Id !== currentId) {
+                    projectService
+                        .getCurrentProject(currentId)
                         .then(function (success) {
-                            self.editProject = projectService.formatViewEditProjectModel(angular.copy(projectService.currentProject));
-                        }, function (error) {
-                            console.log(error);
-                        });
-                } else {
-                    if (!self.editProject) {
-                        self.editProject = projectService.formatViewEditProjectModel(angular.copy(projectService.currentProject));
-                    }
+                            self.editProject = projectService.formatViewEditProjectModel(angular.copy(success));
+                        })
                 }
             }
         }]);

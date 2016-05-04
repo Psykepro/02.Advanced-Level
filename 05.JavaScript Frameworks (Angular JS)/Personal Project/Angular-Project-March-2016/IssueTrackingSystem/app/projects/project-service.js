@@ -7,10 +7,12 @@ angular
         '$http',
         'BASE_URL',
         function ProjectService($q, $http, BASE_URL) {
+            var currentProject;
 
             var projectService = {
                 projects: [],
-                currentProject: {},
+                getCurrentProject: getCurrentProject,
+                updateCurrentProjectProperties: updateCurrentProjectProperties,
                 addProject: addProject,
                 getAllProjects: getAllProjects,
                 getIssuesByProjectId: getIssuesByProjectId,
@@ -21,6 +23,30 @@ angular
                 formatViewEditProjectModel: formatViewEditProjectModel,
                 formatBindingProjectModel: formatBindingProjectModel
             };
+
+
+            function updateCurrentProjectProperties(updatedProject){
+                currentProject.ShallowCopy(updatedProject);
+            }
+
+            function getCurrentProject(id){
+                var deferred = $q.defer();
+
+                if(!currentProject || currentProject.Id !== id){
+                    projectService
+                        .getProjectById(id)
+                        .then(function (success) {
+                            currentProject = success;
+                            deferred.resolve(currentProject);
+                        }, function(error){
+                            deferred.reject(error);
+                        });
+                }else{
+                    deferred.resolve(currentProject);
+                }
+
+                return deferred.promise;
+            }
 
 
             function addProject(project) {
@@ -150,7 +176,6 @@ angular
                 $http.get(BASE_URL + 'projects/' + id)
                     .then(function (success) {
                         deferred.resolve(success.data);
-                        projectService.currentProject = success.data;
                     }, function (error) {
                         deferred.reject(error);
                     });

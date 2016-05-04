@@ -41,17 +41,12 @@ angular
                 //////////////////////////////////////////////////////////
                 // Check if need to update the currentProject reference //
                 //////////////////////////////////////////////////////////
-                if (!projectService.currentProject || projectService.currentProject.Id !== currentId) {
-                    projectService.getProjectById(currentId)
-                        .then(function (success) {
-                            self.currentProject = projectService.currentProject;
-                        }, function (error) {
-                            console.log(error);
-                        });
-                } else {
-                    if (!self.currentProject) {
-                        self.currentProject = projectService.currentProject;
-                    }
+                if (!self.currentProject || self.currentProject.Id !== currentId) {
+                    projectService
+                        .getCurrentProject(currentId)
+                        .then(function(success){
+                            self.currentProject = success;
+                        })
                 }
             }
         }]);
