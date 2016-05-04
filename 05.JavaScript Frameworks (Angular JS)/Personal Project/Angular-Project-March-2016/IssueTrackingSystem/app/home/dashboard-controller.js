@@ -16,26 +16,21 @@ angular
             //////////
             init();
 
-            projectService
-                .getAllProjects()
-                .then(function (success) {
-                    var myProjects = success.filter(function (project) {
-                        return identityService.isProjectLeader(project);
-                    });
-                    self.myProjects = myProjects;
-                    self.projectsPagination = Pagination.getNew(5);
-                    self.projectsPagination.numPages = Math.ceil(self.myProjects.length / self.projectsPagination.perPage);
-                }, function (error) {
-                    console.log(error);
-                });
-
             function init(){
-                $scope.$on('updateMyProjects', function(event, newProject){
-                    self.myProjects.push(newProject);
-                });
                 ////////////////////////////////////////////////////////
                 // Check if need to init or update myIssues reference //
                 ////////////////////////////////////////////////////////
+                if(!self.myProjects){
+                    projectService
+                        .initMyProjects()
+                        .then(function(success){
+                            self.myProjects = success;
+                            self.projectsPagination = Pagination.getNew(5);
+                            self.projectsPagination.numPages = Math.ceil(self.myProjects.length / self.projectsPagination.perPage);
+                        }, function(error){
+                            $.notify("Error occurred when the server tried to get your projects!", "error");
+                        });
+                }
                 if(!self.myIssues){
                     issueService
                         .initMyIssues()

@@ -16,7 +16,7 @@ angular
                         $.notify('You successfully created new project!', 'success');
                         projectService.updateProjects();
                         if(identityService.isProjectLeader(success.data)){
-                            $rootScope.$broadcast('updateMyProjects', success.data);
+                            projectService.updateMyProjects();
                         }
                     }, function (error) {
                         $.notify("Project creation wasn't successful!", 'error');

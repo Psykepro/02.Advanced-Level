@@ -19,7 +19,7 @@ angular
 
             self.showAddIssue = function () {
                 ModalService.showModal({
-                    templateUrl: 'app/projects/project-add.html',
+                    templateUrl: 'app/issues/issue-add.html',
                     controller: 'AddIssueCtrl'
                 }).then(function (modal) {
                     modal.element.modal();

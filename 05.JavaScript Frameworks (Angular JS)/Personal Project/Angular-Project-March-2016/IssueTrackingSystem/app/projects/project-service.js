@@ -6,11 +6,15 @@ angular
         '$q',
         '$http',
         'BASE_URL',
-        function ProjectService($q, $http, BASE_URL) {
+        'identityService',
+        function ProjectService($q, $http, BASE_URL, identityService) {
             var currentProject;
             var projects;
+            var myProjects;
 
             var projectService = {
+                updateMyProjects: updateMyProjects,
+                initMyProjects: initMyProjects,
                 updateProjects: updateProjects,
                 initProjects: initProjects,
                 initCurrentProjectById: initCurrentProjectById,
@@ -19,12 +23,44 @@ angular
                 getAllProjects: getAllProjects,
                 getIssuesByProjectId: getIssuesByProjectId,
                 getProjectById: getProjectById,
-                getMyProjects: getMyProjects,
                 updateProject: updateProject,
                 extractAssignedProjectsFromIssues: extractAssignedProjectsFromIssues,
                 formatViewEditProjectModel: formatViewEditProjectModel,
                 formatBindingProjectModel: formatBindingProjectModel
             };
+
+
+            function updateMyProjects(){
+                projectService
+                    .getAllProjects()
+                    .then(function (success) {
+                        var temp = success.filter(function (project) {
+                            return identityService.isProjectLeader(project);
+                        });
+                        myProjects.ShallowCopy(temp);
+                    });
+            }
+
+            function initMyProjects(){
+                var deferred = $q.defer();
+
+                if(!myProjects){
+                    projectService
+                        .getAllProjects()
+                        .then(function (success) {
+                            myProjects = success.filter(function (project) {
+                                return identityService.isProjectLeader(project);
+                            });
+                            deferred.resolve(myProjects);
+                        }, function(error){
+                            deferred.reject(error);
+                        });
+                }else{
+                    deferred.resolve(myProjects);
+                }
+
+                return deferred.promise;
+            }
 
             function updateProjects(){
                 projectService
@@ -127,21 +163,6 @@ angular
                 return issues.map(function (issue) {
                     return issue.Project;
                 });
-            }
-
-            function getMyProjects(userId) {
-                var deferred = $q.defer(),
-                    accessToken = sessionStorage["userAuth"];
-
-                $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
-                $http.get(BASE_URL + 'projects/?LeadId=' + userId)
-                    .then(function (success) {
-                        deferred.resolve(success.data);
-                    }, function (error) {
-                        deferred.reject(error);
-                    });
-
-                return deferred.promise;
             }
 
             function getIssuesByProjectId(id) {
