@@ -26,8 +26,14 @@ angular
                 formatBindingProjectModel: formatBindingProjectModel
             };
 
-            function updateProjects(updatedProjects){
-                projects.ShallowCopy(updatedProjects);
+            function updateProjects(){
+                projectService
+                    .getAllProjects()
+                    .then(function (success) {
+                        console.log(success);
+                        projects.ShallowCopy(success);
+                        console.log(projects);
+                    });
             }
 
             function initProjects(){
