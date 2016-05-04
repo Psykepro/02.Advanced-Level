@@ -30,7 +30,7 @@ angular
                         /////////////////////////////////////////////////
                         // Update properties currentProject reference //
                         /////////////////////////////////////////////////
-                        projectService.updateCurrentProjectProperties(success.data);
+                        projectService.updateCurrentProject(success.data);
                     }, function (error) {
                         $.notify('You added invalid information!', 'error');
                     });
@@ -43,7 +43,7 @@ angular
                 //////////////////////////////////////////////////////////
                 if (!self.editProject || self.editProject.Id !== currentId) {
                     projectService
-                        .getCurrentProject(currentId)
+                        .initCurrentProject(currentId)
                         .then(function (success) {
                             self.editProject = projectService.formatViewEditProjectModel(angular.copy(success));
                         })

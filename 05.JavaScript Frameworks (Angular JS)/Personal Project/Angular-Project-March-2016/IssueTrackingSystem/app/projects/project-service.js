@@ -8,11 +8,13 @@ angular
         'BASE_URL',
         function ProjectService($q, $http, BASE_URL) {
             var currentProject;
+            var projects;
 
             var projectService = {
-                projects: [],
-                getCurrentProject: getCurrentProject,
-                updateCurrentProjectProperties: updateCurrentProjectProperties,
+                updateProjects: updateProjects,
+                initProjects: initProjects,
+                initCurrentProject: initCurrentProject,
+                updateCurrentProject: updateCurrentProject,
                 addProject: addProject,
                 getAllProjects: getAllProjects,
                 getIssuesByProjectId: getIssuesByProjectId,
@@ -24,12 +26,34 @@ angular
                 formatBindingProjectModel: formatBindingProjectModel
             };
 
+            function updateProjects(updatedProjects){
+                projects.ShallowCopy(updatedProjects);
+            }
 
-            function updateCurrentProjectProperties(updatedProject){
+            function initProjects(){
+                var deferred = $q.defer();
+
+                if(!projects){
+                    projectService
+                        .getAllProjects()
+                        .then(function (success) {
+                            projects = success;
+                            deferred.resolve(projects);
+                        }, function(error){
+                            deferred.reject(error);
+                        });
+                }else{
+                    deferred.resolve(projects);
+                }
+
+                return deferred.promise;
+            }
+
+            function updateCurrentProject(updatedProject){
                 currentProject.ShallowCopy(updatedProject);
             }
 
-            function getCurrentProject(id){
+            function initCurrentProject(id){
                 var deferred = $q.defer();
 
                 if(!currentProject || currentProject.Id !== id){
@@ -47,7 +71,6 @@ angular
 
                 return deferred.promise;
             }
-
 
             function addProject(project) {
                 var deferred = $q.defer(),
@@ -89,7 +112,6 @@ angular
                 $http.get(BASE_URL + 'projects/')
                     .then(function (success) {
                         deferred.resolve(success.data);
-                        projectService.projects = success.data;
                     }, function (error) {
                         deferred.reject(error);
                     });

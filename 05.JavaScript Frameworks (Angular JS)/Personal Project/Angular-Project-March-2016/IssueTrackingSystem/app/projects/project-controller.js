@@ -43,7 +43,7 @@ angular
                 //////////////////////////////////////////////////////////
                 if (!self.currentProject || self.currentProject.Id !== currentId) {
                     projectService
-                        .getCurrentProject(currentId)
+                        .initCurrentProject(currentId)
                         .then(function(success){
                             self.currentProject = success;
                         })
