@@ -7,12 +7,16 @@ angular
         '$http',
         'BASE_URL',
         'identityService',
-        function ProjectService($q, $http, BASE_URL, identityService) {
-            var currentProject;
-            var projects;
-            var myProjects;
+        'issueService',
+        function ProjectService($q, $http, BASE_URL, identityService, issueService) {
+            var currentProject = null;
+            var projects = null;
+            var myProjects = null;
+            var assignedProjects = null;
 
             var projectService = {
+                updateAssignedProjects: updateAssignedProjects,
+                initAssignedProjects: initAssignedProjects,
                 updateMyProjects: updateMyProjects,
                 initMyProjects: initMyProjects,
                 updateProjects: updateProjects,
@@ -24,11 +28,38 @@ angular
                 getIssuesByProjectId: getIssuesByProjectId,
                 getProjectById: getProjectById,
                 updateProject: updateProject,
-                extractAssignedProjectsFromIssues: extractAssignedProjectsFromIssues,
                 formatViewEditProjectModel: formatViewEditProjectModel,
                 formatBindingProjectModel: formatBindingProjectModel
             };
 
+
+            function updateAssignedProjects() {
+                issueService
+                    .initMyIssues()
+                    .then(function (success) {
+                        var extractedAssignedProjects = extractAssignedProjectsFromIssues(success);
+                        assignedProjects.ShallowCopy(extractedAssignedProjects);
+                    });
+            }
+
+            function initAssignedProjects(){
+                var deferred = $q.defer();
+
+                if(!assignedProjects){
+                    issueService
+                        .initMyIssues()
+                        .then(function(success){
+                            assignedProjects = extractAssignedProjectsFromIssues(success);
+                            deferred.resolve(assignedProjects);
+                        }, function(error){
+                            deferred.reject(error);
+                        });
+                }else{
+                    deferred.resolve(assignedProjects);
+                }
+
+                return deferred.promise;
+            }
 
             function updateMyProjects(){
                 projectService

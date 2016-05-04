@@ -11,10 +11,14 @@
                         <label for="title">Title</label>
                         <input ng-model="vm.issue.Title" required="required" id="title"/>
                     </md-input-container>
+                    <md-input-container class="input-containers">
+                        <label for="description">Description</label>
+                        <input ng-model="vm.issue.Description" required="required" id="description"/>
+                    </md-input-container>
                     <div class="modal-select-container">
                         <label for="assignee" class="modal-select-label">Assignee</label>
                         <select class="modal-select"
-                                ng-model="vm.issue.AssigneeId"
+                                ng-model="vm.issue.Assignee.Id"
                                 required="required"
                                 id="assignee" load-users></select>
                     </div>
@@ -26,16 +30,12 @@
                         <label for="priority" class="modal-select-label">Priority</label>
                         <select class="modal-select"
                                 required="required"
-                                ng-model="vm.issue.PriorityId"
+                                ng-model="vm.issue.Priority.Id"
                                 id="priority" load-priorities priorities="{{vm.priorities}}"></select>
                     </div>
                     <md-input-container class="input-containers">
                         <label for="labels">Labels</label>
                         <input ng-model="vm.issue.Labels" required="required" id="labels"/>
-                    </md-input-container>
-                    <md-input-container class="input-containers">
-                        <label for="description">Description</label>
-                        <input ng-model="vm.issue.Description" required="required" id="description"/>
                     </md-input-container>
                 </form>
             </div>

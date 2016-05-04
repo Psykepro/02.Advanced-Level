@@ -6,9 +6,9 @@ angular.module('issueTrackingSystem.issues.issueService',[])
         '$q',
         'BASE_URL',
         function issueService($http, $q, BASE_URL) {
-            var myIssues,
-                currentIssue,
-                issueComments;
+            var myIssues = null;
+            var currentIssue = null;
+            var issueComments = null;
 
             var issueService = {
                 initCommentsByIssueId: initCommentsByIssueId,
@@ -24,7 +24,8 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 addIssueComment: addIssueComment,
                 getIssueComments: getIssueComments,
                 updateIssueStatus: updateIssueStatus,
-                formatViewEditIssueModel: formatViewEditIssueModel
+                formatViewEditIssueModel: formatViewEditIssueModel,
+                formatBindingIssueModel: formatBindingIssueModel
             };
 
             function updateCommentsByIssueId(id) {
@@ -202,7 +203,7 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 var deferred = $q.defer(),
                     accessToken = sessionStorage["userAuth"];
 
-                editedIssue = formatBindingEditIssueModel(editedIssue);
+                editedIssue = formatBindingIssueModel(editedIssue);
                 $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
                 $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
                 $http.put(BASE_URL + 'issues/' + id, editedIssue)
@@ -224,9 +225,10 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 return issue;
             }
 
-            function formatBindingEditIssueModel(issue) {
+            function formatBindingIssueModel(issue, projectId) {
+                issue.ProjectId = parseInt(projectId);
                 issue.AssigneeId = issue.Assignee.Id;
-                issue.PriorityId = issue.Priority.Id;
+                issue.PriorityId = parseInt(issue.Priority.Id);
                 issue.Labels = issue.Labels
                     .split(', ')
                     .map(function (label) {

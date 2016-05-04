@@ -3,14 +3,12 @@
 angular
     .module('issueTrackingSystem.issues.issueController',[])
     .controller('IssueCtrl',[
-        '$scope',
         '$routeParams',
-        '$route',
         'issueService',
         'projectService',
         'identityService',
         'ModalService',
-        function($scope, $routeParams, $route, issueService, projectService, identityService, ModalService) {
+        function($routeParams, issueService, projectService, identityService, ModalService) {
             var issueId = parseInt($routeParams.id);
             var self = this;
 
@@ -19,67 +17,72 @@ angular
             //////////
             init();
 
-            self.showEditIssue = function() {
+            self.showEditIssue = function () {
                 ModalService.showModal({
                     templateUrl: 'app/issues/issue-edit.html',
                     controller: 'EditIssueCtrl'
-                }).then(function(modal) {
+                }).then(function (modal) {
                     modal.element.modal();
                 });
             };
 
-            self.changeStatus = function changeStatus(statusId){
+            self.changeStatus = function changeStatus(statusId) {
                 issueService
-                    .updateIssueStatus(issueId ,statusId)
-                    .then(function(success){
+                    .updateIssueStatus(issueId, statusId)
+                    .then(function (success) {
 
-                    }, function(error){
+                    }, function (error) {
                         $.notify('Some error occurred when tried to change the status!', 'error');
                     })
             };
 
-            self.addComment = function addComment(comment){
+            self.addComment = function addComment(comment) {
                 issueService
                     .addIssueComment(issueId, comment)
-                    .then(function(success){
+                    .then(function (success) {
                         issueService.updateCommentsByIssueId(issueId);
                         $.notify('You successfully added new comment!', 'success');
-                    }, function(error){
+                    }, function (error) {
                         $.notify("You didn't succeed to add new comment!", 'error');
                     })
             };
 
-            function init(){
+            function init() {
                 self.isIssueAssignee = identityService.isIssueAssignee;
                 self.isProjectLeader = identityService.isProjectLeader;
 
                 ////////////////////////////////////////////////////////
                 // Check if need to update the currentIssue reference //
                 ////////////////////////////////////////////////////////
-                if(!self.currentIssue || self.currentIssue.Id !== issueId){
+                if (!self.currentIssue || self.currentIssue.Id !== issueId) {
                     issueService
                         .initCurrentIssueById(issueId)
-                        .then(function(success){
+                        .then(function (success) {
                             self.currentIssue = success;
-                            if(!issueService.issueProject || issueService.issueProject.Id !== self.currentIssue.Project.Id){
+                            if (!issueService.issueProject || issueService.issueProject.Id !== self.currentIssue.Project.Id) {
                                 projectService
                                     .initCurrentProjectById(self.currentIssue.Project.Id)
-                                    .then(function(success){
+                                    .then(function (success) {
                                         self.issueProject = success;
-                                    }, function(error){
+                                    }, function (error) {
                                         $.notify("Can't find this issue's project!", "error");
                                     });
                             }
-                        }, function(error){
+                        }, function (error) {
                             $.notify("Can't find this issue!", "error");
                         });
-                    issueService
-                        .initCommentsByIssueId(issueId)
-                        .then(function(success){
-                            self.issueComments = success;
-                        }, function(error){
-                            $.notify('Some error occurred when tried to get the comments!', 'error');
-                        })
+                    //////////////////////
+                    // Issue's Comments //
+                    //////////////////////
+                    if (!self.issueComments) {
+                        issueService
+                            .initCommentsByIssueId(issueId)
+                            .then(function (success) {
+                                self.issueComments = success;
+                            }, function (error) {
+                                $.notify('Some error occurred when tried to get the comments!', 'error');
+                            })
+                    }
                 }
             }
         }]);
