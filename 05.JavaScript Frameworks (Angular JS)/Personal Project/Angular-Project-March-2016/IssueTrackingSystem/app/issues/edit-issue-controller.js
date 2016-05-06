@@ -17,9 +17,9 @@ angular
             //////////
             init();
 
-            self.updateIssue = function updateIssue(editedIssue) {
+            self.updateIssueRequest = function updateIssue(editedIssue) {
                 issueService
-                    .updateIssue(issueId, editedIssue)
+                    .updateIssueRequest(issueId, editedIssue)
                     .then(function (success) {
                         issueService.updateCurrentIssue(success.data);
                         issueService.updateMyIssues();

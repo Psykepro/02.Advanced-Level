@@ -2,10 +2,10 @@
 
 angular.module('issueTrackingSystem.issues.issueService',[])
     .factory('issueService',[
-        '$http',
         '$q',
+        '$http',
         'BASE_URL',
-        function issueService($http, $q, BASE_URL) {
+        function issueService($q, $http, BASE_URL) {
             var myIssues = null;
             var currentIssue = null;
             var issueComments = null;
@@ -17,20 +17,20 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 updateMyIssues: updateMyIssues,
                 initCurrentIssueById: initCurrentIssueById,
                 updateCurrentIssue: updateCurrentIssue,
-                getMyIssues: getMyIssues,
-                addIssue: addIssue,
-                getIssueById: getIssueById,
-                updateIssue: updateIssue,
-                addIssueComment: addIssueComment,
-                getIssueComments: getIssueComments,
-                updateIssueStatus: updateIssueStatus,
+                getMyIssuesRequest: getMyIssuesRequest,
+                addIssueRequest: addIssueRequest,
+                getIssueByIdRequest: getIssueByIdRequest,
+                updateIssueRequest: updateIssueRequest,
+                addIssueCommentRequest: addIssueCommentRequest,
+                getIssueCommentsRequest: getIssueCommentsRequest,
+                updateIssueStatusRequest: updateIssueStatusRequest,
                 formatViewEditIssueModel: formatViewEditIssueModel,
                 formatBindingIssueModel: formatBindingIssueModel
             };
 
             function updateCommentsByIssueId(id) {
                 issueService
-                    .getIssueComments(id)
+                    .getIssueCommentsRequest(id)
                     .then(function (success) {
                         issueComments.ShallowCopy(success);
                     });
@@ -41,7 +41,7 @@ angular.module('issueTrackingSystem.issues.issueService',[])
 
                 if (!issueComments) {
                     issueService
-                        .getIssueComments(id)
+                        .getIssueCommentsRequest(id)
                         .then(function (success) {
                             issueComments = success;
                             deferred.resolve(issueComments);
@@ -57,7 +57,7 @@ angular.module('issueTrackingSystem.issues.issueService',[])
 
             function updateMyIssues() {
                 issueService
-                    .getMyIssues()
+                    .getMyIssuesRequest()
                     .then(function (success) {
                         myIssues.ShallowCopy(success);
                     });
@@ -68,7 +68,7 @@ angular.module('issueTrackingSystem.issues.issueService',[])
 
                 if (!myIssues) {
                     issueService
-                        .getMyIssues()
+                        .getMyIssuesRequest()
                         .then(function (success) {
                             myIssues = success;
                             deferred.resolve(myIssues);
@@ -91,7 +91,7 @@ angular.module('issueTrackingSystem.issues.issueService',[])
 
                 if (!currentIssue || currentIssue.Id !== id) {
                     issueService
-                        .getIssueById(id)
+                        .getIssueByIdRequest(id)
                         .then(function (success) {
                             currentIssue = success;
                             deferred.resolve(currentIssue);
@@ -105,7 +105,7 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 return deferred.promise;
             }
 
-            function getMyIssues(pageSize, pageNumber, orderBy) {
+            function getMyIssuesRequest(pageSize, pageNumber, orderBy) {
                 pageSize = pageSize || 10;
                 pageNumber = pageNumber || 1;
                 orderBy = orderBy || 'DueDate desc';
@@ -123,7 +123,7 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 return deferred.promise;
             }
 
-            function addIssue(issue) {
+            function addIssueRequest(issue) {
                 var deferred = $q.defer(),
                     accessToken = sessionStorage["userAuth"];
 
@@ -139,7 +139,7 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 return deferred.promise;
             }
 
-            function addIssueComment(id, comment) {
+            function addIssueCommentRequest(id, comment) {
                 var deferred = $q.defer(),
                     accessToken = sessionStorage["userAuth"];
 
@@ -154,7 +154,7 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 return deferred.promise;
             }
 
-            function getIssueComments(id) {
+            function getIssueCommentsRequest(id) {
                 var deferred = $q.defer(),
                     accessToken = sessionStorage["userAuth"];
 
@@ -169,7 +169,7 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 return deferred.promise;
             }
 
-            function getIssueById(id) {
+            function getIssueByIdRequest(id) {
                 var deferred = $q.defer(),
                     accessToken = sessionStorage["userAuth"];
 
@@ -184,7 +184,7 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 return deferred.promise;
             }
 
-            function updateIssueStatus(issueId, statusId) {
+            function updateIssueStatusRequest(issueId, statusId) {
                 var deferred = $q.defer(),
                     accessToken = sessionStorage["userAuth"];
 
@@ -199,7 +199,7 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 return deferred.promise;
             }
 
-            function updateIssue(id, editedIssue) {
+            function updateIssueRequest(id, editedIssue) {
                 var deferred = $q.defer(),
                     accessToken = sessionStorage["userAuth"];
 

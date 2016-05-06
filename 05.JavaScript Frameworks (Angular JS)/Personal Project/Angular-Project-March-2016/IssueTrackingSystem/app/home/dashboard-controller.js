@@ -7,7 +7,10 @@ angular
         'identityService',
         'projectService',
         'Pagination',
-        function DashboardCtrl(issueService, identityService, projectService, Pagination) {
+        '$q',
+        '$http',
+        'BASE_URL',
+        function DashboardCtrl(issueService, identityService, projectService, Pagination, $q, $http, BASE_URL) {
             var self = this;
 
             //////////

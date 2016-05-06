@@ -28,7 +28,7 @@ angular
 
             self.changeStatus = function changeStatus(statusId) {
                 issueService
-                    .updateIssueStatus(issueId, statusId)
+                    .updateIssueStatusRequest(issueId, statusId)
                     .then(function (success) {
 
                     }, function (error) {
@@ -38,7 +38,7 @@ angular
 
             self.addComment = function addComment(comment) {
                 issueService
-                    .addIssueComment(issueId, comment)
+                    .addIssueCommentRequest(issueId, comment)
                     .then(function (success) {
                         issueService.updateCommentsByIssueId(issueId);
                         $.notify('You successfully added new comment!', 'success');

@@ -12,7 +12,7 @@ angular
         'issueTrackingSystem.common',
         'issueTrackingSystem.projects'
     ])
-    .config(['$routeProvider', function($routeProvider) {
+    .config(['$routeProvider', function configApp($routeProvider) {
         $routeProvider
             .otherwise({redirectTo: '/'})
             .when('/', {

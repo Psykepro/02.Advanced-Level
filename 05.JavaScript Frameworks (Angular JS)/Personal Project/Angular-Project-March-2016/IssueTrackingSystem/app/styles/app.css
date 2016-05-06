@@ -16,7 +16,9 @@ body {
 #issues-table{
   margin: 0;
 }
-
+#welcome-header-wrapper{
+  z-index: 1;
+}
 #nav-header > #website-title{
   font-family: CaptureIt;
   color: #000000;

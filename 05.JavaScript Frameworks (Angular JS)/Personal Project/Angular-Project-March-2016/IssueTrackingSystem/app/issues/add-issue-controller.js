@@ -17,11 +17,11 @@ angular
                     self.priorities = success.Priorities;
                 });
 
-            self.addIssue = function (issue) {
+            self.addIssueRequest = function (issue) {
                 issue = issueService.formatBindingIssueModel(issue, projectId);
 
                 issueService
-                    .addIssue(issue)
+                    .addIssueRequest(issue)
                     .then(function(success){
                         $.notify('You successfully added new issue!','success');
                         issueService.updateMyIssues();
