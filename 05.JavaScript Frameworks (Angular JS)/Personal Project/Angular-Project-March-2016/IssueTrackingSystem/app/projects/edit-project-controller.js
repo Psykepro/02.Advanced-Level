@@ -24,7 +24,7 @@ angular
                 project = projectService.formatBindingProjectModel(project);
 
                 projectService
-                    .updateProject(currentId, project)
+                    .updateProjectRequest(currentId, project)
                     .then(function (success) {
                         $.notify('You successfully edited the project!', 'success');
                         /////////////////////////////////////////////////

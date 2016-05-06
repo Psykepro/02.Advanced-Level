@@ -11,7 +11,7 @@ angular
 
             self.addProject = function (project) {
                 projectService
-                    .addProject(project)
+                    .addProjectRequest(project)
                     .then(function (success) {
                         $.notify('You successfully created new project!', 'success');
                         projectService.updateProjects();

@@ -15,19 +15,19 @@ angular
             var assignedProjects = null;
 
             var projectService = {
-                updateAssignedProjects: updateAssignedProjects,
                 initAssignedProjects: initAssignedProjects,
-                updateMyProjects: updateMyProjects,
-                initMyProjects: initMyProjects,
-                updateProjects: updateProjects,
+                updateAssignedProjects: updateAssignedProjects,
                 initProjects: initProjects,
+                updateProjects: updateProjects,
+                initMyProjects: initMyProjects,
+                updateMyProjects: updateMyProjects,
                 initCurrentProjectById: initCurrentProjectById,
                 updateCurrentProject: updateCurrentProject,
-                addProject: addProject,
-                getAllProjects: getAllProjects,
-                getIssuesByProjectId: getIssuesByProjectId,
-                getProjectById: getProjectById,
-                updateProject: updateProject,
+                addProjectRequest: addProjectRequest,
+                getAllProjectsRequest: getAllProjectsRequest,
+                getIssuesByProjectIdRequest: getIssuesByProjectIdRequest,
+                getProjectByIdRequest: getProjectByIdRequest,
+                updateProjectRequest: updateProjectRequest,
                 formatViewEditProjectModel: formatViewEditProjectModel,
                 formatBindingProjectModel: formatBindingProjectModel
             };
@@ -63,7 +63,7 @@ angular
 
             function updateMyProjects(){
                 projectService
-                    .getAllProjects()
+                    .getAllProjectsRequest()
                     .then(function (success) {
                         var temp = success.filter(function (project) {
                             return identityService.isProjectLeader(project);
@@ -77,7 +77,7 @@ angular
 
                 if(!myProjects){
                     projectService
-                        .getAllProjects()
+                        .getAllProjectsRequest()
                         .then(function (success) {
                             myProjects = success.filter(function (project) {
                                 return identityService.isProjectLeader(project);
@@ -95,7 +95,7 @@ angular
 
             function updateProjects(){
                 projectService
-                    .getAllProjects()
+                    .getAllProjectsRequest()
                     .then(function (success) {
                         projects.ShallowCopy(success);
                     });
@@ -106,7 +106,7 @@ angular
 
                 if(!projects){
                     projectService
-                        .getAllProjects()
+                        .getAllProjectsRequest()
                         .then(function (success) {
                             projects = success;
                             deferred.resolve(projects);
@@ -129,7 +129,7 @@ angular
 
                 if(!currentProject || currentProject.Id !== id){
                     projectService
-                        .getProjectById(id)
+                        .getProjectByIdRequest(id)
                         .then(function (success) {
                             currentProject = success;
                             deferred.resolve(currentProject);
@@ -143,7 +143,7 @@ angular
                 return deferred.promise;
             }
 
-            function addProject(project) {
+            function addProjectRequest(project) {
                 var deferred = $q.defer(),
                     accessToken = sessionStorage["userAuth"];
 
@@ -159,7 +159,7 @@ angular
                 return deferred.promise;
             }
 
-            function updateProject(id, project) {
+            function updateProjectRequest(id, project) {
                 var deferred = $q.defer(),
                     accessToken = sessionStorage["userAuth"];
 
@@ -175,7 +175,7 @@ angular
                 return deferred.promise;
             }
 
-            function getAllProjects() {
+            function getAllProjectsRequest() {
                 var deferred = $q.defer(),
                     accessToken = sessionStorage["userAuth"];
 
@@ -196,7 +196,7 @@ angular
                 });
             }
 
-            function getIssuesByProjectId(id) {
+            function getIssuesByProjectIdRequest(id) {
                 var deferred = $q.defer(),
                     accessToken = sessionStorage["userAuth"];
 
@@ -246,7 +246,7 @@ angular
                 return editProject;
             }
 
-            function getProjectById(id) {
+            function getProjectByIdRequest(id) {
                 var deferred = $q.defer(),
                     accessToken = sessionStorage["userAuth"];
 

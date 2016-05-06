@@ -12,7 +12,7 @@ angular
                 self = this;
 
             projectService
-                .getProjectById(projectId)
+                .getProjectByIdRequest(projectId)
                 .then(function (success) {
                     self.priorities = success.Priorities;
                 });
