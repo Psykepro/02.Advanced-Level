@@ -17,7 +17,12 @@
 body {
   margin-top: 50px;
 }
-
+#admin-header{
+  font-family: CaptureIt;
+  font-size: 15px;
+  position: relative;
+  top: 5px;
+}
 #project-info{
   display: block;
   text-align: center;
@@ -37,12 +42,6 @@ body {
 
 #welcome-header-wrapper{
   z-index: 1;
-}
-
-#nav-header > #website-title{
-  font-family: CaptureIt;
-  color: #000000;
-  width: 17%;
 }
 
 #welcome-header-wrapper{
@@ -81,13 +80,6 @@ body {
 #login-reg-home{
   position: relative;
   top: 10px;
-}
-
-#admin-header{
-  display: inline-block;
-  font-family: CaptureIt;
-  position: relative;
-  top: 2px;
 }
 
 #issues-table-container{

@@ -27,23 +27,29 @@
   background-color:  rgba(92, 184, 92, 1);
   position: fixed;
   top: 0;
-  z-index: 7;
+  z-index: 1;
 }
 #nav-header > ul {
   background-color:  rgba(92, 184, 92, 1);
   display: inline-block;
 }
+
 #nav-header > #website-title {
   display: inline-block;
   position: relative;
-  bottom: 19px;
+  bottom: 22px;
   left: 4px;
+  width: 17%;
+  color: #000000;
   margin: 0;
+  font-family: CaptureIt;
   text-decoration: none;
 }
+
 #nav-header > #website-title > h3{
   margin: 0;
 }
+
 #nav-header > ul > li {
   float: left;
   -webkit-perspective: 1000px;
