@@ -9,7 +9,8 @@ angular
         'identityService',
         'projectService',
         'issueService',
-        function($scope, $routeParams, ModalService, identityService, projectService, issueService) {
+        'Pagination',
+        function($scope, $routeParams, ModalService, identityService, projectService, issueService, Pagination) {
             var currentId = parseInt($routeParams.id),
                 self = this;
 
@@ -37,11 +38,14 @@ angular
             };
 
             function init() {
+                var numPages;
                 self.isAdmin = identityService.isAdmin;
+
                 ////////////////////////////////////////////////
                 // Set current default to show assigned issues //
                 /////////////////////////////////////////////////
                 self.onlyAssignedIssues = sessionStorage['userId'];
+
                 //////////////////////////////////////////////////////////
                 // Check if need to update the currentProject reference //
                 //////////////////////////////////////////////////////////
@@ -53,15 +57,18 @@ angular
                             console.log(self.currentProject);
                         })
                 }
-                issueService
-                    .getIssuesByProjectId(currentId)
-                    .then(function(success){
-                        //////////////////////////////////
-                        // Set current project's issues //
-                        //////////////////////////////////
-                        self.allProjectIssues = success;
-                    }, function(error){
-                        $.notify("Error occurred when tried to get the project's issues!", 'error');
-                    });
+
+                if(!self.projectIssues){
+                    issueService
+                        .initProjectIssues(currentId)
+                        .then(function(success){
+                            //////////////////////////////////
+                            // Set current project's issues //
+                            //////////////////////////////////
+                            self.projectIssues = success;
+                        }, function(error){
+                            $.notify("Error occurred when tried to get the project's issues!", 'error');
+                        });
+                }
             }
         }]);

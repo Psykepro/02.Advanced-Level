@@ -8,7 +8,9 @@ angular
         'authenticationService',
         'userService',
         'ModalService',
-        function($scope, identityService, authenticationService, userService, ModalService) {
+        'issueService',
+        'projectService',
+        function($scope, identityService, authenticationService, userService, ModalService, issueService, projectService) {
             $scope.isAuthenticated = identityService.isAuthenticated;
 
             $scope.$on('$routeChangeStart', function() {
@@ -40,6 +42,8 @@ angular
                         sessionStorage.removeItem("userId");
                         sessionStorage.removeItem("isAdmin");
                         $scope.currentUser = undefined;
+                        issueService.logout();
+                        projectService.logout();
                         $.notify("You logged out successfully!", "success");
                     }, function(error){
                         $.notify("You don't logged out successfully!", "error");

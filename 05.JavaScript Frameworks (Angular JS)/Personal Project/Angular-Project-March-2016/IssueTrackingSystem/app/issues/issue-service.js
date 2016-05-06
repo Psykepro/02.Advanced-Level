@@ -9,8 +9,11 @@ angular.module('issueTrackingSystem.issues.issueService',[])
             var myIssues = null;
             var currentIssue = null;
             var issueComments = null;
+            var projectIssues = null;
 
             var issueService = {
+                initProjectIssues: initProjectIssues,
+                updateProjectIssues: updateProjectIssues,
                 initCommentsByIssueId: initCommentsByIssueId,
                 updateCommentsByIssueId: updateCommentsByIssueId,
                 initMyIssues: initMyIssues,
@@ -27,9 +30,36 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 getIssueCommentsRequest: getIssueCommentsRequest,
                 updateIssueStatusRequest: updateIssueStatusRequest,
                 formatViewEditIssueModel: formatViewEditIssueModel,
-                formatBindingIssueModel: formatBindingIssueModel
+                formatBindingIssueModel: formatBindingIssueModel,
+                logout: logout
             };
 
+            function updateProjectIssues(id) {
+                issueService
+                    .getIssuesByProjectId(id)
+                    .then(function (success) {
+                        projectIssues.ShallowCopy(success);
+                    });
+            }
+
+            function initProjectIssues(id) {
+                var deferred = $q.defer();
+
+                if (!issueComments) {
+                    issueService
+                        .getIssuesByProjectId(id)
+                        .then(function (success) {
+                            projectIssues = success;
+                            deferred.resolve(projectIssues);
+                        }, function (error) {
+                            deferred.reject(error);
+                        });
+                } else {
+                    deferred.resolve(projectIssues);
+                }
+
+                return deferred.promise;
+            }
             function updateCommentsByIssueId(id) {
                 issueService
                     .getIssueCommentsRequest(id)
@@ -249,6 +279,13 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 }).join(', ');
 
                 return issue;
+            }
+
+            function logout(){
+                myIssues = null;
+                currentIssue = null;
+                issueComments = null;
+                projectIssues = null;
             }
 
             function formatBindingIssueModel(issue, projectId) {

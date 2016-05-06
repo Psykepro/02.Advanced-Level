@@ -29,7 +29,8 @@ angular
                 getProjectByIdRequest: getProjectByIdRequest,
                 updateProjectRequest: updateProjectRequest,
                 formatViewEditProjectModel: formatViewEditProjectModel,
-                formatBindingProjectModel: formatBindingProjectModel
+                formatBindingProjectModel: formatBindingProjectModel,
+                logout: logout
             };
 
 
@@ -259,6 +260,13 @@ angular
                     });
 
                 return deferred.promise;
+            }
+
+            function logout(){
+                currentProject = null;
+                projects = null;
+                myProjects = null;
+                assignedProjects = null;
             }
 
             return projectService;

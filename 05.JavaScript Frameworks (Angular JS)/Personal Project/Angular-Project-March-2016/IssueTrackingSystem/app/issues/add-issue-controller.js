@@ -26,7 +26,7 @@ angular
                         $.notify('You successfully added new issue!','success');
                         issueService.updateMyIssues();
                         projectService.updateAssignedProjects();
-                    },function(error){
+                    }, function(error){
                         $.notify("Issue isn't created!",'error');
                     })
             }

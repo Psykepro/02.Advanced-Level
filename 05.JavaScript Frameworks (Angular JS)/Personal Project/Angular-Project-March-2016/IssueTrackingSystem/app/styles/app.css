@@ -12,7 +12,14 @@
 body {
   margin-top: 50px;
 }
-
+#project-info{
+  display: block;
+  text-align: center;
+}
+#issue-container{
+  position: relative;
+  margin-bottom: 5%;
+}
 #issues-table{
   margin: 0;
 }
@@ -87,6 +94,11 @@ body {
 
 #assigned-projects-container {
   text-align: center;
+}
+
+#filter{
+  display: inline-block;
+  color: darkred;
 }
 
 #container_tags {
