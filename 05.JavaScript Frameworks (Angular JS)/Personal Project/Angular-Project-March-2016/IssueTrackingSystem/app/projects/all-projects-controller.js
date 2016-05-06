@@ -17,14 +17,14 @@ angular
                 // Check if need to get the projects reference //
                 /////////////////////////////////////////////////
                 if (!self.allProjects || self.allProjects.Length !== previousLength) {
-                    console.log('bounce')
                     projectService
                         .initProjects()
                         .then(function (success) {
                             previousLength = success.Length;
                             self.allProjects = success;
-                            self.projectsPagination = Pagination.getNew(10);
-                            self.projectsPagination.numPages = Math.ceil(self.allProjects.length / self.projectsPagination.perPage);
+
+                            //self.projectsPagination = Pagination.getNew(10);
+                            //self.projectsPagination.numPages = Math.ceil(self.allProjects.length / self.projectsPagination.perPage);
                         })
                 }
             }

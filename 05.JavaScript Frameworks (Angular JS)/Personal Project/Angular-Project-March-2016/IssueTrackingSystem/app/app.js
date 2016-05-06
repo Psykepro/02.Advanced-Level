@@ -29,7 +29,7 @@ angular
                 controllerAs: 'vm'
             })
             .when('/projects', {
-                templateUrl: 'app/projects/projects.html',
+                templateUrl: 'app/projects/all-projects.html',
                 controller: 'AllProjectsCtrl',
                 controllerAs: 'vm'
             })

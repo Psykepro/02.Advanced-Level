@@ -9,28 +9,39 @@
   src: url(../fonts/Capture_it.ttf);
 }
 
+@font-face {
+  font-family: Furore;
+  src: url(../fonts/Furore.otf);
+}
+
 body {
   margin-top: 50px;
 }
+
 #project-info{
   display: block;
   text-align: center;
 }
+
 #issue-container{
   position: relative;
   margin-bottom: 5%;
 }
+
 #issues-table{
   margin: 0;
 }
+
 #welcome-header-wrapper{
   z-index: 1;
 }
+
 #nav-header > #website-title{
   font-family: CaptureIt;
   color: #000000;
   width: 17%;
 }
+
 #welcome-header-wrapper{
   display: block;
   position: fixed;
@@ -39,12 +50,14 @@ body {
   text-align: center;
   background-color: #5cb85c;
 }
+
 #welcome-header{
   font-family: CaptureIt;
   color: #000000;
   margin-top: 8px;
   line-height: 40px;
 }
+
 #login-header{
   line-height: 40px;
 }
@@ -227,13 +240,18 @@ form input.ng-invalid:not(.ng-pristine) {
   margin-left: 0;
 }
 
+.vrepeatContainer{
+  text-align: center;
+  height: 80%;
+}
+
 .custom-buttons{
   display: block;
   text-align: center;
   background-color: #ffffff;
   color: #000000;
-  font-family: Audimat;
-  width: 100% !important;
+  font-family: Furore;
+  width: 80% !important;
   margin-top: 5px;
   font-size: 18px;
   letter-spacing: 2px;
