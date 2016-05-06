@@ -1,15 +1,48 @@
-<h3 ng-cloak class="clean-header-green">Project</h3>
+<h3 class="clean-header-green">Project</h3>
 <h3>Name:</h3>
 <p ng-bind="vm.currentProject.Name"></p>
 <h3>Description:</h3>
 <p ng-bind="vm.currentProject.Description"></p>
-<div class="issues">
-    <div class="issue-container" ng-repeat="issue in vm.issues">
-        <a href="#/issues/{{issue.Id}}">{{issue.Title}}</a>
-    </div>
-</div>
+<h3>Project's Leader:</h3>
+<p ng-bind="vm.currentProject.Lead.Username"></p>
+<h3>Project Key:</h3>
+<p ng-bind="vm.currentProject.ProjectKey"></p>
+<h3>Priorities:</h3>
+<p ng-repeat="priority in vm.currentProject.Priorities" ng-bind="priority.Name"></p>
+<h3>Labels:</h3>
+<p ng-repeat="label in vm.currentProject.Labels" ng-bind="label.Name"></p>
 <div ng-if="vm.currentProject.Lead.Id === currentUser.Id || currentUser.isAdmin === true">
     <a class="btn btn-success" ng-click="vm.showAddIssue()" role="button">Add Issue</a>
     <a class="btn btn-success" ng-click="vm.showEditProject()" role="button">Edit project</a>
+</div>
+<div id="project-issues">
+    <h3 class="clean-header-green inner-header">{{vm.currentProject.Name}}'s Issues</h3>
+    <p><strong>Filter issues by:</strong></p>
+    <label for="priority-filter">Priority: </label>
+    <select id="priority-filter" ng-model="vm.priorityFilter">
+        <option value="">All</option>
+        <option ng-repeat="priority in vm.currentProject.Priorities" value="{{priority.Name}}">{{priority.Name}}</option>
+    </select>
+    <label for="status-filter">Status: </label>
+    <select id="status-filter" ng-model="vm.statusFilter">
+        <option value="">All</option>
+        <option value="Open">Open</option>
+        <option value="InProgress">InProgress</option>
+        <option value="StoppedProgress">StoppedProgress</option>
+        <option value="Resolved">Resolved</option>
+        <option value="Closed">Closed</option>
+        <option value="Resolved">Resolved</option>
+    </select>
+    <label for="only-assigned-issues">Show only assigned issues:</label>
+    <select id="only-assigned-issues" ng-model="vm.onlyAssignedIssues">
+    <option value="">No</option>
+    <option value="{{currentUser.Id}}">Yes</option>
+    </select>
+    <!--| filter: {category: categoryFilter, haveSubtitles: subtitleFilter, dateString: dateFilter} | orderBy: orderBy">-->
+    <div class="issues">
+        <div class="issue-container" ng-repeat="issue in vm.allProjectIssues | filter: {Priority:{Name: vm.priorityFilter} , Status:{Name: vm.statusFilter}, Assignee:{Id: vm.onlyAssignedIssues}}">
+            <a href="#/issues/{{issue.Id}}">{{issue.Title}}</a>
+        </div>
+    </div>
 </div>
 

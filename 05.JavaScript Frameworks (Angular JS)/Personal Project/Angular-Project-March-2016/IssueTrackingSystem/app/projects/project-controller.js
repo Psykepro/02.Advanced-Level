@@ -8,7 +8,8 @@ angular
         'ModalService',
         'identityService',
         'projectService',
-        function($scope, $routeParams, ModalService, identityService, projectService) {
+        'issueService',
+        function($scope, $routeParams, ModalService, identityService, projectService, issueService) {
             var currentId = parseInt($routeParams.id),
                 self = this;
 
@@ -45,7 +46,18 @@ angular
                         .initCurrentProjectById(currentId)
                         .then(function(success){
                             self.currentProject = success;
+                            console.log(self.currentProject);
                         })
                 }
+                issueService
+                    .getIssuesByProjectId(currentId)
+                    .then(function(success){
+                        //////////////////////////////////
+                        // Set current project's issues //
+                        //////////////////////////////////
+                        self.allProjectIssues = success;
+                    }, function(error){
+                        $.notify("Error occurred when tried to get the project's issues!", 'error');
+                    });
             }
         }]);

@@ -30,7 +30,8 @@ angular
                 issueService
                     .updateIssueStatusRequest(issueId, statusId)
                     .then(function (success) {
-
+                        issueService.updateCurrentIssueStatus(issueId);
+                        $.notify('You successfully changed the status!', 'success');
                     }, function (error) {
                         $.notify('Some error occurred when tried to change the status!', 'error');
                     })
@@ -59,6 +60,7 @@ angular
                         .initCurrentIssueById(issueId)
                         .then(function (success) {
                             self.currentIssue = success;
+                            console.log(success);
                             if (!issueService.issueProject || issueService.issueProject.Id !== self.currentIssue.Project.Id) {
                                 projectService
                                     .initCurrentProjectById(self.currentIssue.Project.Id)
