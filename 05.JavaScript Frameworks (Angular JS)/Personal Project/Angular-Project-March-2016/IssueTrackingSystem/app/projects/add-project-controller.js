@@ -3,11 +3,13 @@
 angular
     .module('issueTrackingSystem.projects.addProjectController', [])
     .controller('AddProjectCtrl',[
-        '$rootScope',
+        '$scope',
         'identityService',
         'projectService',
-        function AddProjectCtrl($rootScope, identityService, projectService) {
+        function AddProjectCtrl($scope, identityService, projectService) {
             var self = this;
+
+
 
             self.addProject = function (project) {
                 projectService

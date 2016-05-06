@@ -54,7 +54,6 @@ angular
                         .initCurrentProjectById(currentId)
                         .then(function(success){
                             self.currentProject = success;
-                            console.log(self.currentProject);
                         })
                 }
 

@@ -25,6 +25,9 @@ body {
 
 #issue-container{
   position: relative;
+  width: 80%;
+  text-align: center;
+  left: 10%;
   margin-bottom: 5%;
 }
 
@@ -168,6 +171,10 @@ div.navbar-fixed-top{
   width: 100%;
 }
 
+.pagination li a{
+  color: #5cb85c;
+}
+
 .pagination>.active>a,
 .pagination>.active>a:focus,
 .pagination>.active>a:hover,
@@ -177,6 +184,7 @@ div.navbar-fixed-top{
   background-color: #5cb85c;
   border-color: #5cb85c;
 }
+
 .users-username{
   display: inline-block;
   position: relative;
@@ -187,9 +195,6 @@ div.navbar-fixed-top{
 
 .modal-select-label{
   color: rgba(0, 0, 0, 0.3);
-  position: absolute;
-  margin-top: 8px;
-  margin-left: 5px;
 }
 
 .modal-header {
@@ -267,31 +272,39 @@ form input.ng-invalid:not(.ng-pristine) {
   background-color: rgba(204, 28, 18, 0.3);
   font-weight: bold;
 }
+
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
   margin-bottom: 2em;
   padding: 0 0 0.5em;
 }
+
 .user{
   display: inline-block;
 }
+
 .nav-buttons{
   margin: 10px 5px 0 5px;
 }
+
 .menu:before {
   content: "[";
 }
+
 .menu:after {
   content: "]";
 }
+
 .menu > li {
   display: inline;
 }
+
 .menu > li:before {
   content: "|";
   padding-right: 0.3em;
 }
+
 .menu > li:nth-child(1):before {
   content: "";
   padding: 0;

@@ -16,8 +16,9 @@
                         <input type="text" required="required" id="description" ng-model="vm.project.Description">
                     </md-input-container>
                     <div class="modal-select-container">
-                        <label for="leadId" class="modal-select-label">LeadId</label>
-                        <select class="modal-select"
+                        <label id="lead-id-label" for="leadId" class="modal-select-label">LeadId</label>
+                        <select ng-click="removeLabel()"
+                                class="modal-select"
                                 required="required"
                                 ng-model="vm.project.Lead.Id"
                                 id="leadId" load-users></select>
