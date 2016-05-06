@@ -38,6 +38,10 @@ angular
 
             function init() {
                 self.isAdmin = identityService.isAdmin;
+                ////////////////////////////////////////////////
+                // Set current default to show assigned issues //
+                /////////////////////////////////////////////////
+                self.onlyAssignedIssues = sessionStorage['userId'];
                 //////////////////////////////////////////////////////////
                 // Check if need to update the currentProject reference //
                 //////////////////////////////////////////////////////////

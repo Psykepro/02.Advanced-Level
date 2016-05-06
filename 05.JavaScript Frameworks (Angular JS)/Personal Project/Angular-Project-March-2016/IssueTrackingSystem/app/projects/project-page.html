@@ -35,8 +35,8 @@
     </select>
     <label for="only-assigned-issues">Show only assigned issues:</label>
     <select id="only-assigned-issues" ng-model="vm.onlyAssignedIssues">
-    <option value="">No</option>
-    <option value="{{currentUser.Id}}">Yes</option>
+        <option selected="selected" value="{{currentUser.Id}}">Yes</option>
+        <option value="">No</option>
     </select>
     <!--| filter: {category: categoryFilter, haveSubtitles: subtitleFilter, dateString: dateFilter} | orderBy: orderBy">-->
     <div class="issues">
