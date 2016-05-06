@@ -8,7 +8,7 @@
                 <span class="users-username" ng-bind="user.Username"></span>
                 <button ng-if="currentUser.isAdmin && !user.isAdmin"
                         ng-click="vm.promoteToAdmin($event, user.Id)"
-                        class="btn btn-success">Make Admin</button>
+                        class="btn btn-success hvr-pulse">Make Admin</button>
             </div>
         </md-virtual-repeat-container>
     </md-content>

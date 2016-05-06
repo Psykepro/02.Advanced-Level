@@ -37,7 +37,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button ng-disabled="projectForm.$invalid" ng-click="vm.addProject(vm.project)" class="btn btn-success" data-dismiss="modal">Create Project</button>
+                <button ng-disabled="projectForm.$invalid" ng-class="(projectForm.$valid) ? 'hvr-pulse' : ''" ng-click="vm.addProject(vm.project)" class="btn btn-success" data-dismiss="modal">Create Project</button>
             </div>
         </div>
     </div>

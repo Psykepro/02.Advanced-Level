@@ -13,8 +13,8 @@
     <h3>Labels:</h3>
     <p ng-bind="vm.currentProject.Labels | join: ', '"></p>
     <div ng-if="vm.currentProject.Lead.Id === currentUser.Id || currentUser.isAdmin === true">
-        <a class="btn btn-success" ng-click="vm.showAddIssue()" role="button">Add Issue</a>
-        <a class="btn btn-success" ng-click="vm.showEditProject()" role="button">Edit project</a>
+        <a class="btn btn-success hvr-pulse" ng-click="vm.showAddIssue()" role="button">Add Issue</a>
+        <a class="btn btn-success hvr-pulse" ng-click="vm.showEditProject()" role="button">Edit project</a>
     </div>
 </div>
 <div id="issue-container" class="row">

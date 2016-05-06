@@ -11,7 +11,7 @@
                     <label for="password">Password</label>
                     <input type="password" required="required" pattern=".{6,100}" class="form-control" id="password" ng-model="vm.loginUser.password">
                 </md-input-container>
-                <button class="btn btn-primary" ng-disabled="loginUserForm.$invalid" ng-click="vm.login(vm.loginUser)">Login</button>
+                <button class="btn btn-primary" ng-class="(loginUserForm.$valid) ? 'hvr-pulse' : ''" ng-disabled="loginUserForm.$invalid" ng-click="vm.login(vm.loginUser)">Login</button>
             </form>
         </div>
 
@@ -42,7 +42,7 @@
                         Passwords don't match
                     </div>
                 </md-input-container>
-                <button class="btn btn-primary" ng-disabled="registerUserForm.$invalid || vm.registerUser.password != vm.registerUser.confirmPassword" ng-click="vm.register(vm.registerUser)">Register</button>
+                <button class="btn btn-primary" ng-class="(registerUserForm.$valid) ? 'hvr-pulse' : ''" ng-disabled="registerUserForm.$invalid || vm.registerUser.password != vm.registerUser.confirmPassword" ng-click="vm.register(vm.registerUser)">Register</button>
             </form>
         </div>
     </div>

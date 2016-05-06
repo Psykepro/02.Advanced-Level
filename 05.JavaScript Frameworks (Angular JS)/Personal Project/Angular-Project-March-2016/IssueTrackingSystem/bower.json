@@ -16,6 +16,7 @@
     "notify": "^0.0.1",
     "ng-simplePagination": "^1.0.3",
     "angular-modal-service": "^0.9.10",
-    "angular-material": "^1.0.7"
+    "angular-material": "^1.0.7",
+    "hover": "Hover#^2.0.2"
   }
 }

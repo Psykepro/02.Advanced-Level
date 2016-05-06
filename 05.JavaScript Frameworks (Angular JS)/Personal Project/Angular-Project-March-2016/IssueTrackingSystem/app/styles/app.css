@@ -29,6 +29,7 @@ body {
 #nav-header > #website-title{
   font-family: CaptureIt;
   color: #000000;
+  width: 17%;
 }
 #welcome-header-wrapper{
   display: block;

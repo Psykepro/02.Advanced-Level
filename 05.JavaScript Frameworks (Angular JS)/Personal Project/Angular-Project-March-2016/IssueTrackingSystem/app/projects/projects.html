@@ -1,7 +1,7 @@
 <h3 class="clean-header-green">All Projects</h3>
 <div class="row">
     <div class="col-md-6" id="all-projects-container" >
-        <a class="custom-buttons btn btn-success nav-buttons"
+        <a class="custom-buttons btn btn-success"
            role="button" ng-bind="project.Name"
            ng-repeat="project in vm.allProjects
                | startFrom: vm.projectsPagination.page * vm.projectsPagination.perPage
