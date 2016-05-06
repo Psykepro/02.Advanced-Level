@@ -9,6 +9,9 @@ angular
             var self = this;
             var previousLength;
 
+            //////////
+            // Init //
+            //////////
             init();
 
 
@@ -22,7 +25,7 @@ angular
                         .then(function (success) {
                             previousLength = success.Length;
                             self.allProjects = success;
-                            self.projectsPagination = Pagination.getNew(8);
+                            self.projectsPagination = Pagination.getNew(10);
                             self.projectsPagination.numPages = Math.ceil(self.allProjects.length / self.projectsPagination.perPage);
                         })
                 }

@@ -198,34 +198,48 @@ div.navbar-fixed-top{
   position: relative;
   text-align: center;
 }
+
 .col-md-offset-1{
   margin-left: 5.6%;
 }
+
 li{
   list-style: none;
 }
+
 .navbar-nav{
   height: 50px;
 }
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
+
 form input.ng-invalid:not(.ng-pristine) {
   box-shadow: 0 0 13px rgba(255, 133, 0, 0.9);
 }
+
 .container{
   margin-left: 0;
 }
+
 .custom-buttons{
   display: block;
   text-align: center;
   background-color: #ffffff;
   color: #000000;
   font-family: Audimat;
+  width: 100% !important;
+  margin-top: 5px;
   font-size: 18px;
   letter-spacing: 2px;
   font-weight: bold;
 }
+
+.hvr-shutter-out-horizontal:before{
+  background-color: #5cb85c;
+}
+
 .error-message {
   padding: 12px;
   background-color: rgba(204, 28, 18, 0.3);

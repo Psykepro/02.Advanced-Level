@@ -12,6 +12,7 @@ angular
         function EditProjectCtrl($route, $rootScope, $scope, $routeParams, projectService, identityService) {
             var currentId = parseInt($routeParams.id),
                 self = this;
+
             //////////
             // Init //
             //////////

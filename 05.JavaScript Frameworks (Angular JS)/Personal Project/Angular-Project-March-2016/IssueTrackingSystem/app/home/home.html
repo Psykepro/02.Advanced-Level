@@ -53,7 +53,7 @@
     <div class="row">
         <div class="col-md-5 col-md-offset-1" id="my-projects-container">
             <h3 class="clean-header-green inner-header">My Projects</h3>
-            <a class="custom-buttons btn btn-success nav-buttons"
+            <a class="hvr-bounce-in custom-buttons btn btn-success nav-buttons"
                role="button" ng-bind="project.Name"
                ng-repeat="project in vm.myProjects
                | startFrom: vm.projectsPagination.page * vm.projectsPagination.perPage
@@ -68,7 +68,7 @@
         </div>
         <div class="col-md-5 col-md-offset-1" id="assigned-projects-container">
             <h3 class="clean-header-green inner-header">Assigned Projects</h3>
-            <a class="custom-buttons btn btn-success nav-buttons"
+            <a class="hvr-bounce-in custom-buttons btn btn-success nav-buttons"
                role="button" ng-bind="project.Name"
                ng-repeat="project in vm.assignedProjects
                | startFrom: vm.assignedProjectsPagination.page * vm.assignedProjectsPagination.perPage
