@@ -17,6 +17,8 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 updateMyIssues: updateMyIssues,
                 initCurrentIssueById: initCurrentIssueById,
                 updateCurrentIssue: updateCurrentIssue,
+                updateCurrentIssueStatus: updateCurrentIssueStatus,
+                getIssuesByProjectId: getIssuesByProjectId,
                 getMyIssuesRequest: getMyIssuesRequest,
                 addIssueRequest: addIssueRequest,
                 getIssueByIdRequest: getIssueByIdRequest,
@@ -105,13 +107,28 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                 return deferred.promise;
             }
 
+            function getIssuesByProjectId(projectId){
+                var deferred = $q.defer();
+                var accessToken = sessionStorage["userAuth"];
+
+                $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
+                $http.get(BASE_URL + 'projects/' + projectId + '/issues')
+                    .then(function (success) {
+                        deferred.resolve(success.data);
+                    }, function (error) {
+                        deferred.reject(error);
+                    });
+
+                return deferred.promise;
+            }
+
             function getMyIssuesRequest(pageSize, pageNumber, orderBy) {
+                var deferred = $q.defer();
+                var accessToken = sessionStorage["userAuth"];
                 pageSize = pageSize || 10;
                 pageNumber = pageNumber || 1;
                 orderBy = orderBy || 'DueDate desc';
-                var deferred = $q.defer();
 
-                var accessToken = sessionStorage["userAuth"];
                 $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
                 $http.get(BASE_URL + 'issues/me?pageSize=' + pageSize + '&pageNumber=' + pageNumber + '&orderBy=' + orderBy)
                     .then(function (success) {
@@ -182,6 +199,15 @@ angular.module('issueTrackingSystem.issues.issueService',[])
                     });
 
                 return deferred.promise;
+            }
+
+            function updateCurrentIssueStatus(issueId) {
+                issueService
+                    .getIssueByIdRequest(issueId)
+                    .then(function (success) {
+                        currentIssue.Status = success.Status;
+                        currentIssue.AvailableStatuses = success.AvailableStatuses;
+                    });
             }
 
             function updateIssueStatusRequest(issueId, statusId) {
