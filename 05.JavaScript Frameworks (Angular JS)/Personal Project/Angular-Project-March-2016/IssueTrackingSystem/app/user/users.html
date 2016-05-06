@@ -5,10 +5,14 @@
         <md-virtual-repeat-container id="vertical-container-users">
             <div md-virtual-repeat="user in vm.users | filter: { isAdmin : false}"
                  class="repeated-item-vertical" flex>
-                <span class="users-username" ng-bind="user.Username"></span>
-                <button ng-if="currentUser.isAdmin && !user.isAdmin"
-                        ng-click="vm.promoteToAdmin($event, user.Id)"
-                        class="btn btn-success hvr-pulse">Make Admin</button>
+                <div class="users-row">
+                    <span class="users-username" ng-bind="user.Username"></span>
+                    <div class="make-admin-btn-wrapper">
+                        <button ng-if="currentUser.isAdmin && !user.isAdmin"
+                                ng-click="vm.promoteToAdmin($event, user.Id)"
+                                class="btn btn-success hvr-pulse make-admin-btn">Make Admin</button>
+                    </div>
+                </div>
             </div>
         </md-virtual-repeat-container>
     </md-content>

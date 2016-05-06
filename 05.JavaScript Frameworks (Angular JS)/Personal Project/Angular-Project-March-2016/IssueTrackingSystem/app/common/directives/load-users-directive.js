@@ -21,7 +21,7 @@ angular
                     });
 
                     userService
-                        .getAllUsers()
+                        .getAllUsersRequest()
                         .then(function (success) {
                             scope.users = success;
                             fragment = generateUsersOptionsFragment(scope.users);

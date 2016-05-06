@@ -15,7 +15,7 @@ angular
 
             $scope.$on('$routeChangeStart', function() {
                 if(!$scope.currentUser && sessionStorage['userAuth']){
-                    userService.getCurrentUser().then(function (success) {
+                    userService.getCurrentUserRequest().then(function (success) {
                         var currentUser = success.data;
                         sessionStorage['userId'] = success.data.Id;
                         sessionStorage['isAdmin'] = success.data.isAdmin;

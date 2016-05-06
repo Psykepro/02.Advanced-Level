@@ -27,7 +27,7 @@
   background-color:  rgba(92, 184, 92, 1);
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 7;
 }
 #nav-header > ul {
   background-color:  rgba(92, 184, 92, 1);

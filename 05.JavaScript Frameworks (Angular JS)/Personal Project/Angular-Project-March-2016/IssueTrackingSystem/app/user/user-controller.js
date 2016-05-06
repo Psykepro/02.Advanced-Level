@@ -10,25 +10,23 @@ angular
         function UsersCtrl($rootScope, $location, userService, adminService) {
             var self = this;
 
-            userService.getAllUsers()
-                .then(function (success) {
-                    self.users = success;
-                }, function (error) {
-                    $.notify('Error occurred when tried to get the users!', 'error');
-                });
+            //////////
+            // Init //
+            //////////
+            init();
 
             self.promoteToAdmin = function($event, userId){
                 adminService.makeAdmin(userId)
                     .then(function(success){
+                        userService.updateUsers();
                         $.notify('You successfully made new admin!', 'success');
-                        $event.currentTarget.remove();
                     }, function(error){
                         $.notify("Admin wasn't made!", 'error');
                     })
             };
 
             self.changePassword = function(account){
-                userService.changePassword(account)
+                userService.changePasswordRequest(account)
                     .then(function(success){
                         $location.path('#/');
                         $location.replace();
@@ -40,6 +38,23 @@ angular
                            $.notify('You entered wrong password!', 'error');
                        }
                     })
+            };
+
+
+
+            function init() {
+                if (!self.users) {
+                    userService
+                        .initUsers()
+                        .then(function (success) {
+                            ///////////////
+                            // Set users //
+                            ///////////////
+                            self.users = success;
+                        }, function (error) {
+                            $.notify('Error occurred when tried to get the users!', 'error');
+                        });
+                }
             }
     }]);
 

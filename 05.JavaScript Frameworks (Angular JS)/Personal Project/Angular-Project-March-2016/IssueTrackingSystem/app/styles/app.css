@@ -141,6 +141,33 @@ div.navbar-fixed-top{
   border-color: rgba(0, 0, 0, 0.2);
 }
 
+.make-admin-btn-wrapper{
+  display: inline-block;
+  text-align: center;
+  width: 20%;
+}
+
+.users-row{
+  width: 100%;
+}
+
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover{
+  background-color: #5cb85c;
+  border-color: #5cb85c;
+}
+.users-username{
+  display: inline-block;
+  position: relative;
+  left: 3px;
+  text-align: left;
+  width: 75%;
+}
+
 .modal-select-label{
   color: rgba(0, 0, 0, 0.3);
   position: absolute;

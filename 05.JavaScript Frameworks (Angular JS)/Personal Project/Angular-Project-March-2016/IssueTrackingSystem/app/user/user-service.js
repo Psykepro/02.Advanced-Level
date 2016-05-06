@@ -1,16 +1,48 @@
 'use strict';
 
 angular.module('issueTrackingSystem.user.userService',[])
-    .factory('userService',['$q', '$http', 'BASE_URL',
+    .factory('userService',[
+        '$q',
+        '$http',
+        'BASE_URL',
         function($q, $http, BASE_URL){
-
+            var users = null;
             var userService = {
-                getCurrentUser: getCurrentUser,
-                getAllUsers: getAllUsers,
-                changePassword: changePassword
+                initUsers: initUsers,
+                updateUsers: updateUsers,
+                getCurrentUserRequest: getCurrentUserRequest,
+                getAllUsersRequest: getAllUsersRequest,
+                changePasswordRequest: changePasswordRequest
             };
 
-            function getCurrentUser(){
+            function updateUsers(){
+                userService
+                    .getAllUsersRequest()
+                    .then(function (success) {
+                        users.ShallowCopy(success);
+                    });
+            }
+
+            function initUsers(){
+                var deferred = $q.defer();
+
+                if(!users){
+                    userService
+                        .getAllUsersRequest()
+                        .then(function (success) {
+                            users = success;
+                            deferred.resolve(users);
+                        }, function(error){
+                            deferred.reject(error);
+                        });
+                }else{
+                    deferred.resolve(users);
+                }
+
+                return deferred.promise;
+            }
+            
+            function getCurrentUserRequest(){
                 var accessToken = sessionStorage['userAuth'],
                     deferred = $q.defer();
                 $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
@@ -25,7 +57,7 @@ angular.module('issueTrackingSystem.user.userService',[])
                 return deferred.promise;
             }
 
-            function getAllUsers(){
+            function getAllUsersRequest(){
                 var deferred = $q.defer();
                 $http.get(BASE_URL + 'users')
                     .then(function(success){
@@ -37,7 +69,7 @@ angular.module('issueTrackingSystem.user.userService',[])
                 return deferred.promise;
             }
 
-            function changePassword(account){
+            function changePasswordRequest(account){
                 var accessToken = sessionStorage['userAuth'],
                     deferred = $q.defer();
                 $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
@@ -52,6 +84,7 @@ angular.module('issueTrackingSystem.user.userService',[])
 
                 return deferred.promise;
             }
+            
 
             return userService
         }]);
