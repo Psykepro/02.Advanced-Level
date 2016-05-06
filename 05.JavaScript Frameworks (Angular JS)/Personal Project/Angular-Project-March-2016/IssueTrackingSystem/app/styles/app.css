@@ -117,6 +117,10 @@ body {
   font-family: Audimat;
 }
 
+.row{
+  width: 100%;
+}
+
 div.navbar-fixed-top{
   font-family: Audimat;
   margin: 0;

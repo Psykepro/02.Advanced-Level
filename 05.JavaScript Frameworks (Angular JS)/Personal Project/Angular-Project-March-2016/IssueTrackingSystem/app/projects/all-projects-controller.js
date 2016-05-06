@@ -9,9 +9,6 @@ angular
             var self = this;
             var previousLength;
 
-            //////////
-            // Init //
-            //////////
             init();
 
 
@@ -20,6 +17,7 @@ angular
                 // Check if need to get the projects reference //
                 /////////////////////////////////////////////////
                 if (!self.allProjects || self.allProjects.Length !== previousLength) {
+                    console.log('bounce')
                     projectService
                         .initProjects()
                         .then(function (success) {
