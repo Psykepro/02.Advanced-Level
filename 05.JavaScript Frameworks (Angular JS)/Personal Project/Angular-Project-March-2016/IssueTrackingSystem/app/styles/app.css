@@ -17,6 +17,7 @@
 body {
   margin-top: 50px;
 }
+
 #admin-header{
   font-family: CaptureIt;
   font-size: 15px;
@@ -189,11 +190,43 @@ div.navbar-fixed-top{
   color: rgba(0, 0, 0, 0.3);
 }
 
+.comments{
+  height: 90%;
+  text-align: center;
+  background-color: rgba(92, 184, 92, 0.5);
+}
+
+.description{
+  height: auto;
+}
+.issue-page p{
+  margin-left: 13px;
+}
+.change-status-btn{
+  display: block;
+  margin: 5px;
+}
+.issue-page{
+  font-weight: bold;
+  font-size: 12px;
+}
+.formatted-header{
+  width: 100%;
+  border: 3px solid #5cb85c;
+  padding: 5px;
+  border-radius: 10px;
+  font-family: Furore;
+}
+
 .modal-header {
   font-family: Audimat;
   color: #ffffff;
   text-align: center;
   background-color: #5cb85c;
+}
+#view-container{
+  height: 100%;
+  width: 100%;
 }
 .clean-header-green{
   border-bottom: 0;
@@ -248,7 +281,7 @@ form input.ng-invalid:not(.ng-pristine) {
   background-color: #ffffff;
   color: #000000;
   font-family: Furore;
-  width: 80% !important;
+  width: 90% !important;
   margin-top: 5px;
   font-size: 18px;
   letter-spacing: 2px;
