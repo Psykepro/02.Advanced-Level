@@ -34,12 +34,16 @@
   display: inline-block;
 }
 
+#nav-header{
+  box-shadow: 0 2px 3px #222222;
+}
+
 #nav-header > #website-title {
   display: inline-block;
   position: relative;
   bottom: 22px;
   left: 4px;
-  width: 17%;
+  width: 21%;
   color: #000000;
   margin: 0;
   font-family: CaptureIt;
