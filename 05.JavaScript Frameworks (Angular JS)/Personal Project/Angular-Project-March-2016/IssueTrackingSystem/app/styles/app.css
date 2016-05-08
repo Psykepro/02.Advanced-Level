@@ -24,6 +24,7 @@ body {
   position: relative;
   top: 5px;
 }
+
 #project-info{
   display: block;
   width: 100%;
@@ -31,9 +32,11 @@ body {
   left: 30%;
   text-align: center;
 }
+
 #project-page-buttons{
   width: 40%;
 }
+
 #issue-container{
   position: relative;
   width: 80%;
