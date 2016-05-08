@@ -6,12 +6,13 @@
         .controller('AddProjectCtrl', [
             '$scope',
             'identityService',
+            'adminService',
             'projectService',
-            function AddProjectCtrl($scope, identityService, projectService) {
+            function AddProjectCtrl($scope, identityService, adminService, projectService) {
                 var self = this;
 
                 self.addProject = function(project) {
-                    projectService
+                    adminService
                         .addProjectRequest(project)
                         .then(function(success) {
                             $.notify('You successfully created new project!', 'success');
