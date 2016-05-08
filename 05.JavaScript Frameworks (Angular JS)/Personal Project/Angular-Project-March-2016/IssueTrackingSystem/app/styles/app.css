@@ -26,9 +26,14 @@ body {
 }
 #project-info{
   display: block;
+  width: 100%;
+  position: relative;
+  left: 30%;
   text-align: center;
 }
-
+#project-page-buttons{
+  width: 40%;
+}
 #issue-container{
   position: relative;
   width: 80%;
@@ -210,12 +215,25 @@ div.navbar-fixed-top{
   font-weight: bold;
   font-size: 12px;
 }
-.formatted-header{
+
+.formatted-header-issue {
   width: 100%;
   border: 3px solid #5cb85c;
   padding: 5px;
   border-radius: 10px;
   font-family: Furore;
+}
+
+.formatted-header-project {
+  width: 40%;
+  border: 3px solid #5cb85c;
+  padding: 5px;
+  border-radius: 10px;
+  font-family: Furore;
+}
+
+.formatted-paragraph-project{
+  width: 40%;
 }
 
 .modal-header {

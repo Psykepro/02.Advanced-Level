@@ -1,18 +1,18 @@
 <h3 class="clean-header-green">Project</h3>
 <div id="project-info">
-    <h3>Name:</h3>
-    <p ng-bind="vm.currentProject.Name"></p>
-    <h3>Description:</h3>
-    <p ng-bind="vm.currentProject.Description"></p>
-    <h3>Project's Leader:</h3>
-    <p ng-bind="vm.currentProject.Lead.Username"></p>
-    <h3>Project Key:</h3>
-    <p ng-bind="vm.currentProject.ProjectKey"></p>
-    <h3>Priorities:</h3>
-    <p ng-bind="vm.currentProject.Priorities | join: ', '"></p>
-    <h3>Labels:</h3>
-    <p ng-bind="vm.currentProject.Labels | join: ', '"></p>
-    <div ng-if="vm.currentProject.Lead.Id === currentUser.Id || currentUser.isAdmin === true">
+    <h3 class="formatted-header-project">Name:</h3>
+    <p class="formatted-paragraph-project" ng-bind="vm.currentProject.Name"></p>
+    <h3 class="formatted-header-project">Description:</h3>
+    <p class="formatted-paragraph-project description" ng-bind="vm.currentProject.Description"></p>
+    <h3 class="formatted-header-project">Project's Leader:</h3>
+    <p class="formatted-paragraph-project" ng-bind="vm.currentProject.Lead.Username"></p>
+    <h3 class="formatted-header-project">Project Key:</h3>
+    <p class="formatted-paragraph-project" ng-bind="vm.currentProject.ProjectKey"></p>
+    <h3 class="formatted-header-project">Priorities:</h3>
+    <p class="formatted-paragraph-project" ng-bind="vm.currentProject.Priorities | join: ', '"></p>
+    <h3 class="formatted-header-project">Labels:</h3>
+    <p class="formatted-paragraph-project" ng-bind="vm.currentProject.Labels | join: ', '"></p>
+    <div id="project-page-buttons" ng-if="vm.currentProject.Lead.Id === currentUser.Id || currentUser.isAdmin === true">
         <a class="btn btn-success hvr-pulse" ng-click="vm.showAddIssue()" role="button">Add Issue</a>
         <a class="btn btn-success hvr-pulse" ng-click="vm.showEditProject()" role="button">Edit project</a>
     </div>
