@@ -37,11 +37,13 @@
                 };
 
                 function updateProjectIssues(id) {
-                    issueService
-                        .getIssuesByProjectId(id)
-                        .then(function(success) {
-                            projectIssues.ShallowCopy(success);
-                        });
+                    if(projectIssues){
+                        issueService
+                            .getIssuesByProjectId(id)
+                            .then(function(success) {
+                                projectIssues.ShallowCopy(success);
+                            });
+                    }
                 }
 
                 function initProjectIssues(id) {
@@ -64,11 +66,13 @@
                 }
 
                 function updateCommentsByIssueId(id) {
-                    issueService
-                        .getIssueCommentsRequest(id)
-                        .then(function(success) {
-                            issueComments.ShallowCopy(success);
-                        });
+                    if(issueComments){
+                        issueService
+                            .getIssueCommentsRequest(id)
+                            .then(function(success) {
+                                issueComments.ShallowCopy(success);
+                            });
+                    }
                 }
 
                 function initCommentsByIssueId(id) {
@@ -91,11 +95,13 @@
                 }
 
                 function updateMyIssues() {
-                    issueService
-                        .getMyIssuesRequest()
-                        .then(function(success) {
-                            myIssues.ShallowCopy(success);
-                        });
+                    if(myIssues){
+                        issueService
+                            .getMyIssuesRequest()
+                            .then(function(success) {
+                                myIssues.ShallowCopy(success);
+                            });
+                    }
                 }
 
                 function initMyIssues() {
@@ -118,7 +124,9 @@
                 }
 
                 function updateCurrentIssue(updatedIssue) {
-                    currentIssue.ShallowCopy(updatedIssue);
+                    if(currentIssue){
+                        currentIssue.ShallowCopy(updatedIssue);
+                    }
                 }
 
                 function initCurrentIssueById(id) {

@@ -24,7 +24,6 @@
                     updateMyProjects: updateMyProjects,
                     initCurrentProjectById: initCurrentProjectById,
                     updateCurrentProject: updateCurrentProject,
-                    addProjectRequest: addProjectRequest,
                     getAllProjectsRequest: getAllProjectsRequest,
                     getIssuesByProjectIdRequest: getIssuesByProjectIdRequest,
                     getProjectByIdRequest: getProjectByIdRequest,
@@ -36,12 +35,14 @@
 
 
                 function updateAssignedProjects() {
-                    issueService
-                        .initMyIssues()
-                        .then(function(success) {
-                            var extractedAssignedProjects = extractAssignedProjectsFromIssues(success);
-                            assignedProjects.ShallowCopy(extractedAssignedProjects);
-                        });
+                    if(assignedProjects){
+                        issueService
+                            .initMyIssues()
+                            .then(function(success) {
+                                var extractedAssignedProjects = extractAssignedProjectsFromIssues(success);
+                                assignedProjects.ShallowCopy(extractedAssignedProjects);
+                            });
+                    }
                 }
 
                 function initAssignedProjects() {
@@ -64,14 +65,16 @@
                 }
 
                 function updateMyProjects() {
-                    projectService
-                        .getAllProjectsRequest()
-                        .then(function(success) {
-                            var temp = success.filter(function(project) {
-                                return identityService.isProjectLeader(project);
+                    if(myProjects){
+                        projectService
+                            .getAllProjectsRequest()
+                            .then(function(success) {
+                                var temp = success.filter(function(project) {
+                                    return identityService.isProjectLeader(project);
+                                });
+                                myProjects.ShallowCopy(temp);
                             });
-                            myProjects.ShallowCopy(temp);
-                        });
+                    }
                 }
 
                 function initMyProjects() {
@@ -96,11 +99,13 @@
                 }
 
                 function updateProjects() {
-                    projectService
-                        .getAllProjectsRequest()
-                        .then(function(success) {
-                            projects.ShallowCopy(success);
-                        });
+                    if(projects){
+                        projectService
+                            .getAllProjectsRequest()
+                            .then(function(success) {
+                                projects.ShallowCopy(success);
+                            });
+                    }
                 }
 
                 function initProjects() {
@@ -123,7 +128,9 @@
                 }
 
                 function updateCurrentProject(updatedProject) {
-                    currentProject.ShallowCopy(updatedProject);
+                    if(currentProject){
+                        currentProject.ShallowCopy(updatedProject);
+                    }
                 }
 
                 function initCurrentProjectById(id) {
@@ -141,22 +148,6 @@
                     } else {
                         deferred.resolve(currentProject);
                     }
-
-                    return deferred.promise;
-                }
-
-                function addProjectRequest(project) {
-                    var deferred = $q.defer(),
-                        accessToken = sessionStorage["userAuth"];
-
-                    project = formatBindingProjectModel(project);
-                    $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
-                    $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
-                    $http.post(BASE_URL + 'projects', project).then(function(success) {
-                        deferred.resolve(success);
-                    }, function(error) {
-                        deferred.reject(error);
-                    });
 
                     return deferred.promise;
                 }

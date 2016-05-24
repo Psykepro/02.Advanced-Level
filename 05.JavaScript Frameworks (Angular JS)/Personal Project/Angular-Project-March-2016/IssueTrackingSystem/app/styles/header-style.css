@@ -54,6 +54,10 @@
   margin: 0;
 }
 
+#system-name{
+  width: 100%;
+}
+
 #nav-header > ul > li {
   float: left;
   -webkit-perspective: 1000px;
